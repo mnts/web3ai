@@ -82,15 +82,23 @@ class element extends HTMLElement{
 
   load(path){
      this.user = User(path);
-
+       
      this.user.load(item => {
      	if(!item) return;
-       this.setAttribute('title', item.title || item.name);
+
+     	console.log(this.user);
+
+     	this.link = this.user.axon.link;
+
+     	console.log(this.link);
+     	
+     	
+		this.setAttribute('title', item.title || item.name);
 
 		this.dispatchEvent(new CustomEvent("loaded", {
 		  detail: {item, user: this.user}
 		}));
-        
+
 		if(item.image){
 		   var media = document.createElement('fractal-media');
 		   media.classList.add('fill');

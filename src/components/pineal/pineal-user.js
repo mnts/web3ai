@@ -78,12 +78,6 @@ class element extends HTMLElement{
    // this.shadowRoot.adoptedStyleSheets = [styleSheets.fontAwesome];
     this.shadowRoot.innerHTML = element.template;
     this.main = this.select('main');
-	
-	document.body.addEventListener('authenticated', ev => {
-		var user = ev.detail.user;
-		if(this.user && user.email == this.user.email)
-			this.load(user.email);
-	});
   }
 
   load(path){
@@ -91,8 +85,9 @@ class element extends HTMLElement{
 
      this.user.load(item => {
      	if(!item) return;
-        
-        this.setAttribute('title', item.title || item.name || item.email || item.owner);
+       this.setAttribute('title', item.title || item.name);
+
+       this.link = this.user.axon.link;
 
 		this.dispatchEvent(new CustomEvent("loaded", {
 		  detail: {item, user: this.user}
