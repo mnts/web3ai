@@ -202,6 +202,7 @@ class Component extends HTMLElement{
 
           video.controls = true;
         } 
+        /*
         else
         if((new RegExp('(' + this.ext.iframe.join('|').replace(/\./g, '\\.') + ')$')).test(item.name)){
           var cont = document.createElement('iframe');
@@ -213,6 +214,7 @@ class Component extends HTMLElement{
           this.img.replaceWith(cont);
           this.img = cont;
         } 
+        */
         else
         if(item.segments){
           import('/components/gif.js').then(m => {
