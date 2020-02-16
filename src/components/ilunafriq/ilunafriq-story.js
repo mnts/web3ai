@@ -71,17 +71,15 @@ class Component extends fractal_item{
                 </a>
                 
                 ${this.item.owner}&nbsp;
-	            <div id='owner_seeds' @click='${this.assign_seeds}'></div>
+	            <!--<div id='owner_seeds' @click='${this.assign_seeds}'></div>-->
               </div>
               <button id='options' class='icon fas fa-ellipsis-v'></button>
           </div>
           
-          ${(account.user && account.user.super)?html`
-            <input name='value' title='seeds' placeholder='Assign seeds' type='number' @change='${this.change}' value='${this.item.value}'/>
-          `:''}
-
-          
           <relative-time id='info-when' datetime='${this.datetime}'></relative-time>
+          
+          <input name='value' title='seeds' type='number' disabled='disabled' @change='${this.change}' value='${this.item.value || 0}'/>
+          
 
           <div id="info-block">
               <span class="forPublished" id='stat-likes'>
@@ -140,6 +138,12 @@ class Component extends fractal_item{
         `;
         this.tree = this.select('#tree');
     }
+
+    if(account.user && account.user.super){
+        let inp = this.select('input[name=value]');
+        inp.removeAttribute('disabled');
+        inp.setAttribute('placeholder', 'Assign'); 
+    }
     
     if(this.user && this.user.getValue){
         this.select('#owner_seeds').innerText = await this.user.getValue();
@@ -151,7 +155,6 @@ class Component extends fractal_item{
   }
 
   assign_seeds(ev){
-  	console.log(account.user);
  	if(!account.user || !account.user.super) return;
  	var num = parseInt(prompt(`Number of seeds ${this.user.email} has?`, this.user.value));
 
