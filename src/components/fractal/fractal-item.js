@@ -229,8 +229,7 @@ class Component extends LitElement{
 
     let title = item.title || this.item.title || item.name;
     this.$('#title').textContent = title;
-
-    console.log(title);
+    
     if(title){
       this.$('#title').removeAttribute('contenteditable');
     }

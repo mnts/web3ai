@@ -33,13 +33,13 @@ class Component extends LitElement{
      <link rel="stylesheet" href="//${url.host}/design/components/comment.css">
   
      <main>
-      <pineal-user id='owner-icon' @loaded='${this.on_user}' path="${this.item.owner}"></pineal-user>
+      <pineal-user id='owner-icon' @loaded='${this.on_user}' path="${this.item.owner}" @click='${this.click_user}'></pineal-user>
       <div id='owner-info'>
-         <b id='owner_title'>${this.user_item.title}</b>
+         <a id='owner_title' href='${this.user && this.user.href}' target='_blank'>${this.user_item.title}</a>
          <div id='comment-text'>${this.item.text}</div>
           <relative-time id='info-when' datetime='${this.datetime}'></relative-time>
        </div>
-     </main>`;
+     </main>`
   }
 
   constructor() {
@@ -52,6 +52,11 @@ class Component extends LitElement{
 
   select(selector){
     return this.shadowRoot.querySelector(selector);
+  }
+
+  
+  click_user(ev){
+  	this.select('#owner_title').click();
   }
 
   on_user(ev){

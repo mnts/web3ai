@@ -21,6 +21,7 @@ class Component extends fractal_item{
 
  render(){
         //  ?contenteditable='${this.classList.contains('toCreate')}'
+    console.log(this.user);
     return html`
       <link rel="stylesheet" href="//${url.host}/src/components/fractal-item/style.css">
 
@@ -65,7 +66,7 @@ class Component extends fractal_item{
           <div id="owner-block">
               <pineal-user id='owner-icon' @loaded='${this.on_user}' @click='${this.click_user}' path="${this.item.owner || this.user_item.owner}"></pineal-user>
               <div id='owner-info'>
-                <a id='owner' href='${url.origin}/~/${this.user.name}' target='_blank'>
+                <a id='owner' href='${this.user && this.user.href}' target='_blank'>
                 	${this.user_item.title}
                 </a>
                 

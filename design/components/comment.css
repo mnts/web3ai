@@ -26,11 +26,13 @@
 	outline: none;
 }
 
+
 #owner_title, #owner{
 	display: block;
 	font-size: 14px;
 	color: grey;
 	margin: 2px 12px;
+	text-decoration: none;
 }
 
 pineal-user{

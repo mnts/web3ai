@@ -48,6 +48,10 @@ class User_main{
 			});
     	});
 	}
+
+	get href(){
+		return location.origin+'/~/'+this.name;
+	}
 };
 
 var User = function(u){
