@@ -385,6 +385,9 @@ export default class Component extends LitElement{
       composed: true
     }));
 
+    var active_img = this.select('#gallery').select('.active');
+    if(active_img) active_img.classList.remove('active')
+
     history.back();
   }
 

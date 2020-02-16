@@ -100,7 +100,7 @@ main > audio +
 }
 
 
-main.active > img, main.active > video{
+:host(.active) img, :host(.active) video{
 	position: fixed;
 	object-fit: cover;
 	bottom: 0;
@@ -183,6 +183,6 @@ main > a{
 	opacity: 1;
 }
 
-main.active #delete{
+:host(.active) #delete{
 	opacity: 1;
 }

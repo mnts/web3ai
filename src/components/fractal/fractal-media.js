@@ -67,7 +67,7 @@ class Component extends HTMLElement{
       }
     });
 
-    this.main.classList.toggle('active');
+    this.classList.toggle('active');
 
     this.dispatchEvent(event);
   }
