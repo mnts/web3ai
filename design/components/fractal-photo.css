@@ -164,17 +164,19 @@ main > a{
 	position: absolute;
 	background: white;
 	border: 0;
-	left: 6px;
-	bottom: -6px;
+	right: 0;
+	bottom: -8px;
 	width: 32px;
 	height: 32px;
+	z-index: 3;
 	border-radius: 50%;
 	color: red;
 	font-size: 20px;
 	transition: opacity .5s;
 }
 
-:host(:not(.fill)) .own #delete{
+
+/*:host(:not(.fill)) */.own #delete{
 	display: inline-block;
 }
 
