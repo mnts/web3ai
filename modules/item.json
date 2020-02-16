@@ -1,0 +1,29 @@
+{
+  "children": [
+    "functions.js",
+    "account.js",
+    "graph.js",
+    "givhub.js",
+    "img.js",
+    "admin.js",
+    "item.json",
+    "dq3.js",
+    "interface.js",
+    "orders.js",
+    "properties.js",
+    "layout.js",
+    "search.js",
+    "site.js",
+    "pay.js",
+    "tree.js",
+    "users.js",
+    "user.js",
+    "membership.js",
+    "registration.js",
+    "acc.js",
+    "auth.js",
+    "ws.js",
+    "sourceEditor.js",
+    "socket.js"
+  ]
+}

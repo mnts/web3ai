@@ -1,0 +1,113 @@
+<html><head>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta charset="utf-8">
+	<title>8</title>
+
+	<link rel="manifest" href="./manifest.json">
+	<meta name="theme-color" content="#222835" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+	
+	<link href="./img/log.png" rel="shortcut icon" type="image/png">
+
+	<meta name="robots" content="nofollow">
+
+	<base target="_blank">
+	
+	<script src="/node_modules/zangodb/dist/zangodb.min.js"></script>
+	<script src="/init.js" type='module'></script>
+	<script src="/index.js" type='module'></script>
+	
+	<script src="./index.js" type='module'></script>
+	
+	<style>
+		#layout{
+			--color: #0d8b28;
+			--header-height: 42px;
+			--color2: #009688;
+			--bg: #192f1d;
+			--shadow-color: #0eda5699;
+			--bg-grad: linear-gradient(#071c10, #050c09de);
+		}
+
+		#info-block{
+		  background: linear-gradient(#bfbfbf, #737373);
+		}
+
+		#info-block > *{
+			color: white;
+		}
+
+		#menu{
+			/* overflow: hidden; */
+			/* margin-top: 6px; */
+		}
+
+
+		body:not(.authenticated) fractal-publish{
+			display: none;
+		}
+
+		body:not(.mobile) #nav{
+			/* display: none; */
+		}
+
+		#navigation-side{
+			background: #000000b8;
+			backdrop-filter: blur(7px);
+		}
+	</style>
+	
+</head>
+
+<body spellcheck="false" class='scroll_top'>
+	<div id="modal"></div>
+
+	<pineal-layout id='layout'>
+		<div id='navigation-side' class='side fixed'></div>
+		<fractal-head id='head' logo='/icon.png' navigation='pix8-nav'>
+			<div slot='title'></div>
+			
+			<button id='account-icon' title='Auth'></button>
+		</fractal-head>
+		<fractal-body id="body" class="body apps">
+			<div id="home"  class="app selected notab">
+				<pix8-container>
+					<pix8-carousel name="ui"></pix8-carousel>
+				</pix8-container>
+			</div>
+		</fractal-body>
+
+		<div id='account-side' class='side right fixed'>
+		</div>
+	</pineal-layout>
+
+	<!--
+	<pix8-container>
+		<pix8-carousel name="fractal"></pix8-carousel>
+	</pix8-container>
+	-->
+
+
+	
+	<div style='display: none'>
+		
+		<div id='auth-box'>
+			<pineal-auth/>
+		</div>
+
+
+		<div id='account-box'>
+			<pineal-account/>
+		</div>
+	</div>
+
+	
+	<template id='account-setup-template'>
+		<div id='account-setup' class='modal'>
+			<pineal-site domain='ilunafriq.com'/>
+		</div>
+	</template>
+</body>
+</html>

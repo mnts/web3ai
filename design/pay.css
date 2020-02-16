@@ -1,0 +1,196 @@
+
+#payMethod{
+  padding: 0 40px;
+  height: 230px;
+  width: 540px;
+}
+
+#payMethod > h2{
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dedede;
+  margin: 30px 0;
+}
+
+#payMethod-types{
+  margin-top: 15px;
+  /* display: none; */
+}
+
+#payMethod input{
+  border: 0;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+#payMethod [name=firstName], #payMethod [name=lastName]{
+  margin: 0;
+  width: 240px;
+  font-size: 20px;
+  height: auto;
+  padding: 5px 15px;
+  background: #f9f9f9;
+}
+
+#payMethod-card{
+  /* background-color: #f9f9f9; */
+  padding: 4px 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  width: 300px;
+}
+
+#payMethod-card > input{
+  margin: 0;
+}
+
+#payMethod-card > i{
+  font-size: 23px;
+}
+
+#payMethod [name=cardNumber]{
+  /* display: block; */
+  width: calc(100% - 30px);
+  background: rgba(228, 150, 150, 0);
+  font-size: 20px;
+  padding-left: 8px;
+  margin-bottom: 5px;
+}
+
+#payMethod [name=cvv]{
+  /* display: block; */
+  width: 45px;
+  padding: 0px 6px;
+  float: right;
+  line-height: 24px;
+  font-size: 14px;
+  margin: 4px;
+  background: #e6e6e6;
+  height: auto;
+}
+#payMethod [name=expire_year]{
+  width: 70px;
+}
+
+#payMethod [name=expire_month]{
+  width: 60px;
+}
+
+#payMethod [name=cardType]{
+  font-size: 12px;
+  height: 12px;
+  width: 150px;
+  background: transparent;
+}
+
+
+#payMethod-month, #payMethod-year{
+  width: 70px;
+  margin: 0;
+}
+
+#payMethod [type=submit]{
+  display: block;
+  width: 160px;
+  margin-bottom: 50px;
+}
+
+
+#payMethod .input, #payMethod .select{
+  width: 220px;
+  display: inline-block;
+  font-family: Lato;
+  font-size: 20px;
+  text-align: left;
+  color: #2f2f2f;
+  margin: 8px 20px;
+}
+
+#payMethod .select{
+  cursor: pointer;
+}
+
+#payMethod .select.active,
+#payMethod .select.active > .so:before{
+  color: #74bdf7;
+}
+
+#payMethod .select.active > .so{
+  border-color: #74bdf7;
+}
+
+#payMethod .select > i{
+  font-size: 48px;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+#acc-cards{
+  text-align: left;
+}
+
+#account-cards{
+  text-align: left;
+  margin: 15px auto;
+  max-width: 950px;
+}
+
+.card{
+  display: inline-block;
+  vertical-align: top;
+  background-color: #efefef;
+  transition: background-color 0.5s;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 10px;
+  width: 200px;
+  height: 100px;
+  text-align: left;
+}
+
+.card:hover{
+  background-color: #e4e4e4;
+}
+
+.card-icon{
+  font-size: 22px;
+}
+
+
+.card-icon{}
+.card-number{
+    font-size: 22px;
+    font-family: lato;
+}
+.card-email{
+    font-size: 22px;
+    font-family: lato;
+}
+.card-till{
+    width: 50px;
+    display: inline-block;
+    font-size: 10px;
+}
+.card-year{
+    width: 40px;
+    display: inline-block;
+}
+.card-month{
+    width: 15px;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.card-firstName, .card-lastName{
+    width: 95px;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.card-firstName{
+    text-align: right;
+    padding-right: 2px;
+}
+.card-lastName{
+}
+
+.card-active{/* position: absolute; */float: right;top: 2px;right: 2px;opacity: 0.3;}

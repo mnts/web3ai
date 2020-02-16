@@ -1,0 +1,5 @@
+fractal-gallery > *{
+  width: 100%;
+  margin-bottom: 1px;
+  height: calc(100% - 3px);
+}

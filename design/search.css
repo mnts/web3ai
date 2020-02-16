@@ -1,0 +1,43 @@
+#search{
+    background-color: #ffffff6b;
+    width: 320px;
+    margin: 5px;
+    padding: 0;
+    opacity: 0.8;
+}
+
+#search, #search-input, #search iron-icon{
+    border-radius: 6px;
+    transition: background-color .5s, color .5s;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#search:hover{
+    background-color: #ffffff88;
+}
+
+#search iron-icon{
+    color: white;
+    height: 40px;
+    width: 39px;
+    margin: 0 0 0 -4px;
+    vertical-align: middle;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+}
+
+#search-input{
+    background-color: transparent;
+    border-radius: 6px 0 0 6px;
+    width: calc(100% - 40px);
+    padding: 2px 12px;
+    border: 0;
+    font-size: 16px;
+    margin: 0;
+}
+
+#search-input:focus, #search-input:focus + iron-icon{
+    background-color: #ffffff9c;
+    color: black;
+}

@@ -1,0 +1,31 @@
+.customMarker {
+    position:absolute;
+    cursor:pointer;
+    background:#424242;
+    width: 63px;
+    height: 63px;
+    /* -width/2 */
+    margin-left: -32px;
+    /* -height + arrow */
+    margin-top: -74px;
+    border-radius: 50%;
+    box-sizing: content-box;
+    padding: 1px;
+}
+
+.customMarker:after {
+    content:"";
+    position: absolute;
+    bottom: -10px;
+    left: 24px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: #424242 transparent;
+    display: block;
+    width: 0;
+}
+.customMarker pineal-user{
+    width: 60px;
+    height: 60px;
+    border-radius:50%;
+}

@@ -1,0 +1,14 @@
+:host{
+	max-width: 480px;
+	margin: 8px auto;
+	padding: 2px;
+}
+
+:host(fractal-publish) > main{
+	height: auto;
+}
+
+[contenteditable]:empty:before {
+  content: attr(placeholder);
+  display: block;
+}

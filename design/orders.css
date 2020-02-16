@@ -1,0 +1,79 @@
+
+#orders-table{
+	font-size: 13px;
+	position: relative;
+}
+
+#orders-table > thead{
+	/* position: fixed; */
+	/* width: 100%; */
+	left: 0;
+	right: 0;
+}
+
+#orders-table th{
+	font-family: lato;
+	background: #e2e2e2;
+	border-right: 1px solid #d4d4d4;
+	background: linear-gradient(#e5e5e5, lightgrey);
+	padding: 5px;
+}
+
+#orders-table tr, #orders-table td{
+	height: 40px;
+	margin: 0;
+	padding: 0;
+}
+
+#orders-table td{
+	padding: 0 5px;
+	border-right: 1px solid #f1f1f1;
+}
+
+#orders-table td.clickable{
+	cursor: pointer;
+	transition: background-color 0.5s;
+}
+
+#orders-table td.clickable:hover{
+	background-color: #e2e2e2;
+}
+
+#orders-table img{
+    height: 38px;
+    margin: 0;
+    width: 38px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+#orders-table input{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    width: 100%;
+    font-size: 13px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){
+	background-color: #f9f9f9;
+}
+
+#orders-table button.order-remove{
+	background: rgba(202, 0, 0, 0.7);
+	width: 20px;
+	height: 20px;
+	padding: 0;
+}

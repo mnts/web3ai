@@ -1,0 +1,44 @@
+#layout{
+    --bg-grad: linear-gradient(#EE2211, #BB2233BB);
+    --color: #5317c7;
+    --header-height: 60px;
+    --color2: #ff522b;
+    --bg: #192a2f;
+    --shadow-color: #da0e0e99;
+    --bg-grad: linear-gradient(#152440, #09050cde);
+}
+
+#nav{
+	--color: #f2d131;
+}
+
+#info-block{
+  background: linear-gradient(#bfbfbf, #737373);
+}
+
+#info-block > *{
+	color: white;
+}
+
+#menu{
+	/* overflow: hidden; */
+	/* margin-top: 6px; */
+}
+
+
+body:not(.authenticated) fractal-publish{
+	display: none;
+}
+
+body:not(.mobile) #nav{
+	/* display: none; */
+}
+/*
+body:not(.mobile) #navigation{
+	margin: 0 !important;
+}
+
+body:not(.mobile) #nav-toggle{
+	display: none;
+}
+*/

@@ -1,0 +1,22 @@
+{
+  "title": "Site menu",
+  "id": "menu",
+  "items": {
+    "faq.htm": {
+      "title": "Frequently Asked Questions"
+    },
+    "about.htm": {
+      "title": "About our company",
+      "type": "file",
+      "name": "about.htm",
+      "time": 1569317232267.1968,
+      "size": 1344
+    }
+  },
+  "children": [
+    "team",
+    "about.htm",
+    "faq.htm",
+    "item.json"
+  ]
+}

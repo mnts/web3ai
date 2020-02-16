@@ -1,0 +1,10 @@
+.tr-head{
+}
+
+.tr-head > .node > .tr > a{
+	font-size: 1.4em;
+}
+
+.tr-head > .node > .icon{
+	opacity: 0.2;
+}

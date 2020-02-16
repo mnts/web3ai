@@ -1,0 +1,84 @@
+body:not(.authenticated) #head{
+	display: none;
+}
+
+.authenticated pineal-auth{
+	display: none;
+}
+
+pineal-auth{
+	display: block;
+	width: 320px;
+	margin: 20px auto;
+	background: var(--bg-grad);
+	padding: 16px;
+	border-radius: 16px;
+}
+
+
+#navigation-side{
+	background-color: #303135;
+	color: white;
+}
+
+#navigation-side .node{
+	border-bottom: 1px solid #444444;
+	height: 40px;
+}
+
+
+#navigation-side .hide{
+	height: 0;
+}
+
+#navigation-side .fa-upload,
+#navigation-side .fa-link{
+	display: none;
+}
+
+#layout{
+	--nav-width: 480px;
+}
+
+#navigation-side .fa-plus{
+	background: var(--bg-grad);
+}
+
+#navigation-side li > menu{
+	padding-left: 24px;
+}
+
+#nav #root > ul>li>.node > .tr > a{
+	font-size: 24px;
+
+}
+
+#nav .node{
+	transition: background-color .4s;
+	border-radius: 8px;
+	padding-left: 8px;
+}
+
+#nav .node:hover{
+	background-color: #00000026;
+}
+
+#nav #root > ul>li>.node > .icon{
+	display: none;;
+}
+
+
+#nav #root > ul>li> ul > li > .node{
+	height: 46px;
+}
+
+
+#nav #root > ul>li> ul > li > .node > .tr > a{
+	font-size: 15px;
+	padding: 10px 2px 0 4px;
+}
+
+#nav #root > ul>li> ul > li > .node > .icon{
+	color: white;
+	font-size: 18px;
+}

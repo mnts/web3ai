@@ -1,0 +1,90 @@
+#authentication-username,#authentication-password{
+	/* color: white; */
+	border: 0;
+	width: 150px;
+	margin: 4px 2px;
+	/* background-color: rgba(69, 80, 86, 0.9); */
+}
+
+#authentication-username{
+
+width: 120px;}
+
+#authentication-password{
+	width: 100px;
+}
+
+#authentication{
+	height: 100%;
+	background: black url(background.jpg);
+	background-size: cover;
+	padding-top: calc(50vh - 100px);
+	background-position: center;
+}
+
+#authentication-username,
+#authentication-email,
+#authentication-password{
+	/* color: white; */
+	border: 0;
+	width: 150px;
+	margin: 4px 2px;
+	background-color: rgba(69, 80, 86, 0.9);
+}
+
+#authentication-logo{
+	display: none;
+	width: 128px;
+	height: 128px;
+	margin: 2px auto;
+	background-image: url('logo.png');
+}
+
+#authentication input:-webkit-autofill, #authentication input{
+	background-color: #ffffffb5;
+	height: 50px;
+	width: 250px;
+	font-size: 15px;
+}
+
+#authentication button{
+	height: 50px;
+}
+
+#authentication-username{
+
+width: 120px;}
+
+input#authentication-password{
+	width: 170px;
+}
+
+#acc{
+	display: none;
+	text-align: left;
+	padding-top: 0px;
+}
+
+#authentication > input, #authentication > button{
+	height: calc(100% - 10px);
+	margin: 5px;
+	vertical-align: middle;
+}
+
+
+
+
+#authentication-form{
+	display: block;
+	padding: 10px;
+	min-height: 100px;
+	margin: 20px;
+	font-size: 14px;
+	padding-top: 20px;
+	background: #7c7c7c61;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#auth-remember{
+}

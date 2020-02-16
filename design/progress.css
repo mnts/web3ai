@@ -1,0 +1,41 @@
+#progress{
+    display: none;
+    position: fixed;
+    bottom: 6px;
+    right: 6px;
+    width: 60px;
+    height: 60px;
+    z-index: 75;
+    border-radius: 30px;
+    background: #ff9900c2;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    font-size: 22px;
+    color: white;
+}
+
+#progress-label{
+    font-size: 18px;
+    color: white;
+}
+
+
+#progress-tasks{
+    font-size: 15px;
+    color: #efefef;
+}
+
+
+#progress-cancel{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    background: #ff0000c7;
+    float: left;
+    padding-top: 3px;
+    margin-top: -16px;
+    margin-left: -16px;
+    border-radius: 50%;
+}

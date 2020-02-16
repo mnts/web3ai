@@ -1,0 +1,22 @@
+
+*{
+	outline: none;
+	box-sizing: border-box;
+}
+
+
+main{
+  display: inline-flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  height: 100%;
+  padding-top: calc(var(--header-height));
+  /* padding-bottom: 270px; */
+  /* overflow-y: overlay; */
+  overflow-x: hidden;
+  width: 100%;
+}
+
+main{
+}
+

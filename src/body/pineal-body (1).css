@@ -1,0 +1,406 @@
+app-header-layout{
+}
+
+:host(:not([authentificated])) .if_account{
+  display: none !important;
+}
+
+:host(:not([authentificated])) .no_account{
+  display: inline-block !important;
+}
+
+:host([authentificated]) .if_account{
+  display: inline-block !important;
+}
+
+:host([authentificated]) .no_account{
+  display: none !important;
+}
+
+#main_header {
+  color: #fff;
+  left: 0 !important;
+  right: 0 !important;
+  /* background: linear-gradient(#f3f1f1bb, #eaeaea); */
+}
+
+paper-icon-button {
+  --paper-icon-button-ink-color: black;
+}
+
+paper-input{
+  color: white;
+  --paper-input-container-focus-color: #c7c7c7;
+  --paper-input-container-color: white;
+  cursor: text;
+  --primary-text-color: white;
+  --paper-input-container-shared-input-style_-_font-size: 18px;
+  --paper-input-container-shared-input-style_-_outline: red;
+}
+
+#auth-name{
+  margin-right: 0px;
+  vertical-align: bottom;
+  /* width: 300px; */
+  margin-bottom: 20px;
+  height: 60px;
+  display: inline-block;
+}
+
+#blockstack_auth{
+  border: 1px solid var(--color);
+  vertical-align: bottom;
+}
+
+button{
+  display: inline-block;
+  color: white;
+  border-radius: 5px;
+  outline: none;
+  background: --bg-grad;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#blockstack_auth, #blockstack_logout{
+  font-family:'Source Code Pro',monospace;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight:400;
+  border-radius: 0;
+  border-radius:0!important;
+  transition:all .2s ease-in-out;
+  background-color:#270F34;
+  background-color: transparent;
+  border: 0;
+}
+
+#blockstack_auth:hover, #blockstack_auth:active,
+#blockstack_logout:hover, #blockstack_logout:active{
+  background-color: #270F34;
+}
+
+#blockstack_logout{
+  /* margin-right: 80px; */
+  padding: 4px 12px;
+}
+
+.blockstack-icon{
+  display: inline-block;
+  font-size: 22px;
+  width: 14px;
+  transform: rotate(45deg);
+}
+
+#auth-or{
+  margin: 1px 12px;
+  font-size: 16px;
+  vertical-align: bottom;
+  display: inline-block;
+}
+
+
+
+#auth-name > iron-icon{
+  cursor: pointer;
+  margin-right: 4px;
+  /* color: var(--color2); */
+}
+
+#auth-name > [slot="suffix"]{
+  vertical-align: bottom;
+  margin-left: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4299b147;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+#toolbar_top{
+  background-color: rgba(20, 20, 20, 0.3);
+  height: 50px;
+}
+
+[main-title] {
+  font-size: 38px;
+  font-weight: 300;
+  margin-left: 4px;
+}
+[condensed-title] {
+  font-weight: 300;
+}
+
+:host {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  --app-drawer-width: 360px;
+}
+
+app-header:not([shadow]) {
+  border-bottom: 1px solid #ddd;
+}
+
+
+paper-icon-button {
+  color: var(--color);
+  /*--paper-icon-button-ink-color: var(--color2);*/
+}
+
+pineal-apps{
+  transition: margin-left 0.4s ease 0s;
+  display: block;
+}
+
+
+/* width */
+app-header-layout::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+app-header-layout::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+app-header-layout::-webkit-scrollbar-thumb {
+  background: var(--color);
+}
+
+
+
+
+#title{
+  font-weight: bold;
+  color: var(--color);
+}
+
+#face, #face-big{
+    cursor: pointer;
+    display:  inline-block;
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    vertical-align: middle;
+    background-image: var(--logo, url('/img/logo.png'));
+    background-position: center;
+    background-size: cover;
+    background-color: #1f2a30CC;
+    transition: background-color .4s;
+    border-radius: 50%;
+    border: 1px solid #0c1b24;
+}
+
+#face-big{
+  width: 64px;
+  height: 64px;
+  vertical-align: top;
+}
+
+#face-text{
+  display: inline-block;
+}
+
+#face-text > h2{
+  margin: 0;
+  font-size: 44px;
+}
+
+#face-text > h4{
+  font-size: 16px;
+  margin: 0;
+  padding-left: 4px;
+  color: #d2d2d2;
+}
+
+
+
+#tab_person > a{
+  font-size: 20px;
+  padding: 0 4px 0 8px;
+  color: white;
+  text-align: left;
+}
+
+#tab_person{
+  width: 0;
+  transition: width .3s;
+}
+
+#main_header[threshold-triggered] #tab_person{
+  width: 38px;
+}
+
+#acc-bubble{
+    position: fixed;
+    transition: top .5s;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    right: 16px;
+    z-index: 109;
+    color: var(--color2);
+    background: rgba(250, 250, 250, 0.9);
+    border: 1px solid #464646;
+    /* box-shadow: 0 0 18px #000000; */
+    top: 111px;
+    background-size: cover;
+    background-position: center;
+}
+
+.if_account{
+}
+
+
+#main_header[threshold-triggered] #acc-bubble{
+    top: 240px;
+}
+
+app-box{
+  padding: 20px 8px;
+}
+
+app-box > *{
+  display: block;
+  color: white;
+  text-shadow: 2px 1px 4px grey;
+}
+
+[threshold-triggered]{
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+
+.first, .second, .third, .fourth {
+  height: 640px;
+}
+
+
+#logo:hover{
+    background-color: #1f2a3026;
+}
+
+#logo.spin{
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+#tooolbar_middle{
+  height: 139px;
+}
+
+#tooolbar_middle > paper-icon-button{
+  opacity: 0.5;
+}
+
+paper-tabs{
+  transition: background-color 2s, padding-left 0.4s;
+  background-color: rgba(250, 250, 250, 0.01);
+  --paper-tabs-selection-bar-color: var(--color2);
+  color: var(--color);
+  font-size: 13px;
+}
+
+app-header:not([threshold-triggered]) paper-tabs{
+  background-color: rgba(2, 5,5, 0.7);
+}
+
+paper-tabs.opened{
+  padding-left: 400px;
+}
+
+paper-tab {
+  padding: 0;
+  --paper-tab-ink: var(--color2);
+}
+
+paper-tab a {
+  text-decoration: none;
+  color: #EEE;
+  font-weight: bold;
+  padding: 0 16px;
+  height: 100%;
+}
+
+#drawer{
+  margin-top: 60px;
+}
+
+
+#drawer-head, #drawer-tools, #drawer-nav{
+  width: 100%;
+}
+
+#drawer-head{
+  height: 48px;
+  position: absolute;
+  background: var(--bg-grad);
+  opacity: 0.9;
+  z-index: 23;
+}
+
+#drawer-tools{
+  background-color: var(--bg-grad);
+  opacity: 0.7;
+	height: 125px;
+}
+
+#drawer-nav{
+  background-color: rgba(200, 200, 200, 0.6);
+  opacity: 0.8;
+  height: 48px;
+}
+
+
+main{
+  overflow: auto;
+  height: 100%;
+}
+
+#content{
+  padding-top: 50px;
+  height: calc(100vh - 50px);
+}
+
+
+#logo{
+  background: #dedcdc70;
+  box-shadow: 0 0 60px white;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+  border-radius: 50%;
+  cursor: col-resize;
+}
+
+#shadow{
+  height: 5px !important;
+  background: linear-gradient(#c7c4c4ba, #ffffff52);
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  right: 0;
+}

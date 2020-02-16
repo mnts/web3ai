@@ -1,0 +1,21 @@
+{
+	"shell": "polymer_includes.js",
+	"sources": [],
+	"extraDependencies": [
+		"manifest.json",
+		"node_modules/@webcomponents/webcomponentsjs/bundles/**"
+	],
+	"builds": [{
+		"name": "pnl",
+		"preset": "es6-unbundled",
+		"bundle": false,
+		"addServiceWorker": false,
+		"html": { "minify": false},
+		"js": {"compile": false, "minify": true},
+		"css": {"minify": true},
+		"addPushManifest": true,
+		"bundle": {
+			"inlineScripts": false
+		}
+	}]
+}

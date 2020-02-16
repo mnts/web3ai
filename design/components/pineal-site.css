@@ -1,0 +1,16 @@
+form{
+	width: 100%;
+	display: flex !important;
+	align-items: center;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+form > i{
+	color: #3f3f3f;
+	margin: 0 6px;
+}
+
+form > input{
+	flex-grow: 1;
+}

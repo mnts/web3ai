@@ -1,0 +1,159 @@
+<html><head>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta charset="utf-8">
+	<title>ilunafriq</title>
+
+	<link rel="manifest" href="./manifest.json">
+	<meta name="theme-color" content="#222835" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+	<!-- Performance tip: hint to the browser to start the handshake for the fonts site-->
+	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+		
+	<link href="./img/logo.png" rel="shortcut icon" type="image/png">
+
+	<meta name="robots" content="nofollow">
+
+	<base target="_blank">
+	
+	<meta name="keywords" content="Storytelling, writer, artist, african, africa, storyteller, story, african fantasy, african fables, folklore, illustrator, graphic artist, african history, african marketplace, publisher, myths, african creatives, african art, les histores africain, african entertainment, calligrapher, translators, animators, african comics, grand old tales, african fiction, african stories, les nouvel africain, les romans africain">
+	<script src="/node_modules/zangodb/dist/zangodb.min.js"></script>
+	<script src="/init.js" type='module'></script>
+	<script src="/index.js" type='module'></script>
+
+	<script src="/src/index.js" type='module'></script>
+	<script src="/src/preloaders/ilunafriq.js" type='module'></script>
+
+	<style>
+		html {
+			--bg-grad: linear-gradient(#EE2211, #BB2233BB);
+			--color: #EE2211;
+			--color2: #ff6200ed;
+		}
+
+
+		#layout{
+			--bg-grad: linear-gradient(#EE2211, #BB2233BB);
+			--color: #ed4831;
+			--header-height: 60px;
+			--color2: #d9c359;
+			--bg: #9d9d9d;
+			--shadow-color: #56565699;
+			--bg-grad: linear-gradient(#222835, #151515de);
+		}
+
+		#nav{
+			--color: #f2d131;
+		}
+
+		#info-block{
+		  background: linear-gradient(#bfbfbf, #737373);
+		}
+
+		#info-block > *{
+			color: white;
+		}
+
+		body:not(.authenticated) fractal-publish{
+			display: none;
+		}
+
+		body:not(.mobile) #nav{
+			/* display: none; */
+		}
+	</style>
+</head>
+
+<body spellcheck="false" class='scroll_top'>
+	<div id="modal"></div>
+
+	<pineal-layout id='layout'>
+		<div id='navigation-side' class='side fixed'></div>
+		<fractal-head id='head' logo='/icon.png'>
+			<div slot='title'>Ilunafriq</div>
+	
+			<div id='head-buttons'>
+				<div class="info">
+					<div id='site-stats'>
+						Sign in
+					</div>
+
+					<div id='account-stats'>
+						<div id='account-title'></div>
+						<div id='account-desc'></div>
+					</div>
+				</div>
+				<button id='account-icon' title='Auth'></button>
+			</div>
+		</fractal-head>
+		<fractal-body id="body" class="body apps" logo="ipfs://QmdXzfxbfyXT1aAuP7AifC1PEwxh64UJHVjnKgeZrycki6">
+			<div id="home"  class="app selected notab">
+				
+				<div id='intro'>
+					<img id='intro-img' src='/img/bg.jpg' alt='bg'/>
+					<div id='intro-content'>
+						<h1>Stories Network</h1>
+						<h2>Publish stories about your culture in video, audio and text formats</h5>
+						<button id='signup_fb' class="btn color-1 size-1 hover-1"><i class="fa fa-user"></i>Sign Up</button>
+						<button id='signup_now' class="be-register btn color-3 size-1 hover-6"><i class="fa fa-help"></i>How it works</button>
+					</div>
+				</div>
+								
+				<catalogem-items src='mem://self/Lib.filters.stories' id='catalogem-stories'>
+				</catalogem-items>
+
+				<ilunafriq-footer style='overflow: hidden;'/>
+				
+			</div>
+		</fractal-body>
+
+		<div id='account-side' class='side right fixed'>
+		</div>
+	</pineal-layout>
+
+	
+	<div style='display: none'>
+		
+		<div id='auth-box'>
+			<pineal-auth/>
+		</div>
+
+
+		<div id='account-box'>
+			<pineal-account/>
+		</div>
+
+		<div id='node-contextmenu'>
+			<button>Something is sooo coool</button>
+		</div>
+	</div>
+
+	
+	<template id='account-setup-template'>
+		<div id='account-setup' class='modal'>
+			<pineal-site domain='ilunafriq.com'/>
+		</div>
+	</template>
+
+
+	<div id='progress' class="pie-wrapper progress-90">
+		<div id="progress-label">00%</div>
+		<div id="progress-tasks">~0</div>
+		<div class="pie">
+			<div class="left-side half-circle"></div>
+			<div class="right-side half-circle"></div>
+		</div>
+	</div>
+		<script>
+		/*
+		if('serviceWorker' in navigator) {
+		  navigator.serviceWorker
+					  .register('/sw.js')
+					  .then(function() { console.log("Service Worker Registered"); });
+		}
+		*/
+	</script>
+</body>
+</html>

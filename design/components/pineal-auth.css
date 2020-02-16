@@ -1,0 +1,226 @@
+:host{
+	width: 100%;
+	color: black;
+	padding: 8px;
+}
+
+
+hr{
+	background: #ffffffbd;
+	border: 1px;
+	height: 2px;
+	border-top: 1px solid #bebebed9;
+	margin: 8px 0;
+}
+
+#auth input[type='checkbox']{
+	display: inline-block;
+	width: auto;
+	vertical-align: bottom;
+}
+
+
+#auth [name='repassword'],
+#auth [name='login'],
+#auth [name='register']{
+	display: none;
+}
+
+#auth [name='register']{
+	background: var(--bg-grad);
+}
+
+br{
+	height: 20px;
+}
+
+#auth.login #agree_p{
+	display: none;
+}
+
+#auth.register #agree_p{
+	/* display: block; */
+	margin: 6px 2px;
+	padding: 6px;
+	font-size: 15px;
+	/* border: 1px solid white; */
+	background: #ffffff47;
+	border-raius: 10px;
+}
+
+
+#auth.login [name='login']{
+	display: inline-block;
+	background: var(--bg-grad);
+}
+
+#auth #remind{
+	display: none;
+}
+
+#auth.login #remind{
+	display: inline-block;
+}
+
+#auth.register [name='register'],
+#auth.register [name='repassword']{
+	display: inline-block;
+}
+
+#reg_setup{
+	display: none;
+}
+
+#auth.register #reg_setup{
+	display: block;
+}
+
+#auth.register #open_register{
+	display: none;
+}
+
+
+#auth.login #open_login{
+	display: none;
+}
+
+
+#auth > input, button{
+	background-color: transparent;
+	display: inline-block;
+	width: 100%;
+	margin: 2px 2px;
+	font-weight: bold;
+	transition: background-color .3s;
+	padding: 10px 12px;
+	height: auto;
+	color: black !important;
+	background: #ffffffa6;
+	border: 1px solid #e4e4e4;
+	outline: none;
+	opacity: 0.9;
+	border-radius: 3px;
+	position: relative;
+}
+
+button[disabled]{
+	opacity: 0.3;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: #1f1f1f;
+        background: #ffffff;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+
+.err{
+	color: #b13838;
+}
+
+
+[name=agree].err{
+	box-shadow: 2px 2px 4px #f90808;
+}
+
+#error{
+	color: red;
+	padding: 5px;
+}
+
+
+input:focus{
+	background-color: #ffffff;
+}
+
+
+button{
+	font-weight: bold;
+	width: auto;
+	cursor: pointer;
+	background: var(--color);
+	color: white !important;
+}
+
+a{
+	color: var(--color);
+	font-weight: bold;
+	cursor: pointer;
+	display: inline-block;
+}
+
+
+#auth{
+	display: block !important;
+	font-size: 12px;
+	text-align: left;
+	color: #1d1d1d;
+}
+
+#auth paper-input{
+	/* color: var(--color); */
+	margin: 0px;
+	font-size: 12px;
+	line-height: 8px;
+	padding: 2px !important;
+	display: block;
+	--paper-input-container-shared-input-style_-_font-size: 12px;
+	--primary-text-color: white;
+	--paper-input-container-color: #c6cbde;
+	--paper-input-container-focus-color: #b3b1b1;
+}
+
+#auth iron-icon{
+	width: 20px;
+	vertical-align: middle;
+}
+
+
+#head-socMedia > button{
+	width: 32px;
+	height: 32px;
+	padding: 6px 5px;
+	margin: 2px;
+	float: right;
+	text-shadow: none;
+	transition: background .4s, color .4s;
+}
+
+
+#head-socMedia > button:hover{
+	background: var(--bg-grad);
+}
+
+button#auth-facebook:hover{
+	color: #3b5999;
+}
+
+button#auth-instagram:hover{
+	color: #e4405f;
+}
+
+button#auth-twitter:hover{
+	color: #55acee;
+}
+
+
+:host(.super) #open_register,
+:host(.super) #head-socMedia,
+:host(.super) h4,
+:host(.super) input[name='repassword'],
+:host(.super) button[name='register'],
+:host(.super) #agree_p,
+:host(.super) #open_login{
+	display: none !important;
+}
+
+
+:host(.super) button[name='login']{
+	display: block !important;
+}

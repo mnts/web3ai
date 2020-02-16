@@ -1,0 +1,68 @@
+<div class="app neon" id="login">
+
+  <h1>Login into your account here:</h1>
+
+  <div class="input">
+		<i class="mi">mail_outline</i>
+    <input id="login-email" placeholder="Email address">
+  </div>
+
+  <div class="input">
+		<i class="mi">lock_outline</i>
+    <input id="login-password" placeholder="Password" type="password">
+  </div>
+
+  <p id="login-forgot-p">
+    <a id="login-forgot">Forgot password?</a>
+  </p>
+
+  <button id="login-submit">LOGIN</button>
+  <button id="login-fb">
+    <i class="fa fa-facebook-square"></i>
+    CONTINUE WITH FACEBOOK
+  </button>
+  <p>Don't have an account? <a id="login-signup">Sign Up.</a></p>
+</div>
+
+<script>
+  $(function(){
+    var auth = function(){
+  		ws.send({
+  			cmd: 'auth',
+  			email: $('#login-email').val(),
+  			password: $('#login-password').val()
+  		});
+  	};
+
+  	S.error.auth = function(m){
+  		if(m.msg == 'user not found') $('#login-email').blink('red');
+  		else if(m.msg == 'wrong password' || m.msg == 'no password') $('#login-password').blink('red');
+  		else $('#login-submit').blink('red');
+  	}
+
+
+  	$('#login-submit').click(function(ev){
+  		auth();
+
+  		ev.preventDefault();
+  		return false;
+  	});
+
+
+  	$('#login-email, #login-password').bindEnter(function(){
+  			$('#login-submit').click();
+  	});
+
+    $('#login-signup').click(function(){
+        Site.openApp('signup');
+    });
+
+    $('#login-forgot').click(ev => {
+      Site.openApp('forgot');
+    });
+  });
+
+  Acc.on.push(user => {
+    Site.openApp('account');
+  });
+</script>

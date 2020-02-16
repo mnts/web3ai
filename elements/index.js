@@ -1,0 +1,1 @@
+import promotions from 'promotions';

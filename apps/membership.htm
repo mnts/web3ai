@@ -1,0 +1,127 @@
+<link href="./design/membership.css" rel="stylesheet">
+<script src="/modules/membership.js"></script>
+
+<div id="membership">
+  <section id="membership-intro">
+    <div id="membership-intro-gradient"></div>
+    <h1>Become a member of MESS to experience NYC’s finest in intimate live classical music events.</h1>
+  </section>
+
+  <section id="membership-plans">
+    <h2>Membership Pricing</h2>
+  </section>
+
+  <section id="membership-what">
+    <h2>What do I get as a member?</h2>
+    <div class="column">
+      <div>
+        <img src="/icons/ic-membership-value.png">
+        <h3>Value</h3>
+        <article>
+          A MESS membership gets you tickets to 4-6 events with world-class music,
+          gourmet morsels and craft cocktails for you and a friend,
+          depending on your membership level.
+          That works out to as little as $25 per event -
+          cheaper than a regular night out at AMC or Lincoln Center.
+          And you'll get a lot better than battling superheroes and a lot closer than the Family Circle.
+          You will experience inspired world-class artists at the top of their game,
+          doing their thing while you're close enough to see how it works and feel the craftsmanship.
+          Like no other experience in NYC.
+        </article>
+      </div>
+
+      <div>
+        <img src="/icons/ic-membership-community.png">
+        <h3>Community</h3>
+        <article>
+          At MESS we are proud of our audience's diversity and range of ages and backgrounds.
+          Come for the food, drinks and music but also for the people. Bump elbows with a new pal!
+        </article>
+      </div>
+    </div>
+
+    <div class="column">
+      <div>
+        <img src="/icons/ic-membership-exclusivity.png">
+        <h3>Exclusivity</h3>
+        <article>
+          MESS is all about the irreplaceable experience of intimacy with art.
+          So we have a strictly limited number of memberships available to preserve
+          our audience's closeness to what we offer.
+          Our concert events are one night only and have limited capacity.
+          If you want in, this is how! Members also receive exclusive advanced access
+          to tickets for our Premier productions (starting in Fall 2018).
+          If you like our special events, you ain't seen nothing yet!
+        </article>
+      </div>
+
+      <div>
+        <img src="/icons/ic-membership-peace-of-mind.png">
+        <h3>Peace of mind</h3>
+        <article>
+          As a MESS member you can also be proud to support a sustainable company
+          that was developed by artists and provides a living wage to musicians in New York City.
+          We also provide a platform for brilliant young artists
+          to gain a foothold in the artistic capital of the world.
+          And MESS is an institution that reinvests its resources in the future of music
+          and music appreciation in the community. Ultimately,
+          you are helping the classical arts survive and thrive in the 21st-century.
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    $(function(){
+      Membership.init();
+    });
+  </script>
+</div>
+
+
+abc
+
+<form id="membership-modal" name="membership" class="modal">
+  <span class="x"></span>
+
+  <h1>Purchase Membership</h1>
+
+  <div class="input">
+    <p class="input-title">Email</p>
+    <input name="email" id="membership-email" placeholder="mail@example.com">
+  </div>
+
+  <div class="input">
+    <p class="input-title">Date of birth</p>
+    <input name="birth" id="membership-birth">
+  </div>
+
+  <h2>Payment Options</h2>
+  <div id="membership-payOptions">
+    <span class="select active">
+      <span class="so"></span>
+      Yearly Plan ($<span id="membership-yearlyPrice"></span>)
+    </span>
+    <span class="select">
+      <span class="so"></span>
+      Monthly ($<span id="membership-monthlyPrice"></span>)
+    </span>
+  </div>
+
+  <h2>Payment Type</h2>
+  <div id="membership-payTypes">
+    <span class="select active">
+      <span class="so"></span>
+      <i class="fa fa-credit-card"></i>
+      Credit Card
+    </span>
+    <span class="select">
+      <span class="so"></span>
+      <i class="fa fa-cc-paypal"></i>
+      PayPal
+    </span>
+  </div>
+
+  <button id="membership-purchase">PURCHASE</button>
+  <div id="membership-loading" class="loader"></div>
+</form>

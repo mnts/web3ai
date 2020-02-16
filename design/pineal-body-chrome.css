@@ -1,0 +1,13 @@
+#logo{
+	background: #25252570;
+	box-shadow: 0 0 60px white;
+	padding: 4px;
+	width: 32px;
+	height: 32px;
+	margin-left: 6px;
+	border-radius: 50%;
+}
+
+#main_header{
+	box-shadow: 0 3px 6px grey;
+}

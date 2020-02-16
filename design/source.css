@@ -1,0 +1,67 @@
+/*
+http://lesscss.org/ dark theme
+Ported to CodeMirror by Peter Kroon
+*/
+
+#source{
+  padding: 50px 0 0 0;
+}
+
+.CodeMirror{
+  /* line-height: 15px; */
+  min-height: calc(100% - var(--header-height));
+  height: auto;
+  margin: 0;
+}
+
+.CodeMirror-scroll{
+    height: auto;
+    overflow: auto !important;
+}
+
+.CodeMirror-vscrollbar{
+    overflow: hidden !important;
+}
+
+
+/*
+.cm-s-catalogem {
+  font-family: 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Monaco', Courier, monospace !important;
+  font-size:12px;
+}
+
+.cm-s-catalogem { background: #EEE; color: #EBEFE7; text-shadow: 0 -1px 1px #262626; }
+.cm-s-catalogem div.CodeMirror-selected {background: #45443B !important;} /* 33322B
+.cm-s-catalogem .CodeMirror-cursor { border-left: 1px solid white !important; }
+.cm-s-catalogem .CodeMirror-lines { margin-left:3px; margin-right:3px; }/*editable code holder
+
+div.CodeMirror span.CodeMirror-matchingbracket { color: #7EFC7E; }/*65FC65
+
+.cm-s-catalogem .CodeMirror-gutter { background: transparent; border-right:1px solid #aaa; padding-right:3px; min-width:2.5em; }
+.cm-s-catalogem .CodeMirror-gutter-text { color: #777; }
+
+.cm-s-catalogem span.cm-keyword { color: #599eff; }
+.cm-s-catalogem span.cm-atom { color: #C2B470; }
+.cm-s-catalogem span.cm-number { color: #B35E4D; }
+.cm-s-catalogem span.cm-def {color: white;}
+.cm-s-catalogem span.cm-variable { color:#D9BF8C; }
+.cm-s-catalogem span.cm-variable-2 { color: #669199; }
+.cm-s-catalogem span.cm-variable-3 { color: white; }
+.cm-s-catalogem span.cm-property {color: #92A75C;}
+.cm-s-catalogem span.cm-operator {color: #92A75C;}
+.cm-s-catalogem span.cm-comment { color: #666; }
+.cm-s-catalogem span.cm-string { color: #BCD279; }
+.cm-s-catalogem span.cm-string-2 {color: #f50;}
+.cm-s-catalogem span.cm-meta { color: #738C73; }
+.cm-s-catalogem span.cm-error { color: #9d1e15; }
+.cm-s-catalogem span.cm-qualifier {color: #555;}
+.cm-s-catalogem span.cm-builtin { color: #ff9e59; }
+.cm-s-catalogem span.cm-bracket { color: #EBEFE7; }
+.cm-s-catalogem span.cm-tag { color: #669199; }
+.cm-s-catalogem span.cm-attribute {color: #00c;}
+.cm-s-catalogem span.cm-header {color: #a0a;}
+.cm-s-catalogem span.cm-quote {color: #090;}
+.cm-s-catalogem span.cm-hr {color: #999;}
+.cm-s-catalogem span.cm-link {color: #00c;}
+
+*/

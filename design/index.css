@@ -1,0 +1,14 @@
+@import "animations.css";
+@import "interface.css";
+@import "layout.css";
+@import "side.css";
+@import "components.css";
+@import "account.css";
+@import "passion.css";
+@import "fonts.css";
+@import "graph.css";
+@import "progress.css";
+
+@import "components/map.css";
+
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";

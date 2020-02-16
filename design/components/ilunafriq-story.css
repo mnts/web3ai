@@ -1,0 +1,285 @@
+:host{
+  display: block;
+  padding: 0;
+  background: #fdfdfd;
+  color: #5d5d5d;
+  display: flex;
+  flex-direction: row;
+}
+
+/*:host(.active), */
+:host(:not([src])){
+  /* width: 100% !important; */
+  display: block;
+  height: auto;
+}
+
+*{
+  outline: none;
+}
+
+
+main{
+  position: relative;
+  transition: height .3s, margin .3s, top .3s, left .3s;
+}
+
+/*
+#upload{
+	background: #ffffffa1;
+	border: 0;
+	border-radius: 8px;
+	float: right;
+	position:absolute;
+	right: 2px;
+	margin-top: 16px;
+	display: none;
+	cursor: pointer;
+}
+
+:host([src]) #upload{
+	/* display: block;
+}
+*/
+
+#owner-info{
+	display: inline-block;
+	margin-left: 4px;
+	font-size: 15px;
+	width: calc(100% - 68px);
+	overflow: hidden;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+#info-when{
+	display: block;
+	font-size: 10px;
+}
+
+
+*{
+  box-sizing: border-box;
+}
+
+#title, #description{
+  width: 100%;
+  border: 0;
+  font-family: comfortaa;
+  background-color: transparent;
+}
+
+
+#title{
+  font-size: 42px;
+  padding: 4px 12px 2px;
+  margin: 2px 0;
+  transition: color .3s;
+  font-weight:bold;
+  overflow: hidden;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #3c3c3c;
+}
+
+#title:disabled, :host(:not(.active)) #title{
+	cursor: pointer;
+}
+
+#title:after {
+	display: block;
+	content: '.';
+	height: 4px;
+	margin-bottom: 8px;
+	overflow: hidden;
+	color: var(--color);
+	border-bottom: 2px dashed var(--color);
+	width: calc(var(--padding) * 2);
+}
+
+#title:hover,
+#img:hover + #title{
+  color: var(--color);
+}
+
+
+
+#owner-block{
+	padding: 10px 2px;
+	vertical-align: middle;
+	/* border-top: 1px dotted var(--color); */
+}
+
+#owner-block > img{
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  background-color: gainsboro;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#owner-block > img{
+  vertical-align: top;
+}
+
+@media screen and (min-width: 600px){
+	#title{
+		display: inline-block;
+		width: calc(100% - 200px);
+	}
+
+	#owner-block{
+		display: inline-block;
+		width: 194px;
+		overflow: hidden;
+	}
+}
+
+
+#description{
+  font-size: 12px;
+  overflow: hidden;
+  padding: 4px 12px;
+  resize: none;
+  height: 47px;
+  margin: 2px 0 8px;
+}
+
+#article{
+	display: none;
+	padding: 2px 10px;
+}
+
+#description{
+	opacity: 0.3;
+}
+
+
+#article{
+	display: block;
+	min-height: 40px;
+}
+
+
+#rate{
+	--icon-size: 48px;
+	display: block;
+	--color: var(--color2);
+}
+
+#comment-enter{
+	background: #e8e8e8;
+	border: 0;
+	padding: 6px 12px;
+	width: 100%;
+}
+
+#stat-views{
+	font-size: 18px;
+	display: block;
+}
+
+#stat-views:before{
+	margin: 6px;
+}
+
+#stat-views:after{
+	content: ' views';
+}
+
+main{
+  display: inline;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+:host #img{
+        /* flex-grow: 1; */
+        position: relative;
+        overflow: hidden;
+        /* display: flex; */
+}
+
+
+:host #img > img{
+        width: 100%;
+        object-fit: cover;
+        vertical-align: top;
+        margin: 0;
+        flex-grow: 1;
+        cursor: pointer;
+        transition: transform .3s;
+}
+
+hr{
+  border: 0.5px solid var(--color);
+}
+
+#info-block{
+  display: flex;
+  background-color: var(--color);
+  background: linear-gradient(#bfbfbf, #737373);
+  /* background: var(--bg-grad); */
+  /* background: linear-gradient(#d6d6d6cc, #847f7e); */
+  opacity: 0.9;
+  /* box-shadow: 0px 0 6px #adadad; */
+  color: #2196F3;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+#info-block > *{
+  display: none;
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 8px 18px;
+  color: #585858;
+  font-family: comfortaa;
+  /* border-left: 1px solid #d0d0d0; */
+  cursor: pointer;
+}
+
+:host([src]) *.forPublished{
+  display: block !important;
+}
+
+:host(:not([src])) #stat-remove,
+:host(:not([src])) #stat-publish{
+  display: inline-block;
+}
+
+
+#info-block > *:first-child{
+  border-left: 0;
+}
+
+#info-block > *:before{
+  margin-right: 8px;
+  font-size: 20px;
+  font-family: "Font Awesome 5 Free";
+  /* color: var(--color); */
+}
+
+#stat-publish{
+  /* background-color: #ebb88b; */
+}
+
+#stat-remove{
+  /* background-color: red; */
+}
+
+
+
+#nrg-user{
+	max-width: 400px;
+	/* float: left; */
+	margin: 5px auto;
+}
+
+main{
+	display: block;
+}

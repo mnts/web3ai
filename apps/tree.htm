@@ -1,0 +1,82 @@
+<script src="/modules/tree.js"></script>
+<link href="/design/tree.css" rel="stylesheet">
+
+<div id="tree" class="app">
+  <li id="t0" class="tree" style="display: block">
+    <ul tid="0" class="up">
+    </ul>
+  </li>
+</div>
+
+<div id="tree-openAs" class="tip">
+  <div class="option icon type-gallery" data-type="gallery">Gallery</div>
+  <div class="option icon type-ctlg" data-type="catalog">Catalog</div>
+  <div class="option icon type-item" data-type="item">Item</div>
+  <div class="option icon type-file" data-type="source">Source</div>
+  <div class="option icon type-page" data-type="text">Text</div>
+</div>
+
+
+<div id="tree-types" class="tip">
+  <div class="option icon type-site" data-type="site">Website</div>
+  <div class="option icon type-fldr" data-type="fldr">Folder</div>
+  <div class="option icon type-ctlg" data-type="ctlg">Catalog</div>
+  <div class="option icon type-gallery" data-type="gallery">Gallery</div>
+  <div class="option icon type-file" data-type="file">File</div>
+  <div class="option icon type-href" data-type="href">Link</div>
+  <div class="option icon type-page" data-type="page">Text</div>
+  <div class="option icon type-undefined">Undefined</div>
+</div>
+
+<div id="tree-options" class="tip">
+  <div id="opt-mark" class="option">Mark</div>
+  <div id="opt-copy" class="option">Copy</div>
+  <button id="treeAdd" class="option icon i-orange-plus inline dh" title="Add item"></button>
+  <button id="treeUp" class="option icon i-orange-upload inline" title="Upload"></button>
+  <button id="opt-refresh" class="option icon i-orange-refresh inline" title="Refresh"></button>
+  <div id="opt-openAs" class="option">Open as</div>
+  <div id="opt-expand" class="option">Expand</div>
+  <div id="opt-contract" class="option">Contract</div>
+  <div id="treeEditApp" class="option icon i-orange-document_graph" title="Edit app">Edit</div>
+  <div id="opt-rename" class="option icon i-orange-text2">Rename</div>
+  <div id="opt-remove" class="option icon i-orange-trash">Remove</div>
+  <div id="opt-reupload" class="option icon i-orange-upload">Reupload</div>
+  <div id="treeJson" class="option icon i-orange-char_bracket_left">Edit object</div>
+  <div id="opt-super" class="option super">Admin</div>
+  <div id="opt-prp" class="option icon i-orange-properties">Properties</div>
+  <p>Item #<b id="tree-iid"></b></p>
+  <p>File #<b id="tree-fid"></b></p>
+</div>
+
+<div id="tree-super" class="tip">
+  <div id="opt-reorder" class="option">Reorder</div>
+  <div id="opt-object" class="option">Edit object</div>
+  <div id="opt-fileObject" class="option">Edit file object</div>
+</div>
+
+
+<div id="confirm-remove_tr" class="modal black" style="height: 60px; width: 200px; margin: 0 0 0 245px;">
+  <div style="margin: 5px" id="confirm-remove_tr-name"></div>
+    <button id="prp-delete" class="icon im i-orange-trash" title="Delete"></button>
+</div>
+
+<div class="modal form" id="prp" style="width: 100px; margin: 0 0 0 245px;">
+  <div class="cont">
+    <input id="prp-url" class="prp icon i-white-link" style="width: 250px" name="url" placeholder="URL">
+    <input id="prp-name" class="icon i-orange-char_slash" style="width: 250px" name="name" placeholder="Node name">
+    <input id="prp-domain" class="icon i-orange-globe" style="width: 250px" name="domain" placeholder="Domain">
+    <div style="text-align: left">
+      <button id="prp-ok" class="icon i-orange-v">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="chOwner-box" class="modal black" style="width: 250px; margin: 0 0 0 245px;">
+  <input id="chOwner-name" class="prp icon i-orange-user" style="width: 180px" placeholder="Owner name">
+  <div>
+    <span id="chOwner-sub" class="check v"></span>
+    Also include all sub-items.
+  </div>
+  <hr>
+  <button class="icon i-orange-v" id="chOwner-ok">Change owner</button>
+</div>

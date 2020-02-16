@@ -1,0 +1,1 @@
+export default function symbolObservablePonyfill(root){var result,Symbol=root.Symbol;if("function"===typeof Symbol){if(Symbol.observable){result=Symbol.observable}else{result=Symbol("observable");Symbol.observable=result}}else{result="@@observable"}return result};

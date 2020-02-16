@@ -1,0 +1,596 @@
+@import 'tree/mods.css';
+
+.tree ul{
+	list-style-type: none;
+	border-left: 1px dashed transparent;
+	margin: 0;
+	margin-left: 12px;
+	padding-left: 5px;
+	/* max-height: 100%; */
+	/* height: auto; */
+	/* overflow: auto; */
+	/* transition: max-height .1s linear; */
+}
+
+.tree{
+	padding-left: 0;
+	/* min-height: calc(100vh); */
+	/* overflow-x: hidden; */
+	text-align: left;
+	height: inherit;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/* padding-top: 60px; */
+	padding-bottom: 40px;
+	box-sizing: border-box;
+	/* margin-left: 6px; */
+}
+
+.tree fractal-rate{
+	margin-top: 10px;
+}
+
+.tree{
+	--icon-size: 26px;
+}
+
+.tree ul:empt{
+	padding-bottom: 12px;
+	background: transparent url('icons/battery.png') no-repeat 10px;
+	background-size: 12px;
+}
+
+.tree{
+	/* margin-bottom: 5px; */
+	padding-left: 0;
+	border-color: rgba(80, 115, 204, 0.5);
+	padding: 0;
+	width: inherit;
+	/*padding-left: 8px;*/
+	box-sizing: border-box;
+	display: block;
+}
+
+.tree::-webkit-scrollbar{
+	width: 0;
+}
+
+.tree::-webkit-scrollbar-track {
+	background-color: #e0e0e0;
+}
+
+.tree::-webkit-scrollbar-thumb{
+	background-color: white;
+}
+
+#opt-refresh{
+	background-image: url('icons/refresh.png');
+}
+
+.tree .tr{
+	display: inline-flex;
+	display: inline-flex;
+	flex-wrap: nowrap;
+	padding: 1px 3px 2px 1px;
+	position: relative;
+	vertical-align: middle;
+	user-select: none;
+	transition: padding .5s;
+}
+
+
+.wrap > .node > .tr{
+	flex-wrap: wrap;
+}
+
+
+.wrap > .node > .tr > a{
+	white-space: normal;
+}
+
+
+.tree input{
+	/* background-color: #f7f7f7db; */
+	padding: 8px 12px;
+	/* font-weight: bold; */
+	height: auto;
+	font-size: 13px;
+	margin: 1px 2px;
+	font-family: Comfortaa;
+	flex-shrink: 1;
+	vertical-align: middle;
+	border: 1px solid #ececec;
+}
+
+
+.tree .tr > input:not([size]):not([type=radio]){
+	width: 100%;
+}
+
+
+.tree .tr > input[type='radio'], .tree .tr > input[type='checkbox']{
+	margin-top: 4px;
+}
+
+
+.tree .tr > textarea:not([cols]){
+	width: 100%;
+}
+
+.tree .tr > textarea:not([rows]){
+	height: 90px;
+}
+
+
+.tree .node:hover > .tr{
+	/* padding-left: 2px; */
+}
+
+.tree .tr > a{
+	cursor: pointer;
+	display: inline-block;
+	font-family: Comfortaa;
+	font-weight: bold;
+	font-size: 14px;
+	text-shadow: 0 0 1px #c5c5c5;
+	color: inherit;
+	background-position: 2px 4px;
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+	padding: 9px 2px 2px 1px;
+	vertical-align: middle;
+	transition: color 0.3s;
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	flex-grow: 1;
+	text-decoration: none;
+	user-select: none;
+	/* background-image: url(icons/item.png); */
+}
+
+pineal-tree[item_src] .tr > a{
+	padding: 7px 2px 1px 1px;
+}
+
+
+.tree .tr > p{
+	padding: 0 2px;
+	margin: 0;
+	font-weight: 100;
+	font-family: Lato;
+	height: 0;
+	font-size: 0;
+	letter-spacing: 1px;
+	transition: height .5s, font-size 0.5s;
+}
+
+
+.tree.hvr .node:hover > .tr > p{
+	font-size: 12px;
+	height: 20px;
+}
+
+.tree > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree > li > ul > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree > li > ul > li > ul > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree > li > ul > li > ul > li > ul > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree > li > ul > li > ul > li > ul > li > ul > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree > li > ul > li > ul > li > ul > li > ul > li > ul > li > ul > li > div.node > .tr{
+	width: calc(100% - 36px);
+}
+
+.tree .btns{
+	margin-left: 14px;
+}
+
+.tree button{
+	/* width: 27px; */
+	/* height: 21px; */
+	/* background-color: rgba(47, 130, 255, 0.3); */
+}
+
+.tree a[contenteditable = true]{
+	border-radius: 3px;
+	border-bottom: 1px dashed var(--color2) !important;
+	cursor: text;
+	min-width: 60px;
+}
+
+.tree a:not(.opened)+ul{
+	/* display: none; */
+}
+
+.tree li{
+	/* width: 100%; */
+	padding: 0;
+	display: block;
+	line-height: 20px;
+	position: relative;
+	margin-right: 0;
+	/* max-height: 28px; */
+	border-radius: 5px 2px 2px 15px;
+	border-radius: 6px;
+	background-color: transparent;
+	transition: background-color .3s;
+	white-space: nowrap;
+}
+
+.tree .node{
+	white-space: nowrap;
+	overflow: hidden;
+	transition: opacity .4s;
+	text-overflow: ellipsis;
+	padding: 1px 1px 1px 1px;
+	/* border-bottom: 1px solid #92929214; */
+	transition: opacity .4s;
+	outline: none;
+}
+
+.tree .node.hide{
+	opacity: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.tree .node:hover{
+	opacity: 1;
+}
+
+
+.tree .node.drag{
+	opacity: 0.1;
+}
+
+
+.tree .node i.icon{
+	transition: transform .2s;
+	height: 16px;
+	display: inline-block;
+	width: 24px;
+	/* width: auto; */
+	font-size: 14px;
+	color: var(--color);
+	vertical-align: text-bottom;
+	/* float: left; */
+	border-radius: 5px;
+	outline: none;
+	padding: 2px 3px;
+	vertical-align: top;
+	margin: 9px 1px 1px 2px;
+	transition: 
+		width .5s,
+		height .5s, 
+		margin-left 0.5s, 
+		transform .3s, 
+		background-color .3s;
+}
+
+
+.tree .node > i.icon:hover{
+	transform: rotate(10deg);
+}
+
+
+.tree.hvr .node:hover i.icon{
+	height: 36px;
+	width: 36px;
+	margin-left: 0px;
+	/* vertical-align: bottom; */
+}
+
+.tree .node.opened i.icon{
+	transform: rotate(23deg);
+}
+
+
+
+.tree>li li:hover{
+	background-color: rgba(64, 64, 64, 0.02);
+}
+
+.tree > li > ul li:hover{
+	background-color: rgba(97, 97, 97, 0.05) !important;
+}
+
+#opt-mark, #opt-copy{
+	border-left: 1px dashed;
+}
+
+.tree.mark, .tree ul.mark{
+	border-color: rgb(89,207,117);
+}
+
+
+.tree li.selected > .node a{
+	/* border-bottom: 1px solid var(--color); */
+	opacity: 0.8;
+	/* text-decoration: underline; */
+}
+
+
+.tree .node.initiated:after{
+	position: absolute;
+	font-family: 'Font Awesome 5 Free';
+	text-shadow: -4px -2px 12px #cbcbcb;
+	top: 4px;
+	right: 4px;
+	font-size: 32px;
+	font-weight: 900;
+	content: "\2022";
+	transition: opacity 0.5s;
+	color: white;
+	opacity: 0.5;
+	transition: opacity .8s;
+}
+
+
+.mobile .tree .node.initiated:after{
+	/* color: #afafaf; */
+}
+
+.tree .node.active:after{
+	position: absolute;
+	top: 8px;
+	right: -8px;
+	font-size: 50px;
+	text-shadow: 2px 2px 8px #b9b9b9;
+	font-weight: 900;
+	transform: rotate(180deg) scaleY(1.2);
+	font-family: initial;
+	content: "\2023";
+	color: white;
+	letter-spacing: 0;
+	margin: 0;
+	opacity: 1;
+	/* text-shadow: 0 -4px 8px #bbbbbb; */
+}
+
+
+.tree .active>a{
+	color: #E1E6F2;
+}
+
+.tree .up{
+	border-bottom-color: rgba(196, 201, 65, .4);
+}
+
+.tree>li>ul{
+	display: block;
+}
+
+
+.tree ul:mpty {
+    padding-bottom: 18px;
+    background: transparent url(empty.png) no-repeat 10px;
+    background-size: 16px;
+}
+
+.tree>li>ul .node:not(.opened)+ul{
+    /* display: none; */
+    /* height: 0; */
+}
+
+.tree a.drag{
+	background-color: #333;
+}
+
+.tree a.drop{
+	background-color: #3B3;
+}
+
+
+
+#nav::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Handle */
+#nav::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+
+.tree menu{
+    transition: height 0.2s;
+    height: 0;
+    margin: 0;
+    padding-left: 18px;
+    overflow: hidden;
+    display: none;
+}
+
+.own > menu{
+	display: block;
+}
+
+.tree li> .node.opened+ul+menu{
+    height: 30px;
+}
+
+
+.tree li> .node.opened+ul+menu:empty{
+    display: none;
+}
+
+
+.tree menu>button{
+	width: 24px;
+	height: 24px;
+	background: var(--bg-grad);
+	background: #ffffff;
+	text-shadow: none;
+	color: var(--color);
+	cursor: pointer;
+	/* color: white; */
+	border: 0;
+	margin: 2px 5px 0 0;
+	transition	background-color 0.4s;
+	opacity: 0.7;
+	font-size: 13px;
+	outline: none;
+	border-radius: 16px;
+	padding: 2px;
+}
+
+
+
+.tree .node.opened+ul+menu>button:hover{
+	opacity: 1;
+}
+
+
+.branch-id{
+	/* float: right; */
+	display: inline-block;
+	width: 100px;
+	padding-left: 30px;
+	padding: 5px;
+}
+
+.branch-file{
+	display: inline-block;
+	cursor: pointer;
+	width: 160px;
+	padding-left: 30px;
+	padding: 2px 6px 1px 28px;
+	background-color: #4141419e;
+	border-radius: 5px;
+	padding-left: 26px;
+	background-image: url(files/_page.png);
+	background-position: 6px 3px;
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+}
+
+.branch-fileId{
+	display: inline-block;
+	width: 90px;
+	font-size: 13px;
+	vertical-align: middle;
+}
+
+
+.contextmenu{
+	text-align: left;
+	width: calc(var(--nav-width) - 64px);
+}
+
+.contextmenu > h5{
+	color: white;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	overflow: hidden;
+	direction: ltr;
+	display: none;
+}
+
+
+.horizontal .tree > li > .hide{
+	display: none;
+}
+
+.horizontal .tree > li{
+	/* line-height: 35px; */
+}
+
+.horizontal .tree > li > ul{
+	width: auto;
+	/* margin-top: 6px; */
+	/* word-break: keep-all; */
+	/* overflow-x: auto; */
+}
+
+
+.horizontal .tree > li > menu{
+	display: none;
+}
+
+.horizontal .tree > li > ul > li{
+	display: inline-block;
+	margin-right: 8px;
+}
+
+
+.no_icons .tree > li > ul > li > .node > .icon{
+	display: none !important;
+}
+
+.horizontal .tree > li > ul > li > .node > .icon{
+	color: white;
+}
+
+.horizontal .tree > li > ul > li > div.node{
+	height: 40px;
+	padding: 3px 1px 0px 1px;
+}
+
+.horizontal .tree > li > ul > li > div.node > .tr{
+	width: auto;
+}
+
+.horizontal .tree .node.initiated:after,
+.horizontal .tree .node.active.initiated:after{
+	content: "-";
+	top: auto;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	height: 1px;
+	font-size: 0;
+	opacity: 0;
+}
+
+.horizontal .tree{
+	/* overflow: auto; */
+	overflow: hidden;
+	/* overflow-x: auto; */
+	margin: 0px auto;
+	/* overflow-y: visible; */
+}
+
+
+.horizontal .tree .node.active.initiated:after{
+	opacity: 1;
+}
+
+.horizontal .tree > li > ul > li > ul{
+	display: block;
+	position: absolute;
+	z-index: 70;
+	margin-left: -24px;
+	background-color: var(--nav-color, #EEE);
+	opacity: 0.9;
+	max-height: 80vh;
+	overflow: auto;
+	visibility: visible;
+	color: black;
+	border-radius: 8px;
+	margin-top: 2px;
+	box-shadow: 1px 2px 12px #919191;
+}
+
+.tree .tr > textarea{
+	border: 1px solid #ececec;
+	width: 100%;
+	flex-grow: 2;
+	font-family: Comfortaa;
+}

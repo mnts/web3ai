@@ -1,0 +1,18 @@
+*{
+	box-sizing: border-box;
+	outline: none;
+}
+
+#name{
+	position: absolute;
+	z-index: 20;
+	cursor: text;
+	color: white;
+	background: #000000ad;
+	z-index: 80;
+	backdrop-filter: blur(4px);
+	border-bottom-right-radius: 6px;
+	padding: 4px 8px;
+}
+
+

@@ -1,0 +1,15 @@
+{
+  "children": [
+    "lato-v14-latin-700.woff2",
+    "lato-v14-latin-900.woff2",
+    "lato-v14-latin-regular.woff2",
+    "fontawesome-webfont.woff2",
+    "caveat-v4-latin-regular.woff2",
+    "comfortaa-v12-latin-700.woff2",
+    "comfortaa-v12-latin-regular.woff2",
+    "mongo://io.cx/pix8#oi8010",
+    "fs://manager.lh/C:/Users/user/Desktop/pineal/modules/acc.js",
+    "fs://manager.lh/C:/Users/user/Desktop/pineal/modules/auth.js",
+    "item.json"
+  ]
+}

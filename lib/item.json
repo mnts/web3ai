@@ -1,0 +1,24 @@
+{
+  "children": [
+    "codemirror.js",
+    "functions.js",
+    "fa-all.html",
+    "jquery.js",
+    "item.json",
+    "vendor.js",
+    "fontawesome",
+    "sugar.js",
+    "js.cookie.js",
+    "js-yaml.min.js",
+    "the-graph.js",
+    "underscore.js",
+    "codemirror.css",
+    "svg.draggy.min.js",
+    "underscore-min.map",
+    "svg.connectable.min.js",
+    "svg.connectable.minb.js",
+    "web-animations-next-lite.min.js",
+    "md5.js",
+    "CM-modes"
+  ]
+}

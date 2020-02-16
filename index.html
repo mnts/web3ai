@@ -1,0 +1,201 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>Pineal</title>
+
+	<link rel="manifest" href="./manifest.json">
+	<meta name="theme-color" content="#2F3BA2" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	
+	<meta name="keywords" content="Storytelling, writer, artist, african, africa, storyteller, story, african fantasy, african fables, folklore, illustrator, graphic artist, african history, african marketplace, publisher, myths, african creatives, african art, les histores africain, african entertainment, calligrapher, translators, animators, african comics, grand old tales, african fiction, african stories, les nouvel africain, les romans africain">
+
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+
+	<link href="/design.css" rel="stylesheet" type="text/css">
+	
+	<link href="/design/logo.png" rel="shortcut icon" type="image/png">
+
+	<base target="_blank">
+	
+	<script src="/init.js" type='module'></script>
+	<script src="/src/index.js" type='module'></script>
+	<script src="/src/layout.js" type='module'></script>
+
+	<!-- Browserify Libraries --
+	<script src="./lib/vendor.js"></script>
+	<script src="./lib/the-graph.js"></script>
+
+
+	<script src="/libs/address.jquery.js"></script>
+
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Abril+Fatface' type="text/css">
+	-->
+
+	<!--<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+	<script src="/lib/gun.js"></script>
+	<script src="/lib/gun_load.js"></script>
+	<script src="/polymer-extra.js"></script>
+	<script src="/npm_bundle.js"></script>
+
+	<script src="/config.js"></script>
+	<script src="./init.js"></script>
+	<script src="/setup.js"></script>
+	-->
+	
+	
+
+
+	<!--
+	<script src="/bower_components/web3/dist/web3.min.js"></script>
+	<script src="node_modules/svg.js/dist/svg.min.js"></script>
+	<script src="lib/svg.draggy.min.js"></script>
+	<script src="lib/svg.connectable.min.js"></script>
+	<script src="/node_modules/blockstack/dist/blockstack.js"></script>
+	-->
+
+
+</head>
+
+<body spellcheck="false">
+	<div id="modal"></div>
+
+	<pineal-layout id='layout'>
+		<div id='navigation-side' class='side inside'></div>
+		<fractal-head id='head' logo='/design/logo.png'>
+			<div slot='title'>var.best</div>
+			
+			<div id='head-buttons'>
+				<div class="info">
+					<div id='site-stats'>
+						
+					</div>
+
+					<div id='account-stats'>
+						<div id='account-title'></div>
+						<div id='account-desc'></div>
+					</div>
+				</div>
+				<button id='account-icon' title='Auth'></button>
+			</div>
+		</fractal-head>
+
+		<fractal-body id="body" class="body apps" logo="ipfs://QmdXzfxbfyXT1aAuP7AifC1PEwxh64UJHVjnKgeZrycki6">
+			<div id="home"  class="app selected notab passion">
+				<!--
+				<pineal-gallery style='height: 128px' view='carousel' src='mongo://var.best/files'></pineal-gallery>
+				<pix8-carousel name="fractal"></pix8-carousel>
+				
+				<fractal-htm src='fs://localhost/home/about.htm'>
+					<h2>Design your page like you want</h2>
+					<h3>!? Text here is just an example with a little info about how this thing works, now you can replace it all</h3>
+				</fractal-htm>
+				
+				<pineal-folder src="local-storage://topSites"></pineal-folder>
+				-->
+				<catalogem-items class='main_catalo' id='catalogem-stories' dom='ilunafriq-story'>
+				</catalogem-items>
+				
+				<fractal-htm src='fs://localhost/home/services.htm' class="passion">				
+					<div style="/* display: flex; *//* flex-wrap: wrap; */padding: calc(var(--padding) /4) var(--padding);">
+						<div class="pin-box">
+							<img src="/img/drag.jpg" alt="brn">
+							<article>
+								<h2>Drag&amp;drop from left side tree-menu</h2>
+								<h5>
+									Basicly you can control every aspect on the tree menu.&nbsp;<br>
+									Grab an element, sort it or put it here to get it expanded.<br>
+									Right mouse click or hold on it to see extra options.<br>
+								</h5>
+							</article>
+						</div>
+
+						<div class="pin-box">
+							<img src="/img/wysiwyg.png" alt="brn" style="background-image: var(--bg-grad);  object-fit: contain;"/>
+							<article>
+								<h2>modular WYSIWYG editor</h2>
+								<h5>
+									Drop or paste rich text from WWW areas to reuse it fast.<br>
+									Right mouse click <i>inspect element or&nbsp;</i><u>(F12)</u><b> </b>to edit more<br/>
+									Drop stuff here from tree-area or your local file explorer.
+								</h5>
+							</article>
+						</div>
+
+						<div class="pin-box">
+							<img src="/img/chained.png" alt="brn">
+							<article>
+								<h2>* browser of decentralised networks</h2>
+								<h5>Here in pineal address box you can surf stuff also from<br/> IPFS, DAT, FS, Chrome-storages, MongoDB, Gaia, etc..&nbsp;</h5>
+								<a class="button" href="https://ipfs.io" target="_blank" contenteditable="false">Install IPFS</a>
+								<a class="button" href="https://datproject.org" target="_blank">DAT</a>
+								<a class="button" href="https://blockstack.org/" target="_blank">Blockstack</a>
+							</article>
+						</div>
+					</div>
+
+					<h2>* &gt; Up-coming features</h2>
+					<ul>
+						<li>Improved WYSYWYG editor - more buttons, ability to add tables, boxes, galleries, links, files..</li>
+						<li>Create new pages and folders, change every single element you see here</li>
+						<li>Edit programming code of every part right here within same pineal application</li>
+						<li>Add maps, neural schemes, photos, drawings and more..</li>
+						<li>Use elements created by community</li>
+						<li>Sharing views, texts, bookmarks, images.. making it publicly available over HTTP with SEO support</li>
+						<li>Authentification over centralised servers, blockstack, FB, metamask and so on.. all different type accounts could be combined.</li>
+						<li>Over ethereum community could pay each other for certain elements they share and meaning they combine</li>
+						<li>Ask for more at mntask@gmail.com</li>
+					</ul>
+				</fractal-htm>
+			</div>
+		</fractal-body>
+
+		<div id='account-side' class='side right fixed'>
+		</div>
+	</pineal-layout>
+
+	<div style='display: none'>
+		<pineal-colors id='colors' height='64' width='256'></pineal-colors>
+		
+		<div id='auth-box'>
+			<pineal-auth/>
+		</div>
+
+
+		<div id='account-box'>
+			<pineal-account/>
+		</div>
+
+		<div id='node-contextmenu'>
+			<button>Something is sooo coool</button>
+		</div>
+	</div>
+
+	<template id='account-setup-template'>
+		<div id='account-setup' class='modal'>
+			<pineal-site domain='ego.bid'/>
+		</div>
+	</template>
+
+	<div id='progress' class="pie-wrapper progress-90">
+		<div id="progress-label">00%</div>
+		<div id="progress-tasks">~0</div>
+		<div id="progress-cancel">x</div>
+		<div class="pie">
+			<div class="left-side half-circle"></div>
+			<div class="right-side half-circle"></div>
+		</div>
+	</div>
+
+	<!--<script src="./libs/ipfs.js"></script>-->
+	<script async src='/lib/analytics.js'></script>
+	<!-- End Google Analytics -->
+	<script>
+	/*
+		if('serviceWorker' in navigator) {
+		  navigator.serviceWorker
+					  .register('/sw.js')
+					  .then(function() { console.log("Service Worker Registered"); });
+		}
+		*/
+	</script>
+</body>
+</html>

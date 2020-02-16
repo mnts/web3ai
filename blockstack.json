@@ -1,0 +1,10 @@
+{
+  "name": "Pineal",
+  "start_url": "pineal.lh",
+  "description": "Manage your social objects as they are neurons",
+  "icons": [{
+    "src": "http://pineal.lh/img/logo.png",
+    "sizes": "128x128",
+    "type": "image/png"
+  }]
+}

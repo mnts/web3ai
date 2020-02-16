@@ -1,0 +1,54 @@
+
+@media screen and (max-width: 1400px) {
+  pineal-item {
+    awidth: calc(50% - 20px);
+  }
+}
+
+button{
+  height: 80%;
+  width: 110px;
+  color: white;
+  margin: 5px 2px;
+  font-family: 'Comfortaa', arial;
+  border-radius: 8px;
+  cursor: pointer;
+  outline: none;
+  background-size: contain;
+  /* font-family:'Source Code Pro',monospace; */
+  padding: 6px 4px;
+  font-size: 16px;
+  font-weight:400;
+  transition:all .2s ease-in-out;
+  background-color:#270F34;
+  background-color: transparent;
+  border: 0;
+}
+
+button > img{
+  display: inline-block;
+  height: 80%;
+  margin: 0;
+  border-radius: 8px;
+  vertical-align: bottom;
+}
+
+#blockstack_auth, #blockstack_logout{
+}
+
+#blockstack_auth:hover, #blockstack_auth:active,
+#blockstack_logout:hover, #blockstack_logout:active{
+  background-color: #270F34;
+}
+
+#blockstack_logout{
+  /* margin-right: 80px; */
+  padding: 4px 12px;
+}
+
+.blockstack-icon{
+  display: inline-block;
+  font-size: 22px;
+  width: 14px;
+  transform: rotate(45deg);
+}

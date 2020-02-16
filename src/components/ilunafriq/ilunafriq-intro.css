@@ -1,0 +1,44 @@
+			/*
+			==================================
+				02 - HEADER BACKGROUND
+			==================================
+			*/
+
+
+			#block{
+				display: block;
+			}
+			
+			.head-bg {background: #000;position: relative;padding: 10px;margin-bottom: 50px;margin-top: -5px;}
+
+			.head-bg-img { position: absolute; left: 0; top: 0; background: url(../img/bg.jpg); height: 100%; width: 100%; background-size: cover; opacity: 0.2; z-index: 1; background-position: center center; }
+
+			.head-bg-content {height: 400px;text-align: center;position: relative;z-index: 2;margin: 0 auto;display: table-cell;vertical-align: middle;width: 5000px;}
+
+			#content-block .head-bg-content .btn { margin-bottom: 10px; }
+
+			.head-bg-content h1 { font-size: 32px; line-height: 40px; color: #FFF; margin-bottom: 17px; }
+
+			.head-bg-content p { color: #a1a4af; margin-bottom: 25px; }
+
+			.head-bg.style-2 { padding-top: 120px; padding-bottom: 120px; margin-bottom: 0px; }
+
+			.head-bg.style-2 .head-bg-img { opacity: 0.5; }
+
+			.head-bg.style-2 .head-bg-content { height: 310px; }
+
+			.head-bg.style-3 { padding-top: 120px; padding-bottom: 120px; margin-bottom: 0px; background: #181d27; }
+
+			.head-bg.style-3 .head-bg-img { opacity: 0.2; }
+
+			.head-bg.style-3 .head-bg-content { height: 310px; }
+
+			@media screen and (max-width: 1199px) { .head-bg { margin-bottom: 30px; } }
+
+			@media screen and (max-width: 480px) { .head-bg-content .btn {/* display: block; */margin-right: 0px;} }
+		
+		h5{
+			color: white;
+			font-size: 16px
+		}
+

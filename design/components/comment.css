@@ -1,0 +1,105 @@
+:host(fractal-comments){
+	max-width: 960px;
+	width: 100%;
+	display: block;
+	margin: 0 auto;
+	box-sizing: content-box;
+	padding: 8px 0;
+}
+
+#comment-box{
+	/* background-color: #e6e6e6a1; */
+	padding: 5px;
+	border-radius: 24px;
+	text-align: left;
+}
+
+
+#list{
+	text-align: center;
+	min-height: 40px;
+	padding-top: 14px;
+}
+
+
+*{
+	outline: none;
+}
+
+#owner_title, #owner{
+	display: block;
+	font-size: 14px;
+	color: grey;
+	margin: 2px 12px;
+}
+
+pineal-user{
+	margin: 8px 12px;
+}
+
+textarea{
+	border: 0;
+	resize: none;
+	width: 100%;
+	border-radius: 5px;
+}
+
+#comment-text{
+	padding: 5px;
+}
+
+#comment-text, textarea{
+	background-color: #ececec;
+	font-size: 16px;
+	font-weight: normal;
+	border-radius: 10px;
+	color: black;
+	padding: 16px 12px;
+	font-family: 'Comfortaa', arial;
+}
+
+main{
+	padding: 4px 2px;
+	text-align: left;
+}
+
+
+button{
+	margin-top: 24px;
+	background: var(--bg-grad);
+	border: 0;
+	color: white;
+	font-size: 20px;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+}
+
+#owner-info{
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+	width: calc(100% - 126px);
+}
+
+
+
+#owner-info:after {
+	content: "";
+	position: absolute;
+	bottom: 0px;
+	left: -12px;
+	top: 24px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 12px 12px 12px 0;
+	border-color: transparent  #e6e6e6a1 transparent transparent;
+}
+
+#info-when{
+	font-size: 11px;
+	padding: 6px 12px;
+	display: block;
+	color: #0f0f0f87;
+}

@@ -1,0 +1,20 @@
+<div class="app neon" id="forgot">
+  <h1>Forgot your pass?</h1>
+  <h2>We'll email you instructions on how to reset it.</h2>
+
+  <div class="input">
+		<i class="mi">mail_outline</i>
+    <input id="forgot-email" placeholder="Email address">
+  </div>
+
+  <button id="forgot-submit">RESET PASSWORD</button>
+  <p>Already have an account? <a id="forgot-login">Login.</a></p>
+</div>
+
+<script>
+$(function(){
+  $('#forgot-login').click(function(){
+      Site.openApp('login');
+  });
+});
+</script>

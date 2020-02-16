@@ -1,0 +1,56 @@
+#nav{
+  position: relative;
+  bottom: 0;
+  height: 100%;
+  /* overflow: auto; */
+  left: 0;
+  width: 400px;
+  /* padding-top: 260px; */
+  background-color: #111;
+  transition: margin-left .5s;
+  margin-left: 0;
+  overflow: visible;
+}
+
+#nav.closed{
+  margin-left: -400px;
+}
+
+#nav+*{
+  /* height: 100%; */
+  flex-grow: 1;
+}
+
+#nav::-webkit-scrollbar {
+  width: 0;
+}
+
+
+
+#nav > header, #nav > footer{
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba(33, 33, 33, 0.89);
+  color: white;
+  padding: 3px 0 0 8px;
+  font-size: 25px;
+  z-index: 20;
+  white-space: nowrap;
+}
+
+
+#nav > header{
+  top: 0;
+}
+
+#nav > footer{
+  bottom: 0;
+}
+
+#nav-toggle{
+  position: absolute;
+  left: calc(100% - 14px);
+  color: #040404;
+  z-index: 20;
+}

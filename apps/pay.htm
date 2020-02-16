@@ -1,0 +1,66 @@
+<link href="./design/pay.css" rel="stylesheet">
+
+<form class="modal" id="payMethod">
+  <h2>Setup payment method</h2>
+  <input name="firstName" placeholder="First name">
+  <input name="lastName" placeholder="Last name">
+
+  <div id="payMethod-types">
+    <span class="select active" id="payMethod-select-card">
+      <span class="so"></span>
+      <i class="fa fa-credit-card"></i>
+      Credit Card
+    </span>
+    <span class="select" id="payMethod-select-paypal">
+      <span class="so"></span>
+      <i class="fa fa-cc-paypal"></i>
+      PayPal
+    </span>
+  </div>
+
+  <div id="payMethod-card">
+    <i class="fa fa-credit-card"></i>
+    <input name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+
+    Valid thru:
+    <input name="expire_year" placeholder="YY" id="card-year" maxlength="4">
+    <input name="expire_month" placeholder="MM" id="card-month" maxlength="2">
+
+    <input name="cvv" placeholder="CVV" maxlength="4" title="3 or 4 digits usually found on the signature strip<">
+
+    <input readonly="" name="cardType">
+  </div>
+
+  <div id="payMethod-paypal">
+    Paypal email: <input name="email">
+  </div>
+
+  <button type="submit" name="update">Update</button>
+  <button type="submit" name="create">Create</button>
+</form>
+
+<div class="tip" id="card-months">
+  <div class="option">1 - January</div>
+  <div class="option">2 - February</div>
+  <div class="option">3 - March</div>
+  <div class="option">4 - April</div>
+  <div class="option">5 - May</div>
+  <div class="option">6 - June</div>
+  <div class="option">7 - July</div>
+  <div class="option">8 - August</div>
+  <div class="option">9 - September</div>
+  <div class="option">10 - October</div>
+  <div class="option">11 - November</div>
+  <div class="option">12 - December</div>
+</div>
+
+<div class="tip" id="card-years">
+  <div class="option">2017</div>
+  <div class="option">2018</div>
+  <div class="option">2019</div>
+  <div class="option">2020</div>
+  <div class="option">2021</div>
+  <div class="option">2022</div>
+  <div class="option">2023</div>
+  <div class="option">2024</div>
+</div>

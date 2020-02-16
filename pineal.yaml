@@ -1,0 +1,29 @@
+{
+  "children": [
+    ".babelrc",
+    "apps",
+    "bower_components",
+    "design",
+    "config.js",
+    "fonts",
+    "elements",
+    "d1afx.jpg",
+    "fonts.css",
+    "index.html",
+    "index.js",
+    "init.js",
+    "layout.js",
+    "lib",
+    "modules",
+    "node_modules",
+    "node_modules.js",
+    "npm_bundle.js",
+    "polymer.js",
+    "polymer",
+    "src",
+    "setup.js",
+    "package.json",
+    "webpack.config.js",
+    "package-lock.json"
+  ]
+}

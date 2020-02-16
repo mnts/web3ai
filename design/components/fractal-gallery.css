@@ -1,0 +1,112 @@
+#list{
+	/* display: flex; */
+	display: block;
+	flex-wrap: nowrap;
+	height: 100%;
+	width: 100%;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+:host[view=carousel] #list{
+	scroll-snap-type: x mandatory;
+}
+
+#list{
+	scrollbar-color: #9f9f9f80 transparent;
+	scrollbar-width: thin;
+}
+
+
+#upload{
+	height: 32px;
+	width: 32px;
+	border: 0;
+	margin: 8px;
+	border-radius: 50%;
+	background: var(--bg-grad);
+	color: white;
+	font-weight: bold;
+	align-self: center;
+	font-size: 24px;
+	outline: none;
+	scroll-snap-align: start;
+	cursor: pointer;
+	flex-shrink: 0;
+}
+
+::slotted(*){
+	scroll-snap-align: start;
+	vertical-align: middle;
+}
+
+::slotted(button){
+	width: 32px !important;
+	height: 32px !important;
+	border-radius: 50%;
+	opacity: 0.7;
+	transition: opacity 0.4s;
+	cursor: pointer;
+	border: 0;
+	margin: 32px !important;
+}
+
+::slotted(button:hover){
+	opacity: 1;
+}
+
+
+::-webkit-scrollbar {
+    height: 18px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9f9f9f29;
+    transition: background-color .4s;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #46444429;
+}
+
+:host([view='fill']) #list::-webkit-scrollbar {
+    height: 0;
+}
+
+:host([view='fill']) #list{
+	overflow-y: hidden !important;
+}
+
+:host([view='carousel']) #list{
+	text-align: center;
+	justify-content: center;
+}
+
+:host(:not([view='carousel']):not([view='fill'])) #list > .item{
+	height: 164px;
+}
+
+:host([view='carousel']) #list > .item{
+	 height: 100%;
+	 margin-top: 2px;
+}
+
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+  background-color: ;
+  display: block;
+  border-style: solid;
+  width: 20px;
+}
+/* Up */
+::-webkit-scrollbar-button:single-button:decrement {
+  border-width: 8px 8px 8px 0;
+  border-color: transparent var(--color) transparent  transparent;
+}
+
+/* Down */
+::-webkit-scrollbar-button:single-button:increment {
+  border-width: 8px 0 8px 8px;
+  border-color:  transparent transparent transparent var(--color);
+}

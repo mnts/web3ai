@@ -1,0 +1,162 @@
+#properties{
+	padding-top: 40px;
+}
+
+#properties-image{
+    position: relative;
+    display: block;
+    /* width: 300px; */
+    min-height: 70px;
+    background-image: url(icons/images.png), linear-gradient(rgb(220, 220, 220), rgb(220, 220, 220));
+}
+
+#properties-image > img{
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+    margin: 0;
+}
+
+#properties-image-upl{
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+}
+
+
+
+
+
+#properties-url{
+    display: block;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 4px auto;
+    border-radius: 5px;
+    border: 1px solid rgb(239, 239, 239);
+}
+
+#properties-url-input{
+    margin: 0;
+    border: 0;
+    padding: 2px 4px;
+    background: transparent;
+    width: calc(100% - 24px);
+}
+
+
+
+
+
+#properties > .title{
+	position: absolute;
+	top: 0;
+	margin-top: 5px;
+}
+
+#properties-selectFields{
+	position: absolute;
+	top: 2px;
+	left: 50%;
+	font-weight: bold;
+	line-height: 9px;
+}
+
+#properties-fields > .option{
+	padding-left: 25px;
+}
+
+#properties-fields > .option.on{
+	background-image: url('V.png');
+}
+
+#properties-address{
+	width: 100%;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+
+#properties-map{
+	width: 100%;
+	height: 280px;
+}
+
+#properties-addImages{
+	height: 90px;
+	background-color: #FBFBFB;
+}
+
+#properties-infoWidth{
+	width: calc(100% - 15px);
+}
+
+#properties > textarea{
+	width: 100%;
+}
+
+#addImages-upload{
+	background-image: url('load.png');
+	height: 28px;
+	width: 28px;
+	background-size: 16px 16px;
+	margin: 5px 20px;
+	position: absolute;
+	z-index: 7;
+	right: 0;
+}
+
+#properties-icon{
+	background-color: #fff;
+	cursor: pointer;
+	background-position: 0 0,10px 10px;
+	background-repeat: repeat;
+	color: #6E6E6E;
+	-webkit-background-size: 21px 21px;
+	background-size: 20px 20px;
+	border: 0;
+	text-align: center;
+	padding: 15px 5px 5px;
+	font-weight: bold;
+	text-shadow: 0 0 5px #E2E2E2;
+	font-size: 16px;
+	box-shadow: 0 0 6px rgba(0,0,5,.6);
+	margin: 18px auto;
+	border-radius: 18px;
+	height: 80px;
+	width: 148px;
+}
+
+#properties-icon{
+
+}
+
+#properties-types{
+	width: 120px
+}
+
+#properties-types > .option{
+	padding-left: 26px;
+}
+
+#properties-infoMain td:first-child,
+#properties-site td:first-child,
+#properties-infoPrice td:first-child{
+	width: 30%;
+}
+
+#addImages-tip{
+	text-align: center;
+}
+
+
+#submitItem, #updateItem, #edit-auth{
+	position: absolute;
+	top: 1px;
+	right: 5px;
+	opacity: 1;
+}
+
+#addItem-features td:first-child {
+	width: 250px;
+	height: 38px;
+}

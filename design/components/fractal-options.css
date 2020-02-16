@@ -1,0 +1,37 @@
+:host{
+	background-color: #00000080;
+	padding: 4px 6px;
+	border-radius: 5px;
+	max-width: 500px;
+	left: 6px;
+	right: 6px;
+	top: 6px;
+	opacity: .9;
+	backdrop-filter: blur(3px);
+}
+
+button{
+	display: block;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 13px;
+	border-radius: 3px;
+	transition: opacity 0.5s, background 0.5s;
+	color: #ffffff;
+	background: transparent;
+	text-shadow: 0 0 3px #000;
+	border: 0;
+	outline: none;
+	margin: 3px 1px;
+	padding: 4px 8px;
+	white-space: nowrap;
+}
+
+
+button > i{
+	width: 24px;
+}
+
+main{
+	display: block;
+}

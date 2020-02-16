@@ -1,0 +1,273 @@
+#membership{
+    padding-top: 0;
+}
+
+#membership-intro{
+    display: block;
+    position: relative;
+    background-image: url('/images/MEMBERSHIP-page-main-image-Karjaka-Studios-MESS-High-70.jpg');
+    height: 500px;
+    background-position: center;
+    background-size: cover;
+}
+
+#membership-intro-gradient{
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0.8;
+    background-image: 
+        linear-gradient(
+         rgba(0, 0, 0, 0.3), 
+         rgba(0, 0, 0, 0.3)
+        ),
+        linear-gradient(
+          80deg, 
+          #66bb6a,
+          rgba(92, 173, 180, 0.5) 51%,
+          #0277bd
+        ),
+        linear-gradient(
+          to bottom,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.5)
+        );
+    position: absolute;
+}
+
+#membership-intro > h1{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 40%;
+  overflow: visible;
+  max-width: 1050px;
+  font-weight: 500;
+  font-family: Playball;
+  font-size: 56px;
+  text-align: center;
+  color: #ffffff;
+}
+
+@media screen and (max-width: 800px){
+  #membership-intro > h1{
+    /* top: 17vw; */
+    /* font-size: 9vw; */
+    height: 60%;
+  }
+
+  #membership-plans > div{
+    width: auto !important;
+  }
+}
+
+#membership-plans{
+  clear: both;
+}
+
+#membership-plans > h2{
+  font-family: Oswald;
+  font-size: 50px;
+  font-weight: normal;
+  margin: 18px 0 12px;
+  text-align: center;
+  color: #2f2f2f;
+}
+
+#membership-plans > div{
+  display: inline-block;
+  width: 440px;
+  margin: 18px;
+  border-top: 2px solid #cd1889;
+}
+
+#membership-plans > div > h3{
+    text-transform: uppercase;
+    font-family: Oswald;
+    margin: 20px 0;
+    font-size: 32px;
+    font-weight: bold;
+    letter-spacing: 0.9px;
+    text-align: center;
+    color: #cd1889;
+}
+
+
+#membership-plans > div > p{
+    font-family: Lato;
+    font-size: 22px;
+    line-height: 1.18;
+    text-align: center;
+    color: #454d54;
+    margin: 10px 0 0;
+}
+
+#membership-plans > div > h4{
+  font-family: Lato;
+  font-size: 36px;
+  margin: 25px 0 0;
+  font-weight: 900;
+  line-height: 0.72;
+  text-align: center;
+  color: #454d54;
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#membership button{
+  width: 250px;
+  height: 50px;
+  border-radius: 5px;
+  background: linear-gradient(to right, #53a0fd, #66bb6a);
+  transition: background-image 2s;
+}
+
+#membership-loading{
+    color: #1b84c3;
+}
+
+#membership button.loading{
+  animation: pulse 0.3s ease infinite;
+}
+
+
+
+#membership-what{max-width: 990px;margin: 5px auto;/* display: flex; *//* flex-direction: column; */}
+
+#membership-what > h2{
+  font-family: Playball;
+  font-size: 64px;
+  text-align: center;
+  font-weight: 500;
+  margin: 15px 0px;
+  color: #2f2f2f;
+}
+
+#membership-what > .column{
+    display: inline-block;
+    max-width: 440px;
+    vertical-align: top;
+}
+
+#membership-what > .column > div{
+  display: inline-block;
+  max-width: 440px;
+  box-sizing: border-box;
+  margin: 20px;
+  vertical-align: top;
+  padding-top: 20px;
+  border-top: 2px solid rgba(2, 119, 189, 0.9);
+}
+
+#membership-what > .column > div > h3{
+  font-family: Oswald;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 0.9px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(2, 119, 189, 0.9);
+}
+
+#membership-what > .column > div > article{
+  font-family: Lato;
+  font-size: 18px;
+  line-height: 1.33;
+  text-align: justify;
+  color: #454d54;
+  margin: 8px 0;
+}
+
+/*
+#membership-what > div:nth-child(4){
+	padding-bottom: 40px;
+}
+
+#membership-what > div:nth-child(5){
+	margin-top: -20px;
+}
+*/
+
+#membership-modal{
+  max-width: 780px;
+  height: 537px;
+  width: auto;
+  text-align:center;
+  overflow: auto;
+}
+
+#membership-modal > h1, #membership-modal > h2{
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #2f2f2f;
+  font-weight: normal;
+  font-family: Oswald;
+}
+
+#membership-modal > h1{
+  font-size: 50px;
+  margin-top: 5px;
+}
+
+#membership-modal > h2{
+  font-weight: bold;
+}
+
+#membership-modal .input{width: 156px;}
+
+#membership-modal .input > input{
+}
+
+input#account-email {}
+
+#membership-modal .input, #membership-modal .select{
+  width: 220px;
+  display: inline-block;
+  font-family: Lato;
+  font-size: 20px;
+  text-align: left;
+  color: #2f2f2f;
+  margin: 10px 30px 30px;
+}
+
+#membership-modal .select{
+  cursor: pointer;
+}
+
+#membership-modal .select.active,
+#membership-modal .select.active > .so:before{
+  color: #74bdf7;
+}
+
+#membership-modal .select.active > .so{
+  border-color: #74bdf7;
+}
+
+#membership-modal .select > i{
+  font-size: 48px;
+  vertical-align: middle;
+  margin: 0 5px;
+}

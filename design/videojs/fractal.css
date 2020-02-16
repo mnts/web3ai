@@ -1,0 +1,21 @@
+.vjs-marker-cropStart, .vjs-marker-cropEnd{
+    background-color: #ffffff00 !important;
+    border-style: solid;
+    top: -7px;
+}
+
+.vjs-marker-cropStart{
+    border-width: 9px 9px 9px 0;
+    border-color: transparent  #FFF transparent transparent;
+}
+
+.vjs-marker-cropEnd{
+    border-width: 9px 0 9px 9px;
+    border-color: transparent transparent  transparent #FFF;
+}
+
+.vjs-tip{
+    bottom: 36px !important;
+    background-color: #4444;
+    border-radius: 8px;
+}

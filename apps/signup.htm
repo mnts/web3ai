@@ -1,0 +1,77 @@
+<div class="app neon" id="signup">
+
+  <h1>Sign Up into your account here:</h1>
+
+  <div class="input">
+		<i class="mi">account_circle</i>
+    <input id="signup-name" placeholder="Name">
+  </div>
+
+  <div class="input">
+		<i class="mi">mail_outline</i>
+    <input id="signup-email" placeholder="Email address">
+  </div>
+
+  <div class="input">
+		<i class="mi">lock_outline</i>
+    <input id="signup-password" placeholder="Password" type="password">
+  </div>
+
+  <button id="signup-submit">SIGN UP</button>
+
+  <p>Already have an account? <a id="signup-login">Login</a></p>
+</div>
+
+<script>
+$(function(){
+  $('#signup-login').click(function(){
+      Site.openApp('login');
+  });
+});
+
+$(function(){
+	var signup = document.forms.signup;
+
+	$('#signup-submit').click(function(){
+    $('#signup-name').err(($('#signup-name').val().length < 4)?'Too short':0);
+		$('#signup-email').err(checkEmail($('#signup-email').val())?0:'Wrong');
+		$('#signup-password').err(($('#signup-password').val().length < 4)?'Too short':0);
+
+    /*
+		if(signup.password.value.length>=4)
+			$(signup.password).err((signup.password.value != signup.password_re.value)?'Must be the same':0);
+		$('#sign-agree').err($('#sign-agree').hasClass('v')?0:'You must agree');
+    */
+
+
+		if($('#signup').find('.err').length == 0){
+			ws.send({
+				cmd: 'createUser',
+				user: {
+					fullName: $('#signup-name').val(),
+					email: $('#signup-email').val(),
+				},
+				password: $('#signup-password').val()
+			},
+			function(r){
+				if(r.user)
+					Site.openApp('account');
+				else{
+          if(r.error == 'taken email')
+            $('#signup-email').err(r.error);
+          else
+					  for(var a in r.err){
+						  $('#signup-'+a).err(r.err[a]);
+            }
+				}
+			});
+		};
+		return false;
+	});
+
+
+	$('#signup-name, #signup-email, #signup-password').bindEnter(function(){
+			$('#signup-submit').click();
+	});
+});
+</script>
