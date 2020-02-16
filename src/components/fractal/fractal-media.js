@@ -122,7 +122,8 @@ class Component extends HTMLElement{
     return {
       video: ['mp4', 'avi', 'mpeg', 'webm'],
       audio: ['mp3', 'wav', 'acc'],
-      image: ['jpg', 'jpeg', 'png', 'gif', 'webp']
+      image: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
+      iframe: ['txt', 'pdf']
     };
   }
 
@@ -200,6 +201,15 @@ class Component extends HTMLElement{
           video.append(source);
 
           video.controls = true;
+        } 
+        else
+        if((new RegExp('(' + this.ext.iframe.join('|').replace(/\./g, '\\.') + ')$')).test(item.name)){
+          var cont = document.createElement('iframe');
+          cont.src = 'https://docs.google.com/viewer?url='+this.link.http;
+          cont.type = item.mime;
+          
+          this.img.replaceWith(cont);
+          this.img = cont;
         } 
         else
         if(item.segments){

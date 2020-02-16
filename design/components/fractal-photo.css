@@ -66,6 +66,7 @@ main > img, main > video, main > iframe{
   margin: 0;
   cursor: pointer;
   height: inherit;
+  border: 0;
   /* object-position: center; */
   background-color: transparent;
   transition: transform .5s, background-color .5s, width .5s, height .5s;
