@@ -242,20 +242,8 @@ export default class Account extends HTMLElement{
 	    		></pineal-tree>
 	    	`;
 
-		var ws = await servers.connect(Cfg.api);
-		ws.send({
-			cmd: 'load', 
-			collection: 'stories', 
-			filter: {
-				owner: this.user.owner, 
-				value: {$exists: true}}
-		}, r => {
-			let value = 0;
-			(r.items || []).forEach(item => {
-				value += parseInt(item.value) || 0;
-			});
-
-			this.select('#value').innerText = /*(this.user.value || 0)+' + '+value + '(stories) = ' + */((this.user.value || 0) + value);
+		this.user.getValue().then(value => {
+			this.select('#value').innerText = value;
 		});
 
 		if(this.user.type == 'publisher')

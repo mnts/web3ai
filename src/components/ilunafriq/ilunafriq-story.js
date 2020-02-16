@@ -71,7 +71,7 @@ class Component extends fractal_item{
                 </a>
                 
                 ${this.item.owner}&nbsp;
-	            <div id='owner_seeds' @click='${this.assign_seeds}'>${this.user.value || '0'}</div>
+	            <div id='owner_seeds' @click='${this.assign_seeds}'></div>
               </div>
               <button id='options' class='icon fas fa-ellipsis-v'></button>
           </div>
@@ -130,7 +130,7 @@ class Component extends fractal_item{
     `;
  }
 
-  updated(ch) {
+  async updated(ch) {
     //super.firstUpdated(ch);
     super.updated();
 
@@ -140,7 +140,11 @@ class Component extends fractal_item{
         `;
         this.tree = this.select('#tree');
     }
-  };
+    
+    if(this.user && this.user.getValue){
+        this.select('#owner_seeds').innerText = await this.user.getValue();
+    }
+  }
 
   click_user(ev){
   	this.select('#owner').click();

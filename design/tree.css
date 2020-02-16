@@ -126,6 +126,7 @@
 	/* padding-left: 2px; */
 }
 
+
 .tree .tr > a{
 	cursor: pointer;
 	display: inline-block;
@@ -137,7 +138,7 @@
 	background-position: 2px 4px;
 	background-size: 16px 16px;
 	background-repeat: no-repeat;
-	padding: 9px 2px 2px 1px;
+	padding: 8px 2px 3px 1px;
 	vertical-align: middle;
 	transition: color 0.3s;
 	width: 100%;

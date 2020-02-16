@@ -49,6 +49,30 @@ class User_main{
     	});
 	}
 
+	getValue(){
+    	if(this.value_promise) return this.value_promise;
+
+    	return this.value_promise = new Promise((k, n) => {
+    		this.load(async item => {
+				var ws = await servers.connect(Cfg.api);
+				ws.send({
+					cmd: 'load', 
+					collection: 'stories', 
+					filter: {
+						owner: this.email, 
+						value: {$exists: true}}
+				}, r => {
+					let value = 0;
+					(r.items || []).forEach(item => {
+						value += parseInt(item.value) || 0;
+					});
+
+					k((this.value || 0) + value);
+				});
+    		});
+    	});
+	}
+
 	get href(){
 		return location.origin+'/~/'+this.name;
 	}
