@@ -206,7 +206,7 @@ class Component extends HTMLElement{
         if((new RegExp('(' + this.ext.iframe.join('|').replace(/\./g, '\\.') + ')$')).test(item.name)){
           var cont = document.createElement('iframe');
           var url = this.link.http;
-          if(url.indexOf('//') === 0) url = 'https'+url;
+          if(url.indexOf('//') === 0) url = 'https:'+url;
           cont.src = 'https://docs.google.com/viewer?url='+url;
           cont.type = item.mime;
           
