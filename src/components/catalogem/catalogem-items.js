@@ -55,6 +55,18 @@ class element extends HTMLElement{
 
     this.item_template = {};
 
+    this.default = {
+      dom: 'fractal-item'
+    };
+
+    if(Cfg.components){
+      let comp = Cfg.components[this.constructor.is];
+      if(comp){
+        if(comp.default)
+          Object.assign(this.default, comp.default);
+      }
+    }
+
     this.filter = {
       server: location.host,
       protocol: 'mongo',
@@ -275,7 +287,7 @@ class element extends HTMLElement{
     var list = this.$('#list');
     this.appendChild(div);
     
-    var dom_tag = this.getAttribute('dom') || 'fractal-item';
+    var dom_tag = this.getAttribute('dom') || this.default.dom || 'fractal-item';
     define(dom_tag);
     
     link.load(item => {

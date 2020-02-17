@@ -21,7 +21,13 @@ var paths = Cfg.components || {};
 
 var define = name => {
   	var brand = name.split('-')[0];
-  	const path = paths[name] || paths[brand] || default_path;
+  	var path = paths[brand] || default_path;
+    if(typeof paths[name] == 'string')
+      path = paths[name];
+    else
+    if(typeof paths[name] == 'object' && paths[name].path)
+      path = paths[name].path;
+
     import(path.endsWith('.js')?path:JP(path, name+'.js'));
 }
 
