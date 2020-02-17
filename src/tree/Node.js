@@ -120,7 +120,7 @@ export default class Node/* extends HTMLElement*/{
 
     //if(acc.user.super || (acc.user && $el.data('owner') == acc.user.id && $('#t'+item.tid).data('type') != 'fold' && !ini.noDrg))
     $node.drg({tree_root: this.tree.shadowRoot});
-    this.link.checkOwnership(own => {
+    if(this.link) this.link.checkOwnership(own => {
       $node.attr('draggable', own)  
     });
 
