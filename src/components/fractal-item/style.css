@@ -302,6 +302,14 @@ h2[placeholder]:empty:before{
 	opacity: 1;
 }
 
+#category{
+    display: none;
+}
+
+:host([activated]) #category{
+	display: inline-block;
+}
+
 :host([activated]) #article{
 	display: block;
 	border: 1px solid #e6e6e6;

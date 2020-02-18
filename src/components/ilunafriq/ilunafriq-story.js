@@ -56,6 +56,10 @@ class Component extends fractal_item{
           placeholder='Short description' 
           ?disabled='${!this.own}'
         >${this.item.description}</textarea>
+
+        <fractal-select id='category' @selected='${this.selected_category}' list_src='${Cfg.story.categories_src}' selected_src='${this.item.parent}'>
+            no category
+        </fractal-select>
         
         ${this.been_activated?html`
           <fractal-htm id='article' ?editable='${!this.own}' ?disabled='${!this.own}' placeholder='Write your story here' src='${this.src}'></fractal-htm>
@@ -142,11 +146,18 @@ class Component extends fractal_item{
         inp.removeAttribute('disabled');
         inp.setAttribute('placeholder', 'Assign'); 
     }
-    
-    if(this.user && this.user.getValue){
-        this.select('#owner_seeds').innerText = await this.user.getValue();
+
+    var owner_seeds = this.select('#owner_seeds')
+    if(this.user && this.user.getValue && owner_seeds){
+        owner_seeds.innerText = await this.user.getValue() || '';
     }
   }
+
+  selected_category(ev){
+  	var link = ev.detail.link;
+  	this.link.set('parent', link.url);
+  }
+
 
   click_user(ev){
   	this.select('#owner').click();
