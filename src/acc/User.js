@@ -26,10 +26,14 @@ class User_main{
 					cmd: 'loadProfile'
 				};
 
-				q[(this.path.indexOf('@')+1)?'email':'name'] = this.path;
-				
+                if(this.path[0] == '~')
+	                q.id = this.path.substr(1);
+	            else
+    				q[(this.path.indexOf('@')+1)?'email':'name'] = this.path;
+
 				ws.send(q, r => {
 					if(!r.user) return;
+					
 					$.extend(this, r.user);
 					this.url = 'mongo://'+document.location.host+'/users?owner='+r.user.email;
 					this.axon = new Axon(this.url);
@@ -38,7 +42,7 @@ class User_main{
 						this.item = item;
 						
 						if(item){
-							$.extend(this, item);
+							//$.extend(this, item);
 						}
 
 						if(typeof cb =='function') cb(item);
@@ -74,7 +78,8 @@ class User_main{
 	}
 
 	get href(){
-		return location.origin+'/~/'+this.name;
+		var name = this.name || ('~'+this.id);
+		return location.origin+'/profile/'+name;
 	}
 };
 
