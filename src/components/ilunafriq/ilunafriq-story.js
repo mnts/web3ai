@@ -57,7 +57,7 @@ class Component extends fractal_item{
           ?disabled='${!this.own}'
         >${this.item.description}</textarea>
 
-        <fractal-select id='category' @selected='${this.selected_category}' list_src='${Cfg.story.categories_src}' selected_src='${this.item.parent}'>
+        <fractal-select disabled='${!this.own}' id='category' @selected='${this.selected_category}' list_src='${Cfg.story.categories_src}' selected_src='${this.item.parent}'>
             no category
         </fractal-select>
         

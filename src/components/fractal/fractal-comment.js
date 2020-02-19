@@ -35,7 +35,7 @@ class Component extends LitElement{
      <main>
       <pineal-user id='owner-icon' @loaded='${this.on_user}' path="${this.item.owner}" @click='${this.click_user}'></pineal-user>
       <div id='owner-info'>
-         <a id='owner_title' href='${this.user && this.user.href}' target='_blank'>${this.user_item.title}</a>
+         <a id='owner_title' href='${this.user && this.user.href}' target='_blank'>${this.user_item.title  || ('#'+this.user.id)}</a>
          <div id='comment-text'>${this.item.text}</div>
           <relative-time id='info-when' datetime='${this.datetime}'></relative-time>
        </div>
@@ -46,6 +46,7 @@ class Component extends LitElement{
     super();
     this.api = Cfg.api;
     this.item = {};
+    this.user= {};
     this.user_item = {};
     this.collection = 'comments';
   }

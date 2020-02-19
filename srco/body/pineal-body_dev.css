@@ -1,0 +1,74 @@
+app-header-layout{
+}
+
+#main_header {
+  color: #fff;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 0;
+  width: 100%;
+  background: var(--bg-grad);
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  height: 48px;
+}
+
+paper-icon-button {
+  --paper-icon-button-ink-color: black;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4299b147;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+main{
+  width: 100%;
+  position: relative;
+  overflow: auto;
+  height: 100%;
+}
+
+#toolbar_top{
+  background-color: rgba(20, 20, 20, 0.3);
+  height: 50px;
+}
+
+[main-title] {
+  font-size: 38px;
+  font-weight: 300;
+  margin-left: 4px;
+}
+[condensed-title] {
+  font-weight: 300;
+}
+
+app-header {
+  background-color: rgba(255, 255, 255, 0.95);
+  background-image: var(--bg-grad);
+  opacity: 0.9;
+  --app-header-shadow: {
+    box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+    height: 10px;
+    bottom: -10px;
+  };
+}
+
+app-header:not([shadow]) {
+  border-bottom: 1px solid #ddd;
+}

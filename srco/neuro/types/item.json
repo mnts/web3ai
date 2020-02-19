@@ -1,0 +1,20 @@
+{
+  "children": [
+    "catalog.js",
+    "file.js",
+    "folder.js",
+    "gallery.js",
+    "graph.js",
+    "htm_page.js",
+    "map.js",
+    "source.js",
+    "story.js",
+    "text - Copy.js",
+    "text.js"
+  ],
+  "items": {
+    "catalog.js": {
+      "title": "Catalogg"
+    }
+  }
+}

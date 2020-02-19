@@ -18,7 +18,7 @@ import './lib/js-yaml.min.js';
 //import"./node_mod/paper-range-slider/paper-range-slider.js";
 
 import './libs/js.cookie.js';
-import './node_modules/tippy.js/umd/index.all.js';
+import './node_modules/tippy.js/dist/tippy.esm.js';
 import './node_modules/@github/time-elements/dist/time-elements.js';
 import './lib/md5.js';
 import './modules/functions.js';

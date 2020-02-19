@@ -1,0 +1,17 @@
+import '../../components/pineal/pineal-layout.js';
+import '../../components/catalogem/catalogem-items.js';
+import '../../components/ilunafriq/ilunafriq-story.js';
+import '../../components/fractal/fractal-body.js';
+import '../../components/fractal/fractal-head.js';
+import '../../components/pineal/pineal-nav.js';
+import '../../components/pineal/pineal-tree.js';
+import '../../components/pineal/pineal-auth.js';
+import '../../components/pineal/pineal-account.js';
+import '../../components/pineal/pineal-user.js';
+import '../../components/pineal/pineal-item.js';
+import '../../components/pineal/pineal-htm.js';
+import '../../components/fractal/fractal-htm.js';
+import '../../components/ilunafriq/ilunafriq-footer.js';
+//import '../../node_modules/xy-ui/index.js';
+//import './components/pineal/pineal-photo.js';
+//import './components/pineal/pineal-gallery.js';

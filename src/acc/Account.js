@@ -204,7 +204,7 @@ export default class Account extends HTMLElement{
 	}
 
     async fill(item){
-    	if(!item) item = this.user;
+    	if(!item) item = this.user.item;
 
     	this.main.hidden = false;
     	var email = item.email || this.user.email;
@@ -221,11 +221,11 @@ export default class Account extends HTMLElement{
     	}
 
     	this.select('#account-description').textContent = item.description || '';
-
+        
     	this.select('#account-email').innerText = email;
-    	this.select('#account-email-confirm').hidden = item.email_confirmed;
+    	this.select('#account-email-confirm').hidden = this.user.email_confirmed;
 
-    	var acc_link = Link(`mongo://${Cfg.server}/acc?email=`+this.user.owner);
+    	var acc_link = Link(`mongo://${Cfg.server}/acc?email=`+this.user.email);
 
 		if(Cfg.acc && Cfg.registration.tree_src && Cfg.acc.tree_src)
 	    	this.select('#extra').innerHTML = `
@@ -257,14 +257,10 @@ export default class Account extends HTMLElement{
     checkName(){
     	var name = this.user.name;
 
-	   	this.select('#account-domain').hidden = !name;
-	   	if(name){
-	   		this.select('#account-url').href = `//${document.location.host}/~/${name}`;
-	   		this.select('#account-url').innerText = `//${document.location.host}/~/${name}`;
-	   	}
+	   	this.select('#account-url').href = this.user.href;
+	   	this.select('#account-url').innerText = this.user.href;
 	   	
 	   	this.select('#setname').hidden = !!(name);
-
 	}
 
     fillAvatar(item){

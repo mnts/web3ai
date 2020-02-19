@@ -49,7 +49,7 @@ class Component extends LitElement{
             </pineal-user>
 
             <div id='owner-info'>
-              <a id='owner' href='${account.user.href}' target='_blank'>${account.user.title}</a>
+              <a id='owner' href='${account.user.href}' target='_blank'>${account.user.item.title  || ('#'+account.user.id)}</a>
               <textarea id='comment-area' placeholder='${this.text_write || 'Write your comment'}'></textarea>
             </div>
             <button id='options' @click='${this.post}'>&#10148;</button>

@@ -40,6 +40,7 @@ class Component extends HTMLElement{
     this.main = this.select('main');
 
     this.assign(this.getAttribute('selected_src'));
+    
 
     tippy(this.main, {
       content: '..',
@@ -49,6 +50,7 @@ class Component extends HTMLElement{
       trigger: 'click',
       onShow: instance => {
         instance.that = this;
+        if(this.getAttribute('disabled') == 'true') return false;
         let link = Link(this.getAttribute('list_src'));
         this.constructor.init_options(instance, link);
       },
@@ -59,8 +61,9 @@ class Component extends HTMLElement{
   }
 
   assign(src){
+    if(!src) return;
     var link = Link(src);
-    if(link) link.load(item => {
+    link.load(item => {
       let ttl = item.title || item.name;
       if(ttl) this.main.innerText = ttl;
     });
