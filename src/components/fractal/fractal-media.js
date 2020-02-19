@@ -247,6 +247,7 @@ class Component extends HTMLElement{
         else
         if(video && video.provider == 'youtube'){
           var frame = document.createElement("iframe");
+          frame.setAttribute('allowfullscreen', "allowfullscreen");
           this.img.replaceWith(frame);
           frame.src = 'https://www.youtube.com/embed/'+video.id;
           this.img = frame;

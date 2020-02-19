@@ -611,6 +611,12 @@ input[name='value']{
 	float: right;
 }
 
+:host([activated]) input[name='value']{
+	margin: 14px auto;
+	float: none;
+	display: block;
+}
+
 :host(:not([activated])) input[name='value']{
 	adisplay: none;
 }

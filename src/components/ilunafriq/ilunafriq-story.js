@@ -80,9 +80,9 @@ class Component extends fractal_item{
               <button id='options' class='icon fas fa-ellipsis-v'></button>
           </div>
 
-          <relative-time id='info-when' datetime='${this.datetime}'></relative-time>
-          
           <input name='value' title='seeds' type='number' disabled='disabled' @change='${this.change}' value='${this.item.value || 0}'/>
+          
+          <relative-time id='info-when' datetime='${this.datetime}'></relative-time>
           
 
           <div id="info-block">

@@ -106,6 +106,7 @@ export default class Account extends HTMLElement{
 		this.axon.link.save({
 			owner: this.user.email,
 		}).then(item => {
+			this.user.item = item;
 			/*
 			this.ws.send({
 				cmd: 'updateProfile',
