@@ -71,7 +71,7 @@ class Component extends fractal_item{
               <pineal-user id='owner-icon' @loaded='${this.on_user}' @click='${this.click_user}' path="${this.item.owner || this.user_item.owner}"></pineal-user>
               <div id='owner-info'>
                 <a id='owner' href='${this.user && this.user.href}' target='_blank'>
-                	${this.user_item.title}
+                	${this.user_item.title  || ('#'+this.user.id)}
                 </a>
                 
                 ${this.item.owner}&nbsp;
