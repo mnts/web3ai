@@ -170,9 +170,9 @@ fractal-htm.app{
 	overflow: hidden;
 }
 
+
 catalogem-items.app{
-	height: calc(100%);
-	overflow: hidden;
+	min-height: calc(80%);
 }
 
 .app > table{
