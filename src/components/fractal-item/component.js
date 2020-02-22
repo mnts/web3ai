@@ -320,7 +320,7 @@ export default class Component extends LitElement{
 
       if(item.name.length < 5)
         $(this.select('#title')).blink('red');
-        
+
       if(item.description.length < 5)
         $(this.select('#description')).blink('red');
 
@@ -332,13 +332,15 @@ export default class Component extends LitElement{
       tit.removeAttribute('contenteditable');
       */
 
-      if(this.select('.red')) return;
-      
-      var event = new CustomEvent("publish", {
-        detail: {item}
-      });
+      setTimeout(() => {
+        if(this.select('.red')) return;
 
-      this.dispatchEvent(event);
+        var event = new CustomEvent("publish", {
+          detail: {item}
+        });
+
+        this.dispatchEvent(event);
+      }, 30);
   }
 
   do_remove(ev){
