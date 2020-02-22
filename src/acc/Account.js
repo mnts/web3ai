@@ -247,12 +247,7 @@ export default class Account extends HTMLElement{
 			this.select('#value').innerText = value;
 		});
 
-		if(this.user.type == 'publisher')
-			this.checkName();
-		else{
-			(this.select('#account-domain') || {}).hidden = true;
-			(this.select('#setname') || {}).hidden = true;
-		}
+		this.checkName();
     }
 
     checkName(){
