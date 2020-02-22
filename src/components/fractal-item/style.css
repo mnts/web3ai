@@ -30,6 +30,13 @@
   /* height: auto; */
 }
 
+.red{
+	background-color: #c31b1bdb !important;
+}
+
+#gallery, #description, #title{
+	transition: background-color .5s;
+}
 
 [hidden]{
 	display: none !important;

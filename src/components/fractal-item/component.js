@@ -315,13 +315,24 @@ export default class Component extends LitElement{
 
   do_publish(ev){
       let item = this.read();
+      
+      var gallery = this.select('#gallery');
 
       if(item.name.length < 5)
-        return $(this.select('#title')).blink('red');
+        $(this.select('#title')).blink('red');
+        
+      if(item.description.length < 5)
+        $(this.select('#description')).blink('red');
+
+      if(!gallery.select('fractal-media'))
+        $(gallery).blink('red');
+
       /*
       var tit = this.select('#title');
       tit.removeAttribute('contenteditable');
       */
+
+      if(this.select('.red')) return;
       
       var event = new CustomEvent("publish", {
         detail: {item}
