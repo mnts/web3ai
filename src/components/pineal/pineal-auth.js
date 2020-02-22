@@ -197,7 +197,7 @@ class element extends HTMLElement{
           auth.register.disabled = true;
            var user = this.item || {};
            user.email = email;
-           user.value = 5;
+           user.value = 0;
            
            this.W({
              cmd: 'createUser', user, password
