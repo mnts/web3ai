@@ -302,12 +302,17 @@ h2[placeholder]:empty:before{
 	opacity: 1;
 }
 
-#category{
+#category, #genre{
     display: none;
 }
 
 :host([activated]) #category{
 	display: inline-block;
+}
+
+:host([activated]) #genre{
+	display: inline-block;
+	margin-left: 12px;
 }
 
 :host([activated]) #article{
@@ -512,11 +517,12 @@ hr{
 	display: inline-block;
 }
 
+
 #info-block > *{
   display: none;
   flex-grow: 1;
-  font-size: 16px;
-  padding: 8px 10px;
+  font-size: 15px;
+  padding: 8px 4px;
   /* color: white; */
   font-family: comfortaa;
   /* border-left: 1px solid #d0d0d0; */
@@ -542,6 +548,7 @@ hr{
 
 #stat-likes{
 	font-weight: bold;
+	font-size: 11px;
 }
 
 #stat-likes > fractal-rate{

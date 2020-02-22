@@ -63,6 +63,7 @@ class Component extends HTMLElement{
   assign(src){
     if(!src) return;
     var link = Link(src);
+    if(!link) return;
     link.load(item => {
       let ttl = item.title || item.name;
       if(ttl) this.main.innerText = ttl;

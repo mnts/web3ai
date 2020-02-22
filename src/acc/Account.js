@@ -228,11 +228,11 @@ export default class Account extends HTMLElement{
 
     	var acc_link = Link(`mongo://${Cfg.server}/acc?email=`+this.user.email);
 
-		if(Cfg.acc && Cfg.registration.tree_src && Cfg.acc.tree_src)
+		if(Cfg.acc && Cfg.acc.account_src && Cfg.acc.tree_src)
 	    	this.select('#extra').innerHTML = `
 	    		<h4>Account properties</h4>
 	    		<pineal-tree 
-	    			src='${Cfg.registration.tree_src}' 
+	    			src='${Cfg.acc.account_src}' 
 	    			item_src='${acc_link.url}'
 	    		></pineal-tree>
 

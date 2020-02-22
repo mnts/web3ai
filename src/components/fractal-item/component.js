@@ -149,7 +149,7 @@ export default class Component extends LitElement{
         <div id="info-block">
             <span class="forPublished" id='stat-likes'>
               <fractal-rate @rate='${this.do_rate}' src='${this.src}'></fractal-rate>
-              ${this.item.num_reviews || 0}
+              ${this.item.rating?(`${Math.round(this.item.rating.average*10)/10}/${this.item.rating.total}`):''}
             </span>
             <span class="fas fa-eye forPublished" id='stat-views'>${this.item.num_views || 0}</span>
             <span @click='${this.activate_comm}' class="fas fa-comments forPublished" id='stat-comments'>${this.item.num_comments || 0}</span>

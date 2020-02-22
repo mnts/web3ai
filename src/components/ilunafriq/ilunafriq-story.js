@@ -61,6 +61,11 @@ class Component extends fractal_item{
             no category
         </fractal-select>
         
+        <fractal-select disabled='${!this.own}' id='genre' @selected='${this.selected_genre}' list_src='${Cfg.story.genres_src}' selected_src='${this.item.genre}'>
+            no genre
+        </fractal-select>
+        
+        
         ${this.been_activated?html`
           <fractal-htm id='article' ?editable='${!this.own}' ?disabled='${!this.own}' placeholder='Write your story here' src='${this.src}'></fractal-htm>
         `:''}
@@ -87,8 +92,8 @@ class Component extends fractal_item{
 
           <div id="info-block">
               <span class="forPublished" id='stat-likes'>
-                <fractal-rate @rate='${this.do_rate}' src='${this.src}'></fractal-rate>
-                ${this.item.num_reviews || 0}
+                  <fractal-rate @rate='${this.do_rate}' src='${this.src}'></fractal-rate>
+                  ${this.item.rating?(`${Math.round(this.item.rating.average*10)/10}/${this.item.rating.total}`):''}
               </span>
               <span class="fas fa-eye forPublished" id='stat-views'>${this.item.num_views || 0}</span>
               <span @click='${this.activate_comm}' class="fas fa-comments forPublished" id='stat-comments'>${this.item.num_comments || 0}</span>
@@ -156,6 +161,11 @@ class Component extends fractal_item{
   selected_category(ev){
   	var link = ev.detail.link;
   	this.link.set('parent', link.url);
+  }
+
+  selected_genre(ev){
+  	var link = ev.detail.link;
+  	this.link.set('genre', link.url);
   }
 
 

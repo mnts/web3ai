@@ -99,18 +99,18 @@ class Component extends HTMLElement{
       if(star.classList.contains('star')){
         //if(!this.link.item || account.user.email == this.link.item.owner) return;
         var num = star.id.split('_')[1];
+
            
-        if(this.num == num) return this.unrate();
+        if(this.num == num)
+          num = false;
 
-        this.unrate().then(() => {
-          this.rate(num);
+        this.rate(num);
 
-          this.saveRate(num);
+        this.saveRate(num);
 
-          this.dispatchEvent(new CustomEvent("rate", {
-            detail: {num}
-          }));
-        });
+        this.dispatchEvent(new CustomEvent("rate", {
+          detail: {num}
+        }));
       }
     }, false);
   }
@@ -144,7 +144,28 @@ class Component extends HTMLElement{
   saveRate(num){
     if(!account.user) return;
 
+    num = parseInt(num) || false;
+
     servers.connect(Cfg.api).then(ws => {
+        var upd = r => {
+           if(r.item){
+              this.myReview = r.item;
+              this.num = num;
+          }
+        }
+
+        if(this.myReview){
+          ws.send({
+            cmd: 'update',
+            collection: this.collection,
+            id: this.myReview.id,
+            set: {
+              num
+            }
+          }, upd);
+          return;
+        };
+
         var item = {
           num,
           owner: account.user.email,
@@ -157,44 +178,15 @@ class Component extends HTMLElement{
           item
         };
 
-        ws.send(q, r => {
-          if(r.item){
-              this.myReview = r.item;
-              this.num = num;
-              let review = r.item;
-              this.link.load(item => {
-                 this.link.set('num_reviews', (item.num_reviews || 0) + 1);
-              }); 
-          }
-        });
-    });
-  }
-
-  unrate(){
-    return new Promise( (ok, no) => {
-      if(!account.user || !this.myReview) return ok();
-
-      this.selectAll('.star').forEach(element => {
-        element.classList.remove('on');
-      });
-
-      servers.connect(Cfg.api).then(ws => {
-        var q = {
-          cmd: 'remove',
-          id: this.myReview.id,
-          collection: this.collection
-        };
-
-        delete this.myReview;
-        delete this.num;
-        ws.send(q);
-
-        ok();
-      });
+        ws.send(q, upd);
     });
   }
 
   rate(num){
+    if(!num) return this.selectAll('.star').forEach(element => {
+      element.classList.remove('on');
+    });
+
     this.num = num;
       for(let i=1; i < 6; i++){
         let star = this.shadowRoot.querySelector(`#star_${i}`);
