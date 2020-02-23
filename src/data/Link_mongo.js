@@ -45,7 +45,7 @@ export default class Link_mongo{
     }
 
     if(this.collection == 'files')
-      this.http = '//'+this.domain+'/files/'+this.id;
+      this.http = location.protocol+'//'+this.domain+'/files/'+this.id;
 
     //this.http = 'http://'+Cfg.host+':'+Cfg.port+'/'+protocol+'/'+way;
     this.load_filers();
