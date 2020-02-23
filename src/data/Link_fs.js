@@ -54,7 +54,7 @@ export default class Link_fs{
     if(way.indexOf('localhost/') + 1)
     	way = way.replace('localhost/', 'localhost:8080/');
 
-    this.http = 'http://'+way;
+    this.http = location.protocol+'//'+way;
 
     Emitter(this);
   }
