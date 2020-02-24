@@ -40,11 +40,12 @@
 	background-size: 12px;
 }
 
+
 .tree{
 	/* margin-bottom: 5px; */
 	padding-left: 0;
 	border-color: rgba(80, 115, 204, 0.5);
-	padding: 0;
+	padding: 0 0 24px 0;
 	width: inherit;
 	/*padding-left: 8px;*/
 	box-sizing: border-box;
