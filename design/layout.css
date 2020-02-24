@@ -365,8 +365,8 @@ button#account-icon{
 	border-radius: 50%;
 	width: 48px;
 	height: 48px;
-	width: calc(var(--header-height) - 8px);
-	height: calc(var(--header-height) - 8px);
+	width: calc(var(--header-height) - 16px);
+	height: calc(var(--header-height) - 16px);
 	padding: 0;
 	margin: 0 3px;
 	background-position: center;
