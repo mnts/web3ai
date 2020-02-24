@@ -45,12 +45,14 @@
 	/* margin-bottom: 5px; */
 	padding-left: 0;
 	border-color: rgba(80, 115, 204, 0.5);
-	padding: 0 0 12px 0;
+	padding: 0;
+	margin-bottom: 60p;
 	width: inherit;
 	/*padding-left: 8px;*/
 	box-sizing: border-box;
 	display: block;
 }
+
 
 .tree::-webkit-scrollbar{
 	width: 0;
