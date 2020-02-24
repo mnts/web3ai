@@ -21,7 +21,6 @@
 	overflow-y: auto;
 	overflow-x: hidden;
 	/* padding-top: 60px; */
-	padding-bottom: 40px;
 	box-sizing: border-box;
 	/* margin-left: 6px; */
 }
@@ -45,8 +44,7 @@
 	/* margin-bottom: 5px; */
 	padding-left: 0;
 	border-color: rgba(80, 115, 204, 0.5);
-	padding: 0;
-	margin-bottom: 60p;
+	padding: 0 0 92px 0;
 	width: inherit;
 	/*padding-left: 8px;*/
 	box-sizing: border-box;
