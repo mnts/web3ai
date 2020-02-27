@@ -1,4 +1,4 @@
-
+/*
 if('serviceWorker' in navigator){
 	console.log('about to register sw.js');
   navigator.serviceWorker.register('/sw.js')
@@ -10,3 +10,4 @@ if('serviceWorker' in navigator){
       console.log('-> Failed to register:', err)
     });
 }
+*/

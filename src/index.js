@@ -28,17 +28,11 @@ import '/lib/ws.js';
 
 const extend = NPM.extend;
 
+import './init.js';
 import './config.js';
+import './setup.js';
 
-if(window.Cfg_site){
-  extend(Cfg, Cfg_site);
-}
-
-tippy.setDefaults({
-  placement: 'bottom',
-  animation: 'perspective',
-  arrow: true
-});
+Index.types = types;
 
 var qs = q => document.querySelector(q);
 
@@ -59,11 +53,6 @@ import types from './neuro/types.js';
 
 var domain = location.host.split('.').slice(-2).join('.');
 
-
-window.Index = {
-  apps: {},
-  types
-};
 
 
 //import './styling.js';

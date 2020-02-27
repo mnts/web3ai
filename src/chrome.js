@@ -1,3 +1,4 @@
+ 
  window.Lib = {};
 
  Lib.item = {
@@ -8,6 +9,7 @@
   ]
 };
 
+
 if(window.chrome && chrome.storage){
   Lib.item.children.push('chrome-storage://private');
   Lib.item.children.push('chrome-storage://topSites');
@@ -17,7 +19,6 @@ else{
   //Lib.item.children.push('http://'+location.host+'/');
   //Lib.item.children.push('local-storage://local');
 
-    var domain = window.location.host.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0].split(':')[0];
 
     //if(domain.indexOf('.lh')) domain = 'localhost';
     
@@ -28,7 +29,7 @@ else{
 	}
 	else{ // load domain node from mongo
 		//Lib.item.children.push('fs://'+document.location.host+'/menu');
-		Lib.item.children.push('mongo://'+document.location.host+'/tree'+'?domain='+domain);
+		Lib.item.children.push(Index.main_url);
 
 		if(document.location.href.indexOf('cms') + 1)
 			Lib.item.children.push('mongo://'+document.location.host+'/tree'+'#cms');
@@ -36,6 +37,7 @@ else{
 	
 	//Lib.item.children.push('fs://localhost/');
 }
+
 
 Lib.defaults = {
   'chrome-storage://topSites': 'mem://self/Lib.items.topSites',
