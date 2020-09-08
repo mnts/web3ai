@@ -17,8 +17,7 @@ const getIpfs = () => new Promise((resolve, reject) => {
   script.src = 'https://unpkg.com/ipfs/dist/index.min.js'
   script.onload = () => {
 	log('starting IPFS node')
-	const ipfs = new window.Ipfs()
-	ipfs.once('ready', () => resolve(ipfs))
+	window.Ipfs.create().then(resolve);
   }
   script.onerror = reject
   document.body.appendChild(script)

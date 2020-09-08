@@ -1,7 +1,7 @@
 import types from '../neuro/types.js';
 import Axon from '../neuro/Axon.js';
 import diacritics from '../utilities/diacritics.js';
-
+import Link from '../data/Link.js';
 import account from '../account.js';
 
 const template = document.createElement('template');
@@ -177,6 +177,8 @@ export default class Node/* extends HTMLElement*/{
       else {
         if(ev.target.tagName != 'A') return;
 
+        if(this.item.href) return;
+
         var event = new CustomEvent('click_node', {
           detail: {
             node: this
@@ -227,7 +229,12 @@ export default class Node/* extends HTMLElement*/{
         item: this.item,
       };
 
-      this.parent.link.add(this.item).then(link => {
+      var extra = {};
+      if(this.parent.link.protocol == 'mongo')
+        extra.collection = 'tree';
+        
+
+      this.parent.link.add(this.item, extra).then(link => {
         this.link = link;
         this.item = this.ini = link.item;
         this.$node.data({link});
@@ -394,8 +401,7 @@ export default class Node/* extends HTMLElement*/{
     }
     return el;
   }
-
-
+  
   dispatch_update(){
     var path = this.getPath(),
         value = this.value;
@@ -423,7 +429,6 @@ export default class Node/* extends HTMLElement*/{
   }
   
   set value(val){
-    console.log(val);
     if(this.item && this.item.type == 'select'){
       this.toggle().then(() => {
         var li = this.$list.children(`li[name='${val}']`)[0];
@@ -518,7 +523,9 @@ export default class Node/* extends HTMLElement*/{
         this.element.classList[own?'add':'remove']('own');
       });
 
-    if(item.url) this.$a.attr({href: ini.url});
+    if(item.href)
+      return this.$a.attr({href: ini.href, target: '_self'});
+    
     //if(ini.url) $a.attr('href', ini.url);
     if(ini.type == 'site' && ini.domain) this.$a.attr('href', 'http://' + ini.domain);
     if(ini.url || ini.type == 'site') 
@@ -765,6 +772,9 @@ export default class Node/* extends HTMLElement*/{
     if(this.ini.type == 'item')
       icon = 'cube';
 
+    if(this.ini.type == 'site')
+      icon = 'globe';
+
     if(this.ini.type == 'view')
       icon = 'sitemap';
 
@@ -803,10 +813,14 @@ export default class Node/* extends HTMLElement*/{
       this.$icon.insertBefore(this.$tr);
 
     if((''+this.item.icon).indexOf('://')+1)
-      this.$icon.attr({src: this.item.icon});
+      this.$icon.attr({class: 'icon'}).css('background-image', `url('${this.item.icon}')`);
     else
-    if(this.item.icon)
-      this.$icon.attr({class: 'icon fas '+this.item.icon});
+    if(this.item.icon){
+      let pre = 'icon';
+      if(this.item.icon.indexOf('fab')<0)
+        pre += ' fas';
+      this.$icon.attr({class: pre+' '+this.item.icon});
+    }
     else
       this.$icon.attr({class: 'icon fas fa-'+icon});
   }

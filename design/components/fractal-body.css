@@ -6,6 +6,7 @@
 
 
 main{
+   -webkit-touch-callout: none;
   display: inline-flex;
   flex-wrap: wrap;
   overflow: auto;
@@ -15,8 +16,25 @@ main{
   /* overflow-y: overlay; */
   overflow-x: hidden;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 main{
 }
 
+
+:host(:not(.default-scrollbar)) main::-webkit-scrollbar {
+  width: 4px;
+  transition: width .4s;
+  border: 0;
+  opacity: 0.5;
+  background: transparent;
+}
+
+/* Handle */
+:host(:not(.default-scrollbar)) main::-webkit-scrollbar-thumb {
+  background: var(--color);
+  opacity: 0.5;
+  border-radius: 6px;
+  border: 0;
+}

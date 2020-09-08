@@ -1,3 +1,4 @@
+import Link from '../../data/Link.js';
 
 const template = document.createElement('template');
 
@@ -16,8 +17,12 @@ export default class Component extends HTMLElement{
       <style>
         #main_header{}
 
+        :host{
+        	height: fit-content;
+        }
+
         article{
-          min-height: 32px;
+          min-height: calc(100% - 1px);
         }
 
         main{

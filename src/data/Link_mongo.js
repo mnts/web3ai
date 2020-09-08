@@ -1,9 +1,13 @@
 //  mongo://io.cx/pix8#ov2567
 import account from '../account.js'
+import Link from './Link.js';
+
+var links = {};
 
 export default class Link_mongo{
   constructor(u){
     this.supports = ['mongo'];
+    this.cbs = [];
 
     if(typeof u == 'string'){
       if(u.indexOf('://')){
@@ -31,8 +35,7 @@ export default class Link_mongo{
           this.path = way.substr(sep+1);
 
           this.uri = this.path.replace(/^\/+|[^A-Za-z0-9_.:\/~ @-]|\/+$/g, '');
-
-        	this.p = this.uri.split(/[\/]+/);
+          this.p = this.uri.split(/[\/]+/);
 
           this.ext = this.path.split('.').pop();
 
@@ -68,6 +71,15 @@ export default class Link_mongo{
       'manager.lh': 'https://files.lh/',
       'localhost': 'https://files.lh/',
     };
+  }
+
+  monitor(cb){
+    if(this.cbs.find(fn => fn == cb))
+      return;
+    
+    this.load(item => {
+      this.cbs.push(cb);
+    });
   }
 
   update4ws(ws){
@@ -109,8 +121,9 @@ export default class Link_mongo{
             id: this.id,
             set,
             collection: this.collection
-          }, r => {
-            r.item?ok(r.item):no();
+          }).then(r => {
+            ok();
+            //r.item?ok(r.item):no();
           });
         });
       }
@@ -123,7 +136,8 @@ export default class Link_mongo{
           id: this.id,
           set,
           collection: this.collection
-        }, r => {
+        }).then(r => {
+          console.log(r);
           r.item?ok(r.item):no();
         });
       });
@@ -166,8 +180,13 @@ export default class Link_mongo{
       this.load(item => {
         this.constructor.servers.connect(Cfg.api).then(ws => {
           ws.upload(data, file => {
+            console.log(file);
             if(!item.file)
-              this.set({file: file.id}).then(ok);
+              this.set({file: file.id}).then(r => {
+                console.log(r);
+
+                ok(r);
+              });
             else
               ok(file);
           }, {
@@ -192,8 +211,8 @@ export default class Link_mongo{
     });
   }
 
-  add(itm){
-    console.trace(itm);
+  add(itm, extra){
+    if(!extra) extra = {};
     return new Promise((ok, no) => {
       this.load(() => {
         if(typeof itm.children == 'function'){
@@ -209,14 +228,17 @@ export default class Link_mongo{
         }
         else{
           var item = $.extend({}, this.filter, itm);
-          this.W({cmd: 'save', item, collection: this.collection}).then(r => {
-            let link = Link(this.protocol +'://'+ this.domain + '/' + this.collection + '#' + r.item.id);
+          const collection = extra.collection || this.collection;
+          this.W({cmd: 'save', item, collection}).then(r => {
+            let link = Link(this.protocol +'://'+ this.domain + '/' + collection + '#' + r.item.id);
             link.item = r.item;
-
+            
+            var ur = (this.collection == collection)?r.item.id:link.url;
+            
             if(this.item.children)
-              this.item.children.push(r.item.id);
+              this.item.children.push(ur);
             else
-              this.item.children = [r.item.id];
+              this.item.children = [ur];
 
             this.set('children', this.item.children);
             ok(link);
@@ -237,6 +259,10 @@ export default class Link_mongo{
     if(itm){
       if(itm instanceof Promise)
         return itm.then(item => cb(item));
+
+      if(!links[itm.id])
+        links[itm.id] = this;
+
       return cb(itm);
     }
 
@@ -258,6 +284,9 @@ export default class Link_mongo{
 
         if(account.user && account.user.item)
            this.own = !!(r.item.owner == account.user.item.owner);
+        
+        if(!links[r.id])
+          links[r.id] = this;
 
         cb(r.item);
         k(r.item);
@@ -335,6 +364,7 @@ export default class Link_mongo{
         return;
       }
       */
+      if(!item) return;
 
       var list = item.children || item.items || [];
       var links = [];
@@ -354,7 +384,7 @@ export default class Link_mongo{
           if(!lnk) return;
           
           let link = (lnk.indexOf('://') + 1)?
-            L(lnk):
+            Link(lnk):
             Link(this.protocol +'://'+ this.domain + '/' + this.collection + '#' + lnk);
 
           if(link.id && items[link.id])
@@ -375,3 +405,15 @@ export default class Link_mongo{
     });
   }
 }
+
+document.addEventListener('ws.cmd.change', ev => {
+    const d = ev.detail;
+    const link = links[d.m.id];
+    if(!link.item) return;
+    if(link.collection == 'chats') return;
+
+    Object.assign(link.item, d.m.fields);
+    
+    link.cbs.forEach(cb => cb(d.m.fields));
+});
+      

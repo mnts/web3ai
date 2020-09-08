@@ -1,0 +1,41 @@
+{
+  "entrypoint": "index.html",
+  "shell": "polymer_includes.js",
+  "fragments": [],
+  "sources": [
+    "index.html",
+    "polymer_includes.js"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "manifest.json",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/**"
+  ],
+  "builds": [
+    {
+      "name": "pnl",
+      "browserCapabilities": [
+        "es2015",
+        "push"
+      ],
+      "js": {
+        "minify": true,
+        "compile": false,
+        "transformModulesToAmd": true
+      },
+      "css": {
+        "minify": true
+      },
+      "html": {
+        "minify": false
+      },
+      "bundle": {
+        "inlineScripts": false
+      },
+      "addServiceWorker": false,
+      "addPushManifest": true,
+      "preset": "es6-unbundled"
+    }
+  ],
+  "moduleResolution": "node"
+}

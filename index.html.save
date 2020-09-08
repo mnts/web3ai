@@ -1,0 +1,242 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>Web3AI</title>
+
+	<link rel="manifest" href="./app.json">
+	<meta name="theme-color" content="#2F3BA2" />
+
+	<meta name="description" content="Platform for distributable WEB3 apps"/>
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	
+	<meta name="keywords" content="Storytelling, writer, artist, african, africa, storyteller, story, african fantasy, african fables, folklore, illustrator, graphic artist, african history, african marketplace, publisher, myths, african creatives, african art, les histores africain, african entertainment, calligrapher, translators, animators, african comics, grand old tales, african fiction, african stories, les nouvel africain, les romans africain">
+
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+
+	<link href="/design.css" rel="stylesheet" type="text/css">
+	
+	<link href="/design/logo.png" rel="shortcut icon" type="image/png">
+
+	<base target="_blank">
+	
+	<script src="/init.js" type='module'></script>
+	<script src="/config.js"></script>
+	<script src="/Lang.js"></script>
+	<script src="/src/index.js" type='module'></script>
+	<script src="/src/layout.js" type='module'></script>
+
+	<!-- Browserify Libraries --
+	<script src="./lib/vendor.js"></script>
+	<script src="./lib/the-graph.js"></script>
+
+
+	<script src="/libs/address.jquery.js"></script>
+
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Abril+Fatface' type="text/css">
+	-->
+
+	<!--<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+	<script src="/lib/gun.js"></script>
+	<script src="/lib/gun_load.js"></script>
+	<script src="/polymer-extra.js"></script>
+	<script src="/npm_bundle.js"></script>
+
+	<script src="/config.js"></script>
+	<script src="./init.js"></script>
+	<script src="/setup.js"></script>
+	-->
+	
+	
+
+
+	<!--
+	<script src="/bower_components/web3/dist/web3.min.js"></script>
+	<script src="node_modules/svg.js/dist/svg.min.js"></script>
+	<script src="lib/svg.draggy.min.js"></script>
+	<script src="lib/svg.connectable.min.js"></script>
+	<script src="/node_modules/blockstack/dist/blockstack.js"></script>
+	-->
+
+
+</head>
+
+<body spellcheck="false">
+	<div id="modal"></div>
+
+	<pineal-layout id='layout'>
+		<div id='navigation-side' class='side inside'></div>
+		<fractal-head id='head' logo='/design/logo.png'>
+			<div slot='title'></div>
+			
+			<div slot='center' id='menu-icons'>
+                		<a href='#map' class='fa fa-map'></a>
+                		<a href='#chats' class='fa fa-comments onlyMobile onlyAcc'></a>
+			</div>
+
+                        <div id='owner'></div>
+        
+                        <div id='head-buttons'>
+                                <div class="info">
+                                        <div id='site-stats'>
+                                        </div>
+
+                                        <div id='account-stats'>
+                                                <div id='account-title'></div>
+                                                <div id='account-desc'></div>
+                                        </div>
+                                </div>
+                                <button id='account-icon' title='Auth'></button>
+                        </div>
+		</fractal-head>
+        
+		<fractal-body id="body" class="body apps" logo="ipfs://QmdXzfxbfyXT1aAuP7AifC1PEwxh64UJHVjnKgeZrycki6">
+			<div id="home"  class="app selected notab passion">
+			    <div class='cover'>
+				    <h1>Bring your vision into reality for everybody</h1>			<a target="_blank" href="https://paypal.me/mntas/14" style="margin: 20px;" class="button">Donate to StartUp</a>
+				</div>
+
+				<br/>
+
+				<fractal-slide>
+					<div class="pin-box">
+						<img src="/design/logo.png" alt="brn" style="object-fit: contain;">
+						<article>
+							<h2>Priorities</h2>
+							<h5>Build WEB3 apps for community on this framework</h5>
+							<h5>Entangle collective AI branches with cryptocurrency</h5>
+							<h5>Liberate financial power for our natural rights</h5>
+						</article>
+					</div>
+					
+					<div class="pin-box">
+						<img src="/img/med.png" alt="brn" style="object-fit: contain;">
+						<article>
+							<h2>Filosofy</h2>
+							<h5>Everything is entangled in different frequencies</h5>
+							<h5>The more connected we are the better AI we make</h5>
+							<h5>Evolution is about cooperation in natural ways</h5>
+						</article>
+					</div>
+
+					<div class="pin-box">
+						<img src="/img/coop.png" alt="brn" style="/* background-image: var(--bg-grad); */object-fit: contain;">
+						<article>
+							<h2>Cooperation</h2>
+							<h5>Building PWAs for startups and online business</h5>
+							<h5>Distributing modules by extending our resonace</h5>
+							<h5>Receiving investments to transcend the flow</h5>
+						</article>
+					</div>
+
+					<div class="pin-box">
+						<img src="/img/lap.png" alt="brn" style="width: 134px;">
+						<article>
+							<h2>Technology</h2>
+							<h5>Combo of Polymer UI, many OS & node_modules</h5>
+							<h5>IPFS, Gun.DB, DAT, BigChain / MongoDB, Gaia</h5>
+							<h5>Ethereum, Blockstack, Metamask, OpenAI, SSH</h5>
+						</article>
+					</div>
+
+					<div class="pin-box" id='home-me'>
+						<pineal-user src="mntask@gmail.com" style="--icon-size: 100px; margin: 8px"></pineal-user>
+						<article>
+							<h2 class='click_user'>Mantas Kazlauskas</h2>
+							<h5>We are still starting and waiting for investors</h5>
+							<h5>Be part of eco-system and get your PWA ready</h5>
+							<h5><a href='/#mk' class='click_user'>Write to programmer</a> about what you wanna build</h5>
+						</article>
+					</div>
+				</fractal-slide>
+
+				<div style='text-align: center'>
+					<img src="/img/pineal.jpg" alt="pineal" style="max-width: calc(100vw - 3 * var(--padding));width: 632px;border-radius: 44px;/* display: block; */"/>
+
+					<ul style="display: inline-block;">
+						<li>Collective AI will amplify your business</li>
+						<li>Manage decentrealised system like neurons</li>
+						<li>Where developers can easily issue upgrades</li>
+						<li>And you can get them to join your business</li>
+						<li>Where power gets equality distributed to rise up</li>
+						<li>System is not attached to any particular server</li>
+						<li>Every user participates in rehosting the network</li>
+						<li>All focused more on WEB components than just pages</li>
+						<li>In a way it's easy to mold the soul of your site</li>
+						<li>With thousands of already built open source modules</li>
+						<li>Where community can rate those to ensure security</li>
+						<li>In competitive environment to resonate with investors</li>
+						<li>With crypto payments and OpenAI being plugged in</li>
+					</ul>
+				</div>
+			</div>
+
+			<div id='map' class='app'></div>
+		</fractal-body>
+
+		<pineal-chats id='chats' class='onlyAcc'></pineal-chats>
+
+		<div id='account-side' class='side right fixed'>
+		    <!--
+		    <div style='text-align: center'>
+				<div 
+					class="fb-login-button" 
+					data-onlogin='Acc.FB.getLoginStatus()'
+					data-size="medium" 
+					data-button-type="continue_with" 
+					data-layout="rounded" 
+					data-auto-logout-link="false"
+					data-use-continue-as="true" 
+					data-width=""
+				></div>
+            </div>
+            -->
+		</div>
+	</pineal-layout>
+
+	<div style='display: none'>
+		<pineal-colors id='colors' height='64' width='256'></pineal-colors>
+		
+		<div id='auth-box'>
+			<pineal-auth/>
+		</div>
+
+
+		<div id='account-box'>
+			<pineal-account/>
+		</div>
+
+		<div id='node-contextmenu'>
+			<button>Something is sooo coool</button>
+		</div>
+	</div>
+
+	<template id='account-setup-template'>
+		<div id='account-setup' class='modal'>
+			<pineal-site domain='ego.bid'/>
+		</div>
+	</template>
+
+	<div id='progress' class="pie-wrapper progressll-90">
+		<div id="progress-label">00%</div>
+		<div id="progress-tasks">~0</div>
+		<div id="progress-cancel">x</div>
+		<div class="pie">
+			<div class="left-side half-circle"></div>
+			<div class="right-side half-circle"></div>
+		</div>
+	</div>
+
+	<!--<script src="./libs/ipfs.js"></script>-->
+	<script async src='/lib/analytics.js'></script>
+	<!-- End Google Analytics -->
+	<script>
+	/*
+		if('serviceWorker' in navigator) {
+		  navigator.serviceWorker
+					  .register('/sw.js')
+					  .then(function() { console.log("Service Worker Registered"); });
+		}
+		*/
+	</script>
+
+</body>
+</html>

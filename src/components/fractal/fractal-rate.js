@@ -2,6 +2,7 @@
 import account from '../../account.js';
 import servers from '../../data/servers.js';
 var url = new URL(import.meta.url);
+import Link from '../../data/Link.js';
 
 var myReviews = {};
 

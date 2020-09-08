@@ -5,6 +5,7 @@ import servers from '../../data/servers.js';
 const select = q => document.querySelector(q);
 import router, {initial} from '../../services/router.js';
 import {find2define, define} from '../../services/components.js';
+import Link from '../../data/Link.js';
 var url = new URL(import.meta.url);
 
 
@@ -23,7 +24,7 @@ class element extends HTMLElement{
         #list{
           display: grid;
           padding: 4px;
-          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(var(--item-width, 260px), 1fr));
 	       grid-gap: 1rem;
         }
 
@@ -43,7 +44,8 @@ class element extends HTMLElement{
           <slot></slot>
         </div>
 
-        <button id='plus' hidden title='Create new item'>+</button>
+        <button id='plus' title='Create new item'>+</button>
+        <div id='loading'></div>
       </main>
     `;
   }
@@ -73,10 +75,12 @@ class element extends HTMLElement{
       collection: 'stories',
       query: {}
     };
+
+    this.limit = 12;
     
     this.init();
   }
-
+  
   init(){
    // this.shadowRoot.adoptedStyleSheets = [styleSheets.fontAwesome];
     this.shadowRoot.innerHTML = this.constructor.template;
@@ -84,17 +88,18 @@ class element extends HTMLElement{
     this.$('#plus').addEventListener('click', ev => {
       this.create();
     }, false);
-
-
-    console.log(account)
+    
     account.authenticated.then(() => {
       let user = account.user;
 
       $.extend(this.item_template, {owner: user.email});
 
-      console.log(!user.super, ' * ', user.type != 'publisher');
-      this.$('#plus').hidden = (!user.super && user.type != 'publisher');
-      
+      /*
+      this.$('#plus').hidden = (Cfg.publisher_check)?
+        (!(user.super || user.type == 'publisher')):
+        false;
+      */
+
       //this.load();
     });
 
@@ -122,10 +127,10 @@ class element extends HTMLElement{
         if(Cfg.story.pub_tid){
             Ws.send({
                 cmd: 'email',
-                name: 'MKA',
+                name: user.name || user.item.title,
                 tid: Cfg.story.pub_tid,
                 to: user.email || user.owner,
-                subject: 'Story was published - '+ link.item.title,
+                subject: 'Your Story is Live - '+ link.item.title,
                 text: 'Heyy, this stuff should work!!',
                 context: {
                   item: link.item,
@@ -139,13 +144,17 @@ class element extends HTMLElement{
 
 
     this.dispatchEvent(new CustomEvent("defined"));
-    console.log(new CustomEvent("defined"));
+
   }
 
 
   connectedCallback(){
     //let src = this.getAttribute('src');
     //if(src) this.setSrc();
+    //super.firstUpdated();
+    customElements.whenDefined('fractal-body').then(ev => {
+      this.listen_scroll();
+    });
   }
 
   publish(item){    
@@ -176,6 +185,15 @@ class element extends HTMLElement{
               link.item = r.item;
 
           ok(link);
+
+          var event = new CustomEvent("published", {
+            bubbles: true,
+            detail: {
+              item: r.item, url
+            }
+          });
+
+          this.dispatchEvent(event);
         });
       });
     });
@@ -245,27 +263,42 @@ class element extends HTMLElement{
         }
         else
           this.link.children(links => {
-            this.placeLinks(links);
+            var list = this.$('#list');
+
+            while(this.firstChild){
+              this.removeChild(this.firstChild);
+            };
+
+            links.forEach(link => this.append(link));
           });
       });
     });
   }
 
-  filtrate(filter){
+  filtrate(filter, cf = {}){
     this.filter = _.extend({}, this.filter, filter);
+    var sort = this.filter.sort || {time: -1};
+
+    var query = Object.assign({}, this.filter.query);
+
+    var q = {
+      collection: this.filter.collection,
+      cmd: 'load',
+      sort,
+      filter: query,
+      limit: 48
+    };
+
+    if(cf.skip) q.skip = cf.skip;
+
     return new Promise((ok, no) => {
       servers.connect(Cfg.api).then(ws => {
-        ws.send({
-          collection: this.filter.collection,
-          cmd: 'load',
-          sort: this.filter.sort || {time: -1},
-          filter: this.filter.query || {},
-        }, r => {
+        ws.send(q, r => {
           if(!r.items) return no();
           
           let links = [];
           r.items.map(item => {
-            let domain = this.filter.query.domain || this.filter.server;
+            let domain = query.domain || this.filter.server;
             var url = 'mongo://'+domain+'/'+this.filter.collection+'#'+item.id,
                 link = Link(url);
 
@@ -273,11 +306,64 @@ class element extends HTMLElement{
 
             links.push(link);
           });
+          
+          var list = this.$('#list');
 
-          this.placeLinks(links);
+          if(!cf.skip) while(this.firstChild){
+            this.removeChild(this.firstChild);
+          };
+
+          links.forEach(link => this.append(link));
+
           ok(links);
         });
       });
+    });
+  }
+
+  load_more(){
+    if(this.classList.contains('loading_more')) return;
+    this.classList.add('loading_more');
+
+    const count = this.selectAll('.item').length
+
+    this.filtrate({}, {skip: count}).then(links => {
+      this.classList.remove('loading_more');
+      if(!links.length) this.classList.add('loaded_all');
+    });
+  }
+
+  listen_scroll(){
+    /*
+    var parents = Array.prototype.slice.call($(this).parents());
+
+    parents.unshift(this);
+
+    var scrollable;
+    for (let i = 0; i < parents.length; i++){
+      let parent = parents[i];
+
+      let style = getComputedStyle(parent);
+
+      console.dir(style, style.overflowY);
+    }*/
+    
+    var container;
+    if(this.classList.contains('app'))
+      container = this;
+    else
+    if(this.parentElement.select)
+      container = this.parentElement.select('#list');
+
+
+    
+    if(!container) container = document.querySelector('#body').select('main');
+
+    if(container) container.addEventListener('scroll', ev => {
+      var cont = ev.path[0];
+
+      if(cont.scrollHeight - cont.scrollTop - cont.clientHeight < 1)
+        this.load_more();
     });
   }
 
@@ -311,6 +397,14 @@ class element extends HTMLElement{
 
 
   create(){
+    if(account.gate()) return;
+    
+    if(
+      Cfg.acc.publisher_check && account.user && 
+      !(account.user.super || account.user.type == 'publisher')
+    )
+      return alert('Only for publishers');
+    
     var dom_tag = this.getAttribute('dom') || 'fractal-item';
     define(dom_tag);
     
@@ -322,21 +416,10 @@ class element extends HTMLElement{
     select('#body').scroll(0, 0);
   }
 
-  placeLinks(links){
-    var list = this.$('#list');
-    while(this.firstChild){
-      this.removeChild(this.firstChild);
-    };
-
-    links.forEach(link => this.append(link));
-
-
-  }
-
-
-  firstUpdated(ch){
-    super.firstUpdated(ch);
-
+  selectAll(selector){
+   return Array.prototype.slice.call(
+        document.querySelectorAll(selector)
+    );
   }
 
   select(selector){

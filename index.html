@@ -1,12 +1,17 @@
 <html><head>
 	<meta charset="utf-8">
-	<title>Pineal</title>
+	<title>Construct Web3 over AI</title>
+	<script type="application/javascript">
+  		(function(b,o,n,g,s,r,c){if(b[s])return;b[s]={};b[s].scriptToken="Xy0xOTU5NDM1MDIw";b[s].callsQueue=[];b[s].api=function(){b[s].callsQueue.push(arguments);};r=o.createElement(n);c=o.getElementsByTagName(n)[0];r.async=1;r.src=g;r.id=s+n;c.parentNode.insertBefore(r,c);})(window,document,"script","https://cdn.oribi.io/Xy0xOTU5NDM1MDIw/oribi.js","ORIBI");
+	</script>
 
-	<link rel="manifest" href="./manifest.json">
+	<link rel="manifest" href="./app.json">
 	<meta name="theme-color" content="#2F3BA2" />
+
+	<meta name="description" content="Crypto currency driven system that resonates intentions of collective to optimize WEB development process"/>
 	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
-	
-	<meta name="keywords" content="Storytelling, writer, artist, african, africa, storyteller, story, african fantasy, african fables, folklore, illustrator, graphic artist, african history, african marketplace, publisher, myths, african creatives, african art, les histores africain, african entertainment, calligrapher, translators, animators, african comics, grand old tales, african fiction, african stories, les nouvel africain, les romans africain">
+	<meta property="og:image" content="https://web3ai.com/img/pineal.jpg">
+	<meta name="keywords" content="ai, web3, crypto, currency, development, blockchain, cryptocurrency, ethereum, bitcoin, pwa, social">
 
 	<link href="/design/index.css" rel="stylesheet" type="text/css">
 
@@ -18,138 +23,155 @@
 	
 	<script src="/init.js" type='module'></script>
 	<script src="/config.js"></script>
+	<script src="/Lang.js"></script>
 	<script src="/src/index.js" type='module'></script>
 	<script src="/src/layout.js" type='module'></script>
-
-	<!-- Browserify Libraries --
-	<script src="./lib/vendor.js"></script>
-	<script src="./lib/the-graph.js"></script>
-
-
-	<script src="/libs/address.jquery.js"></script>
-
-	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Abril+Fatface' type="text/css">
-	-->
-
-	<!--<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
-	<script src="/lib/gun.js"></script>
-	<script src="/lib/gun_load.js"></script>
-	<script src="/polymer-extra.js"></script>
-	<script src="/npm_bundle.js"></script>
-
-	<script src="/config.js"></script>
-	<script src="./init.js"></script>
-	<script src="/setup.js"></script>
-	-->
-	
-	
-
-
-	<!--
-	<script src="/bower_components/web3/dist/web3.min.js"></script>
-	<script src="node_modules/svg.js/dist/svg.min.js"></script>
-	<script src="lib/svg.draggy.min.js"></script>
-	<script src="lib/svg.connectable.min.js"></script>
-	<script src="/node_modules/blockstack/dist/blockstack.js"></script>
-	-->
-
-
 </head>
 
-<body spellcheck="false">
+<body spellcheck="false" class='scroll_top'>
 	<div id="modal"></div>
 
 	<pineal-layout id='layout'>
 		<div id='navigation-side' class='side inside'></div>
 		<fractal-head id='head' logo='/design/logo.png'>
-			<div slot='title'>var.best</div>
+			<div slot='title'></div>
 			
-			<div id='head-buttons'>
-				<div class="info">
-					<div id='site-stats'>
-						
-					</div>
-
-					<div id='account-stats'>
-						<div id='account-title'></div>
-						<div id='account-desc'></div>
-					</div>
-				</div>
-				<button id='account-icon' title='Auth'></button>
+			<div slot='center' id='menu-icons'>
+                		<a href='#map' class='fa fa-map'></a>
+                		<a href='#chats' class='fa fa-comments onlyMobile onlyAcc'></a>
 			</div>
+
+                        <div id='owner'></div>
+        
+                        <div id='head-buttons'>
+                                <div class="info">
+                                        <div id='site-stats'>
+                                        </div>
+
+                                        <div id='account-stats'>
+                                                <div id='account-title'></div>
+                                                <div id='account-desc'></div>
+                                        </div>
+                                </div>
+                                <button id='account-icon' title='Auth'></button>
+                        </div>
 		</fractal-head>
-
+        
 		<fractal-body id="body" class="body apps" logo="ipfs://QmdXzfxbfyXT1aAuP7AifC1PEwxh64UJHVjnKgeZrycki6">
-			<div id="home"  class="app selected notab passion">
-				<!--
-				<pineal-gallery style='height: 128px' view='carousel' src='mongo://var.best/files'></pineal-gallery>
-				<pix8-carousel name="fractal"></pix8-carousel>
-				
-				<fractal-htm src='fs://localhost/home/about.htm'>
-					<h2>Design your page like you want</h2>
-					<h3>!? Text here is just an example with a little info about how this thing works, now you can replace it all</h3>
-				</fractal-htm>
-				
-				<pineal-folder src="local-storage://topSites"></pineal-folder>
-				-->
-				<catalogem-items class='main_catalo' id='catalogem-stories' dom='ilunafriq-story'>
-				</catalogem-items>
-				
-				<fractal-htm src='fs://localhost/home/services.htm' class="passion">				
-					<div style="/* display: flex; *//* flex-wrap: wrap; */padding: calc(var(--padding) /4) var(--padding);">
-						<div class="pin-box">
-							<img src="/img/drag.jpg" alt="brn">
-							<article>
-								<h2>Drag&amp;drop from left side tree-menu</h2>
-								<h5>
-									Basicly you can control every aspect on the tree menu.&nbsp;<br>
-									Grab an element, sort it or put it here to get it expanded.<br>
-									Right mouse click or hold on it to see extra options.<br>
-								</h5>
-							</article>
-						</div>
+			<div id="home" class="app selected notab passion" style='margin-top: calc(-1 * var(--header-height))'>
+			    <div class='cover'>
+				<h1 style="max-width: 700px;text-align: center;">Construct WEB3 above AI</h1>
+				<h3 style="display: none">Crypto currency driven system that resonates intentions of collective to optimize WEB development process</h3>
+				<input id="domain" placeholder="Your Domain Name"/>
+				<button id="launch">Launch</button>
+			    </div>
 
-						<div class="pin-box">
-							<img src="/img/wysiwyg.png" alt="brn" style="background-image: var(--bg-grad);  object-fit: contain;"/>
-							<article>
-								<h2>modular WYSIWYG editor</h2>
-								<h5>
-									Drop or paste rich text from WWW areas to reuse it fast.<br>
-									Right mouse click <i>inspect element or&nbsp;</i><u>(F12)</u><b> </b>to edit more<br/>
-									Drop stuff here from tree-area or your local file explorer.
-								</h5>
-							</article>
-						</div>
+				<br/>
 
-						<div class="pin-box">
-							<img src="/img/chained.png" alt="brn">
-							<article>
-								<h2>* browser of decentralised networks</h2>
-								<h5>Here in pineal address box you can surf stuff also from<br/> IPFS, DAT, FS, Chrome-storages, MongoDB, Gaia, etc..&nbsp;</h5>
-								<a class="button" href="https://ipfs.io" target="_blank" contenteditable="false">Install IPFS</a>
-								<a class="button" href="https://datproject.org" target="_blank">DAT</a>
-								<a class="button" href="https://blockstack.org/" target="_blank">Blockstack</a>
-							</article>
-						</div>
+				<fractal-slide>
+					<div class="pin-box">
+						<img src="/design/logo.png" alt="brn" style="object-fit: contain;">
+						<article>
+							<h2>Priorities</h2>
+							<pre>
+								Build WEB3 apps for community on this framework
+								Entangle collective AI branches with cryptocurrency
+								Liberate financial power for our natural rights
+							</pre>
+						</article>
+					</div>
+					
+					<div class="pin-box">
+						<img src="/img/med.png" alt="brn" style="object-fit: contain;">
+						<article>
+							<h2>Filosofy</h2>
+							<pre>
+								Everything is entangled in different frequencies
+								The more connected we are the better AI we make
+								Evolution is about cooperation in natural ways
+							</pre>
+						</article>
 					</div>
 
-					<h2>* &gt; Up-coming features</h2>
-					<ul>
-						<li>Improved WYSYWYG editor - more buttons, ability to add tables, boxes, galleries, links, files..</li>
-						<li>Create new pages and folders, change every single element you see here</li>
-						<li>Edit programming code of every part right here within same pineal application</li>
-						<li>Add maps, neural schemes, photos, drawings and more..</li>
-						<li>Use elements created by community</li>
-						<li>Sharing views, texts, bookmarks, images.. making it publicly available over HTTP with SEO support</li>
-						<li>Authentification over centralised servers, blockstack, FB, metamask and so on.. all different type accounts could be combined.</li>
-						<li>Over ethereum community could pay each other for certain elements they share and meaning they combine</li>
-						<li>Ask for more at mntask@gmail.com</li>
+					<div class="pin-box">
+						<img src="/img/coop.png" alt="brn" style="/* background-image: var(--bg-grad); */object-fit: contain;">
+						<article>
+							<h2>Cooperation</h2>
+							<pre>
+								Building PWAs for startups and online business
+								Distributing modules by extending our resonace
+								Receiving investments to transcend the flow
+							</pre>
+						</article>
+					</div>
+
+					<div class="pin-box">
+						<img src="/img/lap.png" alt="brn" style="width: 134px;">
+						<article>
+							<h2>Technology</h2>
+							<pre>
+								Combo of Polymer UI, many OS & node_modules
+								IPFS, Gun.DB, DAT, BigChain / MongoDB, Gaia
+								Ethereum, Blockstack, Metamask, OpenAI, SSH
+							</pre>
+						</article>
+					</div>
+
+					<div class="pin-box" id='home-me'>
+						<pineal-user src="mntask@gmail.com" style="--icon-size: 100px; margin: 8px"></pineal-user>
+						<article>
+							<h2 class='click_user'>Mantas Kazlauskas</h2>
+							<pre>
+								We are still starting and waiting for investors
+								Be part of eco-system and get your PWA ready
+								<a href='/#mk' class='click_user'>Write to programmer</a> about what you wanna build
+							</pre>
+						</article>
+					</div>
+				</fractal-slide>
+
+				<div style='text-align: center'>
+					<img src="/img/pineal.jpg" alt="pineal" style="max-width: calc(100vw - 3 * var(--padding));width: 632px;border-radius: 32px;/* display: block; */"/>
+
+					<ul style="display: inline-block;">
+						<li>Distribute your system within IPFS</li>
+						<li>Collective AI will amplify your business</li>
+						<li>Manage decentrealised system like neurons</li>
+						<li>Where developers can easily issue upgrades</li>
+						<li>And you can get them to join your business</li>
+						<li>Where power gets equality distributed to rise up</li>
+						<li>System is not attached to any particular server</li>
+						<li>Every user participates in rehosting the network</li>
+						<li>With an ability to affiliate funding on every area</li>
+						<li>All focused more on WEB components than just pages</li>
+						<li>With thousands of already built open source modules</li>
+						<li>Where community can rate those to ensure security</li>
+						<li>In competitive environment to resonate with investors</li>
+						<li>With crypto payments and OpenAI being plugged in</li>
 					</ul>
-				</fractal-htm>
+				</div>
 			</div>
+
+			<div id='map' class='app'></div>
 		</fractal-body>
 
+		<pineal-chats id='chats' class='onlyAcc'></pineal-chats>
+
 		<div id='account-side' class='side right fixed'>
+		    <!--
+		    <div style='text-align: center'>
+				<div 
+					class="fb-login-button" 
+					data-onlogin='Acc.FB.getLoginStatus()'
+					data-size="medium" 
+					data-button-type="continue_with" 
+					data-layout="rounded" 
+					data-auto-logout-link="false"
+					data-use-continue-as="true" 
+					data-width=""
+				></div>
+            </div>
+            -->
 		</div>
 	</pineal-layout>
 
@@ -176,7 +198,7 @@
 		</div>
 	</template>
 
-	<div id='progress' class="pie-wrapper progress-90">
+	<div id='progress' class="pie-wrapper progressll-90">
 		<div id="progress-label">00%</div>
 		<div id="progress-tasks">~0</div>
 		<div id="progress-cancel">x</div>
@@ -198,5 +220,6 @@
 		}
 		*/
 	</script>
+
 </body>
 </html>

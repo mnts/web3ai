@@ -15,18 +15,18 @@ import servers from './servers.js';
 
 Link_mongo.servers = Link_fs.servers = Link_http.servers = servers;
 
-var links = {
+const links = {
 
 };
 
-window.Link = window.L = function(u){
+function Link(u){
   if(typeof u == 'string'){
     var url = u;
 
     if(url[0] == '/'){
       document.location.origin + url;
     }
-
+    
     if(links[url])
       return links[url];
 
@@ -76,3 +76,7 @@ window.Link = window.L = function(u){
     }
   }
 };
+
+export default Link;
+
+//window.Link = window.L = Link;

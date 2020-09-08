@@ -1,0 +1,101 @@
+#owner{
+	/* display: inline-flex; */
+	flex-grow: 1;
+	top: 0;
+	text-align: center;
+}
+
+#owner > pineal-user{
+	height: 50px;
+	width: 50px;
+	/* margin-top: 80px; */
+}
+
+.home.scroll_top128 #navigation-side:not(.opened) ~ #head #owner{
+	top: 64px;
+	left: 0;
+	/* height: 128px; */
+	top: 75px;
+	left: 50%;
+	z-index: 12;
+	text-align: center;
+	transform: translate(-50%, 0);
+}
+
+#owner > fractal-rate{
+	display: inlineblock;
+	text-align: center;
+	width: 145px;
+	vertical-align: middle;
+	/* margin: 2px auto; */
+}
+
+fractal-subscribe{
+	display: block;
+}
+
+#owner_seeds {
+    background: transparent url(/img/seeds.png) no-repeat;
+    background-size: 16px;
+    background-position: 3px center;
+    padding: 4px 4px 3px 23px;
+    display: block;
+    margin: 2px auto;
+    text-shadow: 0 0 3px #d2d2d2;
+    background-color: #ffffffb8;
+    border-radius: 4px;
+    color: black;
+    width: fit-content;
+    text-align: left;
+}
+
+
+.home.scroll_top128 #navigation-side:not(.opened) ~ #head #owner{
+	position: fixed;
+}
+
+
+
+.home.scroll_top128 #navigation-side:not(.opened) ~ #head #owner > pineal-user{
+	width: 256px;
+	height: 256px;
+	margin: 0;
+}
+
+
+body:not(.scroll_top128)  #owner,
+#navigation-side.opened ~ #head #owner{
+	overflow: hidden;
+	height: calc(var(--header-height) - 4px);
+}
+
+#owner-title{
+	display: block;
+	color: white;
+	padding: 0;
+	margin: 8px 0;
+	text-shadow: 0 0 6px black;
+}
+
+body:not(.scroll_top128) #owner-title,
+body:not(.home) #owner-title,
+#navigation-side.opened ~ #head #owner-title{
+	display: inline-block;
+	margin: 0 6px;
+	vertical-align: middle;
+	font-size: 26px;
+}
+
+
+#cover{
+	height: 500px;
+	background: #d8d8d8;
+}
+
+#navigation-side{
+	margin: 75px 0 0px;
+	height: calc(100vh - 90px);
+	box-shadow: 0 0 15px #979797;
+	border-radius: 8px;
+	transform: translate(-8px, 0);
+}

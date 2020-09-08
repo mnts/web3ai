@@ -34,7 +34,7 @@
 	overflow-x: auto;
 	overflow-y: hidden;
 	white-space: nowrap;
-	/* background-color: rgba(195, 195, 195, 0.8); */
+	background-color: rgba(195, 195, 195, 0.8);
 	border-radius: 6px;
 }
 
@@ -88,3 +88,4 @@ article > p{
 	width: 65px;
 	font-family: FontAwesome;
 }
+

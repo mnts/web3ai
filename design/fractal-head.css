@@ -44,6 +44,8 @@
   bottom: -4px;
   left: 0;
   right: 0;
+  opacity: 1;
+  transition: opacity .4s;
   /* display: none; */
 }
 

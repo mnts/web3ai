@@ -2,10 +2,12 @@
 import account from '/src/account.js';
 import {fix4name} from '/src/utilities/item.js';
 import servers from '/src/data/servers.js';
+import {observe, modal} from '/src/services/modal.js';
 import {find2define} from '/src/services/components.js';
 const select = q => document.querySelector(q);
 const J = NPM.urljoin;
 const extend = NPM.extend;
+import Link from '../../data/Link.js';
 
 import {LitElement, html, css} from "/node_mod/lit-element/lit-element.js";
 import {setPassiveTouchGestures} from "/node_mod/@polymer/polymer/lib/utils/settings.js";
@@ -227,10 +229,12 @@ export default class Component extends LitElement{
   attributeChangedCallback(name, oldVal, newVal){
     super.attributeChangedCallback(name, oldVal, newVal);
 
-    if(name == 'src'){
+    if(name == 'src')
       this.load_src();
-    }
     
+    if(name == 'activated'){
+       modal.classList[this.activated?'add':'remove']('on');
+    }
   }
 
   load_src(){
@@ -287,7 +291,7 @@ export default class Component extends LitElement{
 
 
   activate(ev){
-    if(!account.user) return $('#account-icon').click();
+    if(!account.user && Cfg.story.only_acc) return $('#account-icon').click();
     if(this.activated || this.classList.contains('toCreate')) return;
     var title = this.select('#title');
     if(!title) return;
@@ -311,6 +315,12 @@ export default class Component extends LitElement{
       cancelable: false,
       composed: true
     }));
+
+    modal.addEventListener('close', ev => {
+      this.deactivate();
+    }, {
+      once: true
+    });
   }
 
   do_publish(ev){
@@ -390,6 +400,7 @@ export default class Component extends LitElement{
   }
 
   deactivate(){
+    if(!this.activated) return;
     this.activated = false;
     this.dispatchEvent(new CustomEvent("deactivate", {
       detail: {item: this.item},

@@ -1,5 +1,6 @@
 //import {styleSheets} from '../styling.js';
 import servers from '../../data/servers.js';
+import Link from '../../data/Link.js';
 
 var url = new URL(import.meta.url);
 
@@ -102,6 +103,9 @@ class Component extends HTMLElement{
       console.log(this, this.parentNode);
       gallery.saveOrder();
     });
+
+    var src = this.getAttribute('src');
+    if(src) this.loadImg(src);
   }
 
   href(){
@@ -136,6 +140,7 @@ class Component extends HTMLElement{
   }
 
   loadImg(src){
+    console.log(src);
      this.link = Link(src);
       
 

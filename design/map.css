@@ -1,0 +1,34 @@
+#map .customMarker.me{
+	z-index: 60;
+}
+
+#map .customMarker.user{
+    width: 34px;
+    height: 34px;
+    margin-left: 0;
+    margin-top: 0;
+    margin-left: -16px;
+    margin-top: -16px;
+    border-radius: 50%;
+    background-color: transparent;
+    box-sizing: content-box;
+    padding: 1px;
+}
+
+#map .customMarker.user::after{
+	display: none;
+}
+
+#map .customMarker:not(.me) > pineal-user{
+	opacity: 0.1;
+	transition: opacity .5s;
+	width:  32px;
+	height: 32px;
+}
+
+
+#map .customMarker:not(.me) > pineal-user.online{
+	display: block;
+	opacity: 1;
+}
+

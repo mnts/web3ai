@@ -27,10 +27,7 @@ class element extends HTMLElement{
     this.shadowRoot.innerHTML = element.template;
 
     this.canvas = this.shadowRoot.querySelector('canvas');
-    console.log('Pineal-colors constructed');
-  
-    console.log('Pineal-colors connected', this);
-    this.canvas = this.shadowRoot.querySelector('canvas');
+    
     this.canvas.width = this.attributes.width.value;
     this.canvas.height = this.attributes.height.value;
 

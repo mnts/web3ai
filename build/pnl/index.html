@@ -1,0 +1,191 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>Pineal</title>
+
+	<link rel="manifest" href="./manifest.json">
+	<meta name="theme-color" content="#2F3BA2">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+
+	<link href="/design.css" rel="stylesheet" type="text/css">
+	
+	<link href="/design/logo.png" rel="shortcut icon" type="image/png">
+
+	<base target="_blank">
+
+	<script>(function(a){var b=a.babelHelpers={};b.interopRequireDefault=function(a){return a&&a.__esModule?a:{default:a}},b.interopRequireWildcard=function(a){if(a&&a.__esModule)return a;var b={};if(null!=a)for(var c in a)if(Object.prototype.hasOwnProperty.call(a,c)){var d=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(a,c):{};d.get||d.set?Object.defineProperty(b,c,d):b[c]=a[c]}return b.default=a,b}})("undefined"===typeof global?self:global);</script>
+<script>"use strict";(function(){function a(a,b,c){var d=a;if(d.state=b,d.stateData=c,0<d.onNextStateChange.length){var e=d.onNextStateChange.slice();d.onNextStateChange.length=0;for(var f,g=0,h=e;g<h.length;g++)f=h[g],f()}return d}function b(b){function d(){try{document.head.removeChild(f)}catch(a){}}var e=a(b,"Loading",void 0),f=document.createElement("script");return f.src=b.url,null!==b.crossorigin&&f.setAttribute("crossorigin",b.crossorigin),f.onload=function(){var a,b,f;void 0===r?(b=[],f=void 0):(a=r(),b=a[0],f=a[1]),c(e,b,f),d()},f.onerror=function(){g(b,new TypeError("Failed to fetch "+b.url)),d()},document.head.appendChild(f),e}function c(b,c,e){var f=d(b,c),g=f[0],h=f[1];return a(b,"WaitingForTurn",{args:g,deps:h,moduleBody:e})}function d(a,c){for(var e,f=[],g=[],i=0,j=c;i<j.length;i++){if(e=j[i],"exports"===e){f.push(a.exports);continue}if("require"===e){f.push(function(b,c,e){var f=d(a,b),g=f[0],i=f[1];h(i,function(){c&&c.apply(null,g)},e)});continue}if("meta"===e){f.push({url:!0===a.isTopLevel?a.url.substring(0,a.url.lastIndexOf("#")):a.url});continue}var l=k(n(a.urlBase,e),a.crossorigin);f.push(l.exports),g.push(l),"Initialized"===l.state&&b(l)}return[f,g]}function e(b){var c=a(b,"WaitingOnDeps",b.stateData);return h(b.stateData.deps,function(){return f(c)},function(a){return g(c,a)}),c}function f(b){var c=b.stateData;if(null!=c.moduleBody)try{c.moduleBody.apply(null,c.args)}catch(a){return g(b,a)}return a(b,"Executed",void 0)}function g(b,c){return!0===b.isTopLevel&&setTimeout(function(){throw c}),a(b,"Failed",c)}function h(a,b,c){var d=a.shift();return void 0===d?void(b&&b()):"WaitingOnDeps"===d.state?(!1,void h(a,b,c)):void i(d,function(){h(a,b,c)},c)}function i(a,b,c){switch(a.state){case"WaitingForTurn":return e(a),void i(a,b,c);case"Failed":return void(c&&c(a.stateData));case"Executed":return void b();case"Loading":case"WaitingOnDeps":return void a.onNextStateChange.push(function(){return i(a,b,c)});case"Initialized":throw new Error("All dependencies should be loading already before pressureDependencyToExecute is called.");default:throw new Error("Impossible module state: "+a.state);}}function j(a,b){switch(a.state){case"Executed":case"Failed":return void b();default:a.onNextStateChange.push(function(){return j(a,b)});}}function k(a,b){void 0===b&&(b="anonymous");var c=q[a];return void 0===c&&(c=q[a]={url:a,urlBase:m(a),exports:Object.create(null),state:"Initialized",stateData:void 0,isTopLevel:!1,crossorigin:b,onNextStateChange:[]}),c}function l(a){return v.href=a,v.href}function m(a){return a=a.split("?")[0],a=a.split("#")[0],a.substring(0,a.lastIndexOf("/")+1)}function n(a,b){return-1===b.indexOf("://")?l("/"===b[0]?b:a+b):b}function o(){return document.baseURI||(document.querySelector("base")||window.location).href}function p(){var b=document.currentScript;if(!b)return u;if(window.HTMLImports){var c=window.HTMLImports.importForElement(b);return c?c.href:u}var d=b.ownerDocument.createElement("a");return d.href="",d.href}if(!window.define){var q=Object.create(null),r=void 0,s=0,t=void 0,u=o();window.define=function(a,b){var d=!1;r=function(){return d=!0,r=void 0,[a,b]};var f=p(),g=document.currentScript&&document.currentScript.getAttribute("crossorigin")||"anonymous";setTimeout(function(){if(!1==d){r=void 0;var h=f+"#"+s++,i=k(h,g);i.isTopLevel=!0;var l=c(i,a,b);void 0===t?e(l):j(k(t),function(){e(l)}),t=h}},0)},window.define._reset=function(){for(var a in q)delete q[a];r=void 0,s=0,t=void 0,u=o()};var v=document.createElement("a")}})();</script>
+<script defer="">define(['./index.js']);</script>
+	<script defer="">define(['./src/layout.js']);</script>
+
+	<!-- Browserify Libraries --
+	<script src="./lib/vendor.js"></script>
+	<script src="./lib/the-graph.js"></script>
+
+
+	<script src="/libs/address.jquery.js"></script>
+
+	<link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Abril+Fatface' type="text/css">
+	-->
+
+	<!--<script src="https://cdn.jsdelivr.net/npm/gun/gun.js"></script>
+	<script src="/lib/gun.js"></script>
+	<script src="/lib/gun_load.js"></script>
+	<script src="/polymer-extra.js"></script>
+	<script src="/npm_bundle.js"></script>
+
+	<script src="/config.js"></script>
+	<script src="./init.js"></script>
+	<script src="/setup.js"></script>
+-->
+	
+	
+
+
+	<!--
+	<script src="/bower_components/web3/dist/web3.min.js"></script>
+	<script src="node_modules/svg.js/dist/svg.min.js"></script>
+	<script src="lib/svg.draggy.min.js"></script>
+	<script src="lib/svg.connectable.min.js"></script>
+	<script src="/node_modules/blockstack/dist/blockstack.js"></script>
+	-->
+
+
+</head>
+
+<body spellcheck="false">
+	<div id="modal"></div>
+
+	<pineal-layout id="layout">
+		<div id="navigation-side" class="side fixed"></div>
+		<fractal-head id="head" logo="/icon.png">
+			<div slot="title">var.best</div>
+			<pineal-tree id="menu" url="fs://spiritual.casa/menu" opened="0 1 topSites private menu" class="horizontal no_icons"></pineal-tree>
+
+			<div id="head-buttons">
+				<div class="info">
+					<div id="site-stats">
+						
+					</div>
+
+					<div id="account-stats">
+						<div id="account-title"></div>
+						<div id="account-desc"></div>
+					</div>
+				</div>
+				<button id="account-icon" title="Auth"></button>
+			</div>
+		</fractal-head>
+		<fractal-body id="body" class="body apps" logo="ipfs://QmdXzfxbfyXT1aAuP7AifC1PEwxh64UJHVjnKgeZrycki6">
+			<div id="home" class="app selected notab passion">
+				<fractal-htm src="fs://localhost/home/about.htm">
+					<h2>Design your page like you want</h2>
+					<h3>!? Text here is just an example with a little info about how this thing works, now you can replace it all</h3>
+				</fractal-htm>
+				
+				<pineal-folder src="local-storage://topSites"></pineal-folder>
+				
+				<fractal-htm src="fs://localhost/home/services.htm" class="app selected notab passion">				
+					<div style="/* display: flex; *//* flex-wrap: wrap; */padding: calc(var(--padding) /4) var(--padding);">
+						<div class="pin-box">
+							<img src="/img/drag.jpg" alt="brn">
+							<article>
+								<h2>Drag&amp;drop from left side tree-menu</h2>
+								<h5>
+									Basicly you can control every aspect on the tree menu.&nbsp;<br>
+									Grab an element, sort it or put it here to get it expanded.<br>
+									Right mouse click or hold on it to see extra options.<br>
+								</h5>
+							</article>
+						</div>
+
+						<div class="pin-box">
+							<img src="/img/wysiwyg.png" alt="brn" style="background-image: var(--bg-grad);  object-fit: contain;">
+							<article>
+								<h2>modular WYSIWYG editor</h2>
+								<h5>
+									Drop or paste rich text from WWW areas to reuse it fast.<br>
+									Right mouse click <i>inspect element or&nbsp;</i><u>(F12)</u><b> </b>to edit more<br>
+									Drop stuff here from tree-area or your local file explorer.
+								</h5>
+							</article>
+						</div>
+
+						<div class="pin-box">
+							<img src="/img/chained.png" alt="brn">
+							<article>
+								<h2>* browser of decentralised networks</h2>
+								<h5>Here in pineal address box you can surf stuff also from<br> IPFS, DAT, FS, Chrome-storages, MongoDB, Gaia, etc..&nbsp;</h5>
+								<a class="button" href="https://ipfs.io" target="_blank" contenteditable="false">Install IPFS</a>
+								<a class="button" href="https://datproject.org" target="_blank">DAT</a>
+								<a class="button" href="https://blockstack.org/" target="_blank">Blockstack</a>
+							</article>
+						</div>
+					</div>
+
+					<h2>* &gt; Up-coming features</h2>
+					<ul>
+						<li>Improved WYSYWYG editor - more buttons, ability to add tables, boxes, galleries, links, files..</li>
+						<li>Create new pages and folders, change every single element you see here</li>
+						<li>Edit programming code of every part right here within same pineal application</li>
+						<li>Add maps, neural schemes, photos, drawings and more..</li>
+						<li>Use elements created by community</li>
+						<li>Sharing views, texts, bookmarks, images.. making it publicly available over HTTP with SEO support</li>
+						<li>Authentification over centralised servers, blockstack, FB, metamask and so on.. all different type accounts could be combined.</li>
+						<li>Over ethereum community could pay each other for certain elements they share and meaning they combine</li>
+						<li>Ask for more at mntask@gmail.com</li>
+					</ul>
+				</fractal-htm>
+			</div>
+		</fractal-body>
+
+		<div id="account-side" class="side right fixed">
+		</div>
+	</pineal-layout>
+
+	<div style="display: none">
+		<pineal-colors id="colors" height="64" width="256"></pineal-colors>
+		
+		<div id="auth-box">
+			<pineal-auth>
+		</pineal-auth></div>
+
+
+		<div id="account-box">
+			<pineal-account>
+		</pineal-account></div>
+
+		<div id="node-contextmenu">
+			<button>Something is sooo coool</button>
+		</div>
+	</div>
+
+	<template id="account-setup-template">
+		<div id="account-setup" class="modal">
+			<pineal-site domain="ego.bid">
+		</pineal-site></div>
+	</template>
+
+	<div id="progress" class="pie-wrapper progress-90">
+		<div id="progress-label">00%</div>
+		<div id="progress-tasks">~0</div>
+		<div class="pie">
+			<div class="left-side half-circle"></div>
+			<div class="right-side half-circle"></div>
+		</div>
+	</div>
+
+	<!--<script src="./libs/ipfs.js"></script>-->
+	<script async="" src="./libs/analytics.js"></script>
+	<!-- End Google Analytics -->
+	<script>/*
+		if('serviceWorker' in navigator) {
+		  navigator.serviceWorker
+					  .register('/sw.js')
+					  .then(function() { console.log("Service Worker Registered"); });
+		}
+		*/</script>
+
+
+</body></html>

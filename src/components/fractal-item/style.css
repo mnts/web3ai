@@ -3,18 +3,13 @@
   /* flex-grow: 1; */
   /* height: 128px; */
   padding: 0;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* margin: 8px; */
-  border: 1px solid #dcdcdc;
   box-shadow: 0 0 7px #e6e6e6;
   background: #fdfdfd;
   color: #5d5d5d;
-  /* min-width: 320px; */
   border-radius: 6px;
   /* overflow: auto; */
   box-shadow: 2px 2px 16px #dbdbdb;
-  /* max-width: 700px; */
+  /*max-width: 100px;*/
   aborder: 1px solid var(--color);
   flex-grow: 1;
 }
@@ -48,10 +43,11 @@
 
 main{
 	display: block;
-  border-radius: 5px;
-  position: relative;
-  transition: height .3s, margin .3s, top .3s, left .3s;
+	border-radius: 5px;
+	position: relative;
+	transition: height .3s, margin .3s, top .3s, left .3s;
 }
+
 
 #options{
 	background: transparent;  
@@ -68,24 +64,25 @@ main{
 	/* display: block; */
 }
 
+:host([activated]){
+	grid-column-start: 1;
+	grid-column-end: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: none;
+	/* z-index: 49; */
+	/* background-color: #80808078 !important; */
+	z-index: 72;
+}
 
-
-@media screen and (min-width: 540px){
-  :host([activated]){
-    width: 100% !important;
-    border: 0;
-    grid-column-start: 1;
-    grid-column-end: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 49;
-    background-color: #80808078 !important;
-    margin: 0;
+:host([activated]){
+    margin: var(--header-height) auto 2px auto;
     position: fixed;
-  }
-
+    width: 95% !important;
+    height: 90% !important;
+    overflow: auto;
 }
 
 
@@ -109,25 +106,9 @@ main{
 
 :host([activated]) main{
 	background: #ffffff;
-	width: 100%;
-	/* margin: 120px auto; */
-	border-radius: 8px;
-	height: auto;
-	text-align: center;
-	/* position: fixed; */
-	top: 0;
-	z-index: 69;
-	position: fixed;
-	top: 80px;
-	max-width: 1248px;
-	margin: 5px auto;
-	left: 50%;
-	transform: translate(-50%, 0);
-	bottom: 30px;
+	height: auto;-
+;
 	overflow: auto;
-	/* position: absolute; */
-	/* top: 0; */
-	box-shadow: 3px 3px 60px 65px black;
 }
 
 :host([activated]) #title{
@@ -135,7 +116,7 @@ main{
 	color: var(--color);
 	background-color: #ffffff;
 	margin-top: 8px;
-	text-align:center;
+	text-align: l;
 	/* position: sticky; */
 	top: 1px;
 }
@@ -173,22 +154,23 @@ main{
 	display: block;
 	transform: rotate(-90deg);
 	font-weight: bold;
+	height: 100%;
+	text-align: center;
 }
 
 
 :host([activated]) #x{
-	display: block;	
+	/* display: block; */
 }
 
 :host([activated]) #x{
-	display: inline-block;
+	/* display: inline-block; */
 	position: fixed;
-	left: calc(50% + 640px);
-	top: 80px;
+	top: 4px;
+	right: 60px;
 	z-index: 192;
 	/* transform: translate(53%, 10px); */
 }
-
 
 @media screen and (max-width: 1400px){
 	:host([activated]) #x{
@@ -207,6 +189,8 @@ main{
 	margin-top: 4px;
 	vertical-align: middle;
 	max-width: 200px;
+	overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #owner_seeds{
@@ -220,7 +204,7 @@ main{
 #info-when{
 	display: inline-block;
 	font-size: 10px;
-	padding: 10px 12px;
+	padding: 4px 0px;
 }
 
 
@@ -243,18 +227,21 @@ main{
 #title{
   font-size: 18px;
   padding: 8px 12px 2px;
-  margin-bottom: 2px;
   transition: opacity .3s;
   font-weight:bold;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   color: var(--color);
- transition: background-color .5s;
+  transition: background-color .5s;
+  background: #ffffffc7;
+  backdrop-filter: blur(1px);
+  padding: 6px 12px;
 }
 
 #title:disabled, :host(:not([activated])) #title{
         cursor: pointer;
+        z-index: 4567;
 }
 
 #title.red{
@@ -301,7 +288,7 @@ h2[placeholder]:empty:before{
 
 :host([activated]) #description{
 	opacity: 0.5;
-	text-align: center;
+	text-align: l;
 	color: black;
 	opacity: 1;
 }
@@ -324,19 +311,17 @@ h2[placeholder]:empty:before{
 	border: 1px solid #e6e6e6;
 	box-shadow: 0 0 11px #e4e4e4;
 	background: white;
-	margin: 18px;
+	margin: 0;
 	padding: 14px;
-	border-radius: 8px;
+	/* border-radius: 8px; */
 }
 
 main{
   display: block !important;
-  height: 100%;
   padding: 0;
   /* max-width: 500px; */
-  width: 100%;
-  display: flex;
   flex-direction: column;
+  box-shadow: 0 0 5px g;
 }
 
 
@@ -366,9 +351,10 @@ img + main{
 	margin: 0 auto;
 	text-align: center;
 	vertical-align: top;
-	max-width: 507px;
+	max-width: 585px;
 	width: 100%;
 }
+
 
 #extra > pineal-tree{
 	margin: 0 auto;
@@ -423,14 +409,13 @@ img + main{
   flex-grow: unset;
 }
 
-
 hr{
   border: 0.5px solid var(--color);
 }
 
 #owner-block{
 	display: flex;
-	max-width: 300px;
+	/* max-width: 300px; */
 	text-align: left;
 	border-radius: 19px;
 	padding: 2px 12px 4px;
@@ -471,12 +456,14 @@ hr{
 	color: var(--color);
 }
 
+
 #info-block{
   display: flex;
-  background-color: white;
-  /* background: var(--bg-grad); */
-  background: var(--bg, linear-gradient(#CCC, #BBB));
+  /* background-color: white; */
+  /* background: #828282; */
+  /* background: linear-gradient(#b1b1b1, #868686); */
   /* background: white; */
+  border-radius: 6px;
   opacity: 0.9;
   /* box-shadow: 0px 0 6px #adadad; */
   margin: 0 auto;
@@ -492,7 +479,7 @@ hr{
 #feedback-block{
 	display: none;
 	min-width: 280px;
-	max-width: 648px;
+	max-width: 585px;
 	width: 100%;
 	vertical-align: top;
 	border: 1px solid #efefef;
@@ -502,8 +489,9 @@ hr{
 
 :host([activated]) #feedback-block{
 	display: inline-block;
+	height: 600px;
+	
 }
-
 
 
 #share{
@@ -527,12 +515,12 @@ hr{
   flex-grow: 1;
   font-size: 15px;
   padding: 8px 4px;
-  /* color: white; */
+  color: black;
   font-family: comfortaa;
   /* border-left: 1px solid #d0d0d0; */
   cursor: pointer;
   align-items: center;
-  color: white;
+  /* color: black; */
 }
 
 
@@ -555,9 +543,11 @@ hr{
 	font-size: 11px;
 }
 
+
 #stat-likes > fractal-rate{
 	margin-right: 8px;
 	display: inline-block;
+	--icon-size: 24px;
 }
 
 

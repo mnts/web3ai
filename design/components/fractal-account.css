@@ -5,7 +5,11 @@
 
 main{
 	text-align
-: center;}
+: center;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+	}
 
 #avatar{
 	display: block;
@@ -112,6 +116,7 @@ p{
 	display: block;
 }
 
+
 #setname > input,
 #setname > button{
 	margin: 0;
@@ -124,6 +129,7 @@ p{
 #account-url{
 	font-size: 14px;
 	color: blue;
+	word-break: break-all;
 }
 
 #account-url:before{
@@ -132,15 +138,14 @@ p{
 }
 
 #account-email-confirm{
-	background: #ff00002b;
+	background: linear-gradient(#dedede, #dededeb5);
 	display: block;
-	color: red;
-	padding: 12px 6px;
-	margin: 1px;
-	border-radius: 4px;
+	color: #6b6b6b;
+	padding: 2px 6px;
+	/* transform: rotate(-3deg); */
+	margin: 14px 0;
 	font-size: 14px;
 }
-
 
 #resetPassword{
 	font-size: 10px;
@@ -158,4 +163,39 @@ h4{
 	margin: 16px 2px 1px 8px;
 	color: grey;
 	text-align: left;
+}
+
+
+#intro_video{
+	display: none;
+	width: 100%;
+	margin-top: 16px;
+	height: 168px;
+}
+
+
+#intro_video[src]{
+	display: block;
+}
+
+#intro_video-upload{
+    font-size: 11px;
+}
+
+#intro_video-remove{
+    display: none;
+    width: 34px;
+    border-radius: 50%;
+    float: right;
+    margin-left: auto;
+    margin-top: -40px;
+    opacity: 0.5;
+}
+
+#intro_video-remove:hover{
+	opacity: 1;
+}
+
+#intro_video[src] + #intro_video-remove{
+	display: block;
 }

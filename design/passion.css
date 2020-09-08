@@ -42,7 +42,7 @@ h2:after{
 	display: block;
 	content: '.';
 	height: 4px;
-	margin-bottom: 8px;
+	margin-bottom: 4px;
 	overflow: hidden;
 	color: var(--color);
 	border-bottom: 2px dashed var(--color);
@@ -59,6 +59,10 @@ h2:after{
 	height: inherit;
 	padding-top: 1px;
 	/* display: block; */
+}
+
+.passion ul,.passion div, .passion img{
+    vertical-align: middle;
 }
 
 .passion:not(.app){
@@ -78,6 +82,51 @@ h2:after{
 
 .passion *{
 	/* box-sizing: border-box; */
+}
+
+.passion .cover{
+    background-image: url(/img/header.jpg);
+    height: 400px;
+    background-size: 100% 100%;
+    margin-top: -2px;
+    padding: 24px 8px;
+    background-attachment: fixed;
+    background-position: top;
+    /* box-shadow: 0px -3px 12px #000000 inset; */
+}
+
+
+.passion .cover > h1,
+.passion .cover > h2,
+.passion .cover > h3,
+.passion .cover > h4{
+	color: white;
+	max-width: 640px;
+	padding-left: var(--padding);
+	margin: 2px auto;
+}
+
+.passion .cover > h1{
+	font-size: 48px;
+}
+
+.passion .cover > h2{
+	font-size: 32px;
+}
+
+.passion .cover > h3{
+	font-size: 20px;
+	font-weight: 400;
+	color: #EEE;
+	text-shadow: none;
+}
+
+.passion .cover > h4{
+	font-size: 16px;
+}
+
+.passion .cover a{
+	text-shadow: 1px 1px 2px #ffffff9c;
 }
 
 .passion > div{
@@ -100,27 +149,45 @@ h2:after{
 	font-size: 14px;
 }
 
+
 .pin-box{
 	border-bottom: 1px solid #e6e6e6;
-	margin-bottom: 32px;
+	margin: 4px 8px 3px 0;
 	padding-bottom: 8px;
-	--size: 92px;
-	/* width: 640px; */
-	margin-right: 32px;
-	display: inline-block;
-	/* height: 267px; */
-	max-width: 613px;
+	width: 464px;
+	display: inline-flex;
+	height: 128px;
+	max-width: 100vw;
+	transition: transform .5s, box-shadow .5s;
 	/* border-bottom-right-radius: 8px; */
-	/* box-shadow: 1px 3px 5px #EEE; */
+	box-shadow: 1px 3px 5px #EEE;
+	border-radius: 5px;
 	vertical-align: top;
-	/* background-color: #f3f3f3; */
+	background-color: #ffffff;
+	background: linear-gradient( white, #fdfdfd);
 	/* flex-grow: 1; */
+}
+
+.mobile .pin-box{
+	width: 100%;
+}
+
+.pin-box:hover{
+	transform: translateY(-6px);
+	box-shadow: 0 3px 6px #cecece;
+}
+
+.pin-box h5, .pin-box h6, .pin-box h2{
 }
 
 @media screen and (max-width: 1320px){
 	.pin-box{
 		margin-right: 2px;
 	}
+}
+
+.pin-box h2:after{
+	/* border-bottom-color: #8a8a8a; */
 }
 
 .passion > .head, .passion > #head{
@@ -157,21 +224,20 @@ h2:after{
 	margin-bottom: 50px;
 }
 
-
 .passion img{
-	width: calc(var(--size) * 1.2);
+	width: 100px;
 	height: var(--size);
-	object-fit: cover;
+	object-fit: contain;
 	display: inline-block;
-	vertical-align: top;
 	margin-top: 0px;
-	box-shadow: 0 0 12px #8a8a8a;
+	/*box-shadow: 0 0 12px #8a8a8a;
 	/* border-radius: 8px; */
+	mix-blend-mode: multiply;
 	margin: 8px 8px 4px 2px;
 	margin: 2px 4px;
-	vertical-align: top;
 	/* border-radius: 16px; */
 	/* transform: rotate(2deg); */
+	transition: transform .4s;
 }
 
 .passion article{
@@ -179,24 +245,25 @@ h2:after{
 	display: inline-block;
 	/* width: calc(100% - var(--size) - 45px); */
 	/* min-width: 530px; */
+	margin: 12px;
+	flex-grow: 1;
 	vertical-align: top;
 }
 
-
 .passion article > h2{
-	text-shadow: 0 0 6px #e0e0e0;
 	margin-top: 8px;
 	margin-bottom: 0;
+	color: var(--color, #545454);
 }
 
 .passion h5{
 	font-size: 14px;
-	font-family: roboto;
-	font-family: sans-serif;
+	font-family: Lato;
+	/* font-family: sans-serif; */
 	/* color: var(--color); */
 	/* letter-spacing: 2px; */
 	font-weight: 400;
-	margin: 2px 0;
+	margin: 2px 0 0;
 }
 
 
@@ -229,13 +296,39 @@ h2:after{
 	text-align: left;
 }
 
+.passion article > p{
+	display: block;
+	white-space: normal;
+	margin: 0;
+	box-shadow: none;
+	border: 0;
+	background: transparent;
+	padding: 0;
+	font-size: 14px;
+	font-family: Lato;
+}
+
+
 .passion ul{
+	display: inline-block;
 	margin-left: var(--padding);
+	vertical-align: middle;
+	background: #fbfbfb;
+	padding: 16px 32px;
+	border-radius: 8px;
+	/* box-shadow: 0 0 16px #eaeaea; */
 }
 
 .passion li{
-	line-height: 20px;
-	font-size: 12px;
+	line-height: 26px;
+	font-size: 14px;
+	text-shadow: 2px 2px 6px white;
+	padding: 0 4px 0 0;
+	transition: padding .4s;
+}
+
+.passion li:hover{
+	padding: 0 0 0 4px;
 }
 
 

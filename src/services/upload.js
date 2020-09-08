@@ -1,5 +1,6 @@
 import {DB_promise} from './db.js';
 
+import Link from '../data/Link.js';
 
 const selectAll = qs => Array.prototype.slice.call(
 	document.querySelectorAll(qs)

@@ -1,0 +1,43 @@
+.tip {
+  display: none;
+  padding: 8px;
+  background-color: #222;
+  color: white;
+  z-index: 88;
+  border-radius: 4px;
+  box-shadow: 0 0 6px black;
+}
+
+.tip[data-show] {
+  display: block;
+}
+
+.tip > [data-popper-arrow],
+.tip > [data-popper-arrow]::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  z-index: 15;
+}
+
+.tip > [data-popper-arrow]::before {
+  content: '';
+  transform: rotate(45deg);
+  background-color: #222;
+}
+
+.tip[data-popper-placement^='top'] > [data-popper-arrow] {
+  bottom: -4px;
+}
+
+.tip[data-popper-placement^='bottom'] > [data-popper-arrow] {
+  top: -4px;
+}
+
+.tip[data-popper-placement^='left'] > [data-popper-arrow] {
+  right: -4px;
+}
+
+.tip[data-popper-placement^='right'] > [data-popper-arrow] {
+  left: -4px;
+}

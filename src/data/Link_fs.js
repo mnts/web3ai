@@ -1,6 +1,7 @@
 import account from '../account.js';
 const authenticated = account.authenticated;
 var Emitter = NPM.Emitter;
+import Link from '/src/data/Link.js';
 
 export default class Link_fs{
   constructor(url){
@@ -47,7 +48,7 @@ export default class Link_fs{
       	this.p = this.uri.split(/[\/]+/);
         this.ext = this.path.split('.').pop().toLowerCase();
 
-        this.name = this.path.split('/').pop();
+        this.name = this.path.split('/').pop() || this.domain;
       }
     }
 
@@ -109,7 +110,7 @@ export default class Link_fs{
         });
       }
       else
-  	 	if(item.type != 'directory'){
+  	 	if(item.type != 'folder'){
   			this.W({
   				cmd: 'set',
   				path: this.path,
@@ -209,6 +210,9 @@ export default class Link_fs{
   }
 
   format(info){
+  	if(info.type == 'directory')
+        info.type = 'folder';
+  	
     var item = {
       type: info.type,
       name: this.name,
@@ -238,7 +242,7 @@ export default class Link_fs{
           this.info = r.info;
           this.item = this.format(r.info);
 
-          if(this.item.type == 'directory'){
+          if(this.item.type == 'folder'){
             this.W({
               cmd: 'get',
         		domain: this.domain,
@@ -276,6 +280,7 @@ export default class Link_fs{
 
   checkOwnership(cb){
     this.load(item => {
+      if(!item) return cb(false);
       let check = (account) => {
         if(account.user)
            account.user.load(user => {

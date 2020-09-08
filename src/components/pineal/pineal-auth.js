@@ -1,6 +1,7 @@
 import servers from '../../data/servers.js';
 const url = new URL(import.meta.url);
 import account from '../../account.js';
+import Link from '../../data/Link.js';
 
 class element extends HTMLElement{
   static get is(){
@@ -66,24 +67,11 @@ class element extends HTMLElement{
         </button>
       </form>
 
-      
       <h4>Authenticate using social media</h4>
-      <div id="head-socMedia">
-          <button id="auth-facebook">
-              <i class="fab fa-facebook"></i>
-          </button>
-
-          <button id="auth-instagram">
-              <i class="fab fa-instagram"></i>
-          </button>
-
-          <button id="auth-twitter">
-              <i class="fab fa-twitter"></i>
-          </button>
-      </div>
+      <pineal-networks></pineal-networks>
     `;
   }
-
+  
   W(m){
     return new Promise((ok, no) => {
        servers.connect(Cfg.api).then(ws => {
@@ -108,7 +96,7 @@ class element extends HTMLElement{
     this.attachShadow({ mode: 'open' });
     
     this.build_typeSelection();
-
+    
     this.init();
   }
 
@@ -194,7 +182,7 @@ class element extends HTMLElement{
           }
 
          if(!this.select('.err')){
-          auth.register.disabled = true;
+           auth.register.disabled = true;
            var user = this.item || {};
            user.email = email;
            user.value = 0;
@@ -252,6 +240,8 @@ class element extends HTMLElement{
         let email = ev.composedPath()[0];
         email.classList.remove('err');
 
+        email.value = email.value.toLowerCase();
+        
         var q = {
           cmd: 'loadProfile'
         }
@@ -283,7 +273,6 @@ class element extends HTMLElement{
     this.form.agree.addEventListener('change', ev => {
         this.form.agree.classList.remove('err');
     });
-    
 
     this.select('#open_register').addEventListener('click', ev => {
       this.form.email.classList.remove('err');
@@ -303,7 +292,6 @@ class element extends HTMLElement{
 
 
      this.form.password.addEventListener('change', ev => {
-        console.log(ev);
         let input = ev.composedPath()[0];
         input.classList.remove('err');
         this.form.repassword.classList.remove('err');
@@ -316,22 +304,9 @@ class element extends HTMLElement{
      });
 
     $(this.form.password).add(this.form.email).bindEnter(ev => {
-      console.log(ev);
         if(auth.classList.contains('login'))
           this.form.login.click();
     });
-
-    if(Cfg.registration && Cfg.registration.tree_src){
-        this.select('#reg_setup').innerHTML = `
-            <pineal-tree src='${Cfg.registration.tree_src}'></pineal-tree>
-        `;
-
-        this.select('#reg_setup').addEventListener('fractal_update', ev => {
-          var path = ev.detail.path.replace(/^\/|\/$/g, '').replace(/\//g, ".");
-          _.set(this.item, path, ev.detail.value);
-          console.log(this.item);
-        });
-    }
   }
 
   select(selector){
@@ -339,8 +314,24 @@ class element extends HTMLElement{
   }
 
   connectedCallback(){
+    const reg_setup = this.select('#reg_setup');
+    if(Cfg.registration && Cfg.registration.tree_src && !reg_setup.innerHTML.trim()){
+        setTimeout(() => {
+          reg_setup.innerHTML = `
+              <pineal-tree src='${Cfg.registration.tree_src}'></pineal-tree>
+          `;
+
+        }, 1300);
+        
+        
+
+        reg_setup.addEventListener('fractal_update', ev => {
+          var path = ev.detail.path.replace(/^\/|\/$/g, '').replace(/\//g, ".");
+          _.set(this.item, path, ev.detail.value);
+          console.log(this.item);
+        });
+    }
   }
 };
-
 
 window.customElements.define(element.is, element);

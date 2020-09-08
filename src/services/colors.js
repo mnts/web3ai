@@ -3,13 +3,13 @@ var qs = q => document.querySelector(q);
 var setColor = color => {
   let style = document.body.style;
   style.setProperty('--color', color);
-  style.setProperty('--bg-grad', 'linear-gradient(var(--color), '+color+'E2)');
+  style.setProperty('--bg-grad', 'linear-gradient(var(--color), '+color+'CC)');
   $('meta[name="theme-color"]').attr('content', color);
 }
 
 if(window.chrome && chrome.storage)
   chrome.storage.sync.get(['color', 'nav-width'], r => {
-    if(r.color) setColor(r.color);
+    setColor(r.color || $("meta[name=theme-color]").attr('content'));
     if(r['nav-width']) qs('#layout').updateStyles({'--nav-width': r['nav-width']+'px'});
   });
 else{

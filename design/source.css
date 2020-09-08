@@ -9,19 +9,23 @@ Ported to CodeMirror by Peter Kroon
 
 .CodeMirror{
   /* line-height: 15px; */
-  min-height: calc(100% - var(--header-height));
   height: auto;
+  height: calc(100% - var(--footer-height));
   margin: 0;
+  padding: 0;
 }
 
 .CodeMirror-scroll{
-    height: auto;
+    height: 100%;
     overflow: auto !important;
+    margin: 0;
+    padding: 0;
 }
 
 .CodeMirror-vscrollbar{
     overflow: hidden !important;
 }
+
 
 
 /*

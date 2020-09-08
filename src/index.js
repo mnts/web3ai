@@ -18,6 +18,7 @@ import '/lib/js-yaml.min.js';
 //import"./node_mod/paper-range-slider/paper-range-slider.js";
 
 import '/lib/js.cookie.js';
+import '/lib/pubsub.js';
 import '/node_modules/tippy.js/umd/index.all.js';
 import '/node_modules/@github/time-elements/dist/time-elements.js';
 import '/lib/md5.js';
@@ -29,7 +30,10 @@ import '/lib/ws.js';
 const extend = NPM.extend;
 
 import './init.js';
-import './config.js';
+
+import './Cfg.js';
+import './Lang.js';
+
 import './setup.js';
 
 Index.types = types;
@@ -41,6 +45,7 @@ if(Cookies.get('devMode')){
   //Cfg.api = 'localhost:4251';
 }
 
+//import './data/gun.js';
 import './chrome.js';
 
 import types from './neuro/types.js';
@@ -53,15 +58,10 @@ import types from './neuro/types.js';
 
 var domain = location.host.split('.').slice(-2).join('.');
 
-
-
 //import './styling.js';
 
 import {setColor} from './services/colors.js';
 Index.setColor = setColor;
-
-import './data/Link.js';
-
 
 //import icons from './data/fa.js';
 //Index.fa = icons;
@@ -76,8 +76,15 @@ import './body/mobile.js';
 import './services/ipfs.js';
 import './services/components.js';
 import './services/side.js';
+import './services/tooltip.js';
 import './services/search.js';
 import './services/upload.js';
+import './services/facebook.js';
+import './services/acc.js';
+import './services/site.js';
+import './services/chat.js';
+import './services/menu.js';
+import './services/modal.js';
 
 
 import './services/map.js';

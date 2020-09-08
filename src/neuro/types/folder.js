@@ -14,7 +14,7 @@ export default class folder extends Neuron{
         'mem://self/Index.types.folder.item',
         'mem://self/Index.types.gallery.item',
         'mem://self/Index.types.catalog.item',
-        //'mem://self/Index.types.source.item',
+        'mem://self/Index.types.source.item',
         'mem://self/Index.types.text.item'
       ]
     }

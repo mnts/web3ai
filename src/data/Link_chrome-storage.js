@@ -1,4 +1,6 @@
 import LinkMain from './LinkMain.js';
+import Link from './Link.js';
+
 export default class Link_chrome_storage extends LinkMain{
   constructor(url){
     super(url);
@@ -40,6 +42,11 @@ export default class Link_chrome_storage extends LinkMain{
         });
       });
     });
+  }
+
+
+  checkOwnership(cb){
+    cb(true);
   }
 
   upload(data){

@@ -5,6 +5,8 @@ body{
 	font-size: 14px;
 	cursor: default;
 	font-family: 'Comfortaa', arial;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 	color: rgb(78, 78, 78);
 	/* padding-bottom: 30px; */
 	background: #FFFFFF;
@@ -16,6 +18,9 @@ body{
 	background-position: center;
 }
 
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
 *[hidden]{
 	display: none !important;
 }
@@ -26,6 +31,8 @@ html,body{
 	margin: 0;
 	padding: 0;
 }
+
+
 
 *{
 	background-repeat: no-repeat;
@@ -52,11 +59,12 @@ ol,ul{
 [contentEditable]{
 	/* outline: none; */
 }
+ 
 
 h1{
 	color: inherit;
 	font-weight: bold;
-	text-shadow: 0 0 2px rgb(255, 255, 255);
+	text-shadow: 0 0 2px rgb(113, 113, 113);
 	margin: 5px 0;
 	font-size: 36px;
 }
@@ -86,7 +94,11 @@ img{
 
 pre{
 	text-align:left;
-	margin:5px
+	color: grey;
+	font-family: Lato;
+	white-space: pre-line;
+	font-size: 14px;
+	margin: 0;
 }
 
 table{
@@ -113,7 +125,7 @@ a{
 	cursor: pointer;
 	text-decoration: none;
 	/* font-weight:bold; */
-	color: rgb(254, 146, 56);
+	color: var(--color);
 	outline: none;
 	margin: 1px 3px;
 	border:0;
@@ -126,7 +138,7 @@ hr{
 	clear: both;
 }
 
-.input, input:not([type=select]):not([type=checkbox]), .select, button, .button, textarea, .tip{
+.input, input:not([type=select]):not([type=checkbox]), .select, button, .button, textarea{
 	outline: none;
 	font-size: 14px;
 	height: 32px;
@@ -156,6 +168,7 @@ input:-webkit-autofill {
 	/* box-shadow: 2px 2px 4px rgba(160, 160, 160, 0.2) inset; */
 	font-family: 'Comfortaa', arial;
 	background-color: white;
+	background-position-y: center !important;
 	padding: 10px 15px;
 	margin: 4px 2px;
 }
@@ -208,26 +221,6 @@ input.err, textarea.err, .check.err{
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
-
-/*
-header, footer{
-	position: fixed;
-	top: 0;
-	z-index: 34;
-	height: 48px;
-	padding-left: 10px;
-	padding-right: 10px;
-	text-align: left;
-	font-size: 15px;
-	background-color: rgba(231, 231, 231, 0.7);
-}
-
-header{
-    /* background-color: rgba(82, 122, 147, 0.89); */
-    /* border-bottom: 2px solid rgb(249, 0, 47); 
-}
-*/
-
 
 fieldset{
 	border: #8884 1px solid;
@@ -301,6 +294,7 @@ button, .button{
 	font-size: 13px;
 	border-radius: 3px;
 	opacity: 0.9;
+    user-select: none;
 	transition: opacity 0.5s, background 0.5s;
 	color: #ffffff;
 	align-items: stretch;
@@ -444,79 +438,6 @@ table.form td[colspan]{
 
 #error{
 	color: red;
-}
-
-
-#modal{
-	z-index: 30;
-	/* display: none; */
-	position: fixed;
-	top: -100vh;
-	left: -100vw;
-	width: 100vw;
-	height: 100vh;
-	transition: background-color .5s;
-	background-image: url('x.png');
-	background-position: right bottom;
-	background-color: #ffffff88;
-	transition: background-color .5s;
-}
-
-/*
-body.mobile:not(.closed) #modal, #modal.on{
-	/* filter: blur(2px); */
-	/* opacity: 0.5; *
-	top: 0;
-	/* backdrop-filter: blur(4px); *
-	-webkit-backdrop-filter: blur(4px);
-	left: 0;
-	/* right: 0; */
-	/* bottom: 0; */
-	/* opacity: 0.6; */
-	/* background-color: #00000088; *
-	background-color: #ffffff6b;
-}
-*/
-
-#modal.on{
-	z-index: 50;
-}
-
-.modal{
-	display:none;
-	position: fixed;
-	z-index: 98;
-	width: 501px;
-	max-width: 90vw;
-	height: 330px;
-	margin: auto;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
-	padding: 0;
-	border-radius: 4px;
-	text-align: left;
-	font-size: 15px;
-	color:#969696;
-	background-color: #EEE;
-}
-
-.modal.on{
-	display: block;
-}
-
-
-.modal>.cont{
-	float: left;
-	text-align: left;
-}
-
-.modal a, .modal h3{
-}
-
-.modal textarea{
-    resize: none;
 }
 
 form{

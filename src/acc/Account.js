@@ -1,5 +1,8 @@
 import Axon from '../neuro/Axon.js';
 import User from '../../src/acc/User.js';
+import Link from '../data/Link.js';
+
+import {upload} from '/src/services/upload.js';
 
 import {find2define} from '/src/services/components.js';
 
@@ -22,14 +25,20 @@ export default class Account extends HTMLElement{
         margin: auto;
       } 
 
+      [hidden]{
+      	isplay: none;
+      }
+
     </style>
 
     <link rel="stylesheet" href="//${url.host}/design/interface.css" rel="preload" as="style">
     <link rel="stylesheet" href="//${url.host}/design/tree.css" rel="preload" as="style">
+    <link rel="stylesheet" href="//${url.host}/design/socAuth.css">
     <link rel="stylesheet" href="//${url.host}/design/components/fractal-account.css" rel="preload" as="style">    
     <link rel="stylesheet" href="//${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="//${url.host}/design/components/fractal-gallery.css" rel="preload" as="style">    
 
+    <link id='style_src' rel="stylesheet">
 	
     <style>
 		.tree menu{
@@ -51,33 +60,53 @@ export default class Account extends HTMLElement{
 			</button>
     	</div>
     	
-		<input id='account-title' placeholder='First and Last name'></input>
+		<input id='account-title' placeholder='${Lang.acc.title}'></input>
 		<div contenteditable id='account-description' placeholder='About me'></div>
 
 		<h3 id='account-email'></h3>
-		<div id='account-email-confirm' hidden>You need to confirm your email</div>
+
+        ${Cfg.acc.email_confirm?`
+		    <div id='account-email-confirm' hidden>${Lang.acc.confirm_email}</div>
+		`:''}
 
 		<a id='resetPassword'>Reset your password</a>
-
-		<div id='account-domain'>
-			<a id='account-url' target='_blank'></a>
-		</div>
-		
-		<div id='setname'>
-			<input name='accountname' placeholder='username' size='12' title='Setup your username'>
-			<button id='setname-save'>&#x2714;</button>
-		</div>
+           
+        ${Cfg.acc.profile_page?`
+			<div id='account-domain'>
+				<a id='account-url' target='_blank'></a>
+			</div>
+			<div id='setname'>
+				<input name='accountname' placeholder='username' size='12' title='Setup your username'>
+				<button id='setname-save'>&#x2714;</button>
+			</div>`:''
+        }
+        
+        ${(Cfg.acc.intro_video)?`
+            <fractal-media id='intro_video' class='fill'></fractal-media>
+			<button id='intro_video-remove'>
+				<i class='fa fa-trash'></i>
+			 </button>
+			<button id='intro_video-upload' class='only_publisher'>
+				<i class='fa fa-upload'></i>
+				${Lang.acc.become_publisher}
+			 </button>
+			`:
+            ''
+        }
         
         <p>
-        	Registered 
+        	Registred 
         	<relative-time id='info-when'></relative-time>
 		</p>
 
-		<h3 id='value' title='Seeds'>0</h3>
+        ${Cfg.acc.currency?`
+		    <h3 id='value' title='${Cfg.acc.currency.title}'>0</h3>
+        `:''}
 
 		<div id='extra'></div>
 		
-		<div id='account-networks'>
+		<h4>${Lang.acc.add_social}</h4>
+          <pineal-networks></pineal-networks>
 		<slot></slot>
     </main>
     `;
@@ -105,6 +134,7 @@ export default class Account extends HTMLElement{
 	createNode(){
 		this.axon.link.save({
 			owner: this.user.email,
+			title: this.user.title
 		}).then(item => {
 			this.user.item = item;
 			/*
@@ -144,6 +174,13 @@ export default class Account extends HTMLElement{
 		if(item_owner == this.user.email) return true;
 		if(item_owner == this.user.name) return true;
 		return false;
+	}
+
+	gate(){
+	    if(!this.user){
+	    	$('#account-icon').click();
+	    	return true;
+	    }
 	}
 
 	preload(){
@@ -204,8 +241,13 @@ export default class Account extends HTMLElement{
 		});
 	}
 
+	upload_intro_video(){
+	}
+
     async fill(item){
     	if(!item) item = this.user.item;
+
+
 
     	this.main.hidden = false;
     	var email = item.email || this.user.email;
@@ -224,18 +266,27 @@ export default class Account extends HTMLElement{
     	this.select('#account-description').textContent = item.description || '';
         
     	this.select('#account-email').innerText = email;
-    	this.select('#account-email-confirm').hidden = this.user.email_confirmed;
+        
+		if(Cfg.acc.email_confirm){
+    	    let confirm_el = this.select('#account-email-confirm');
+    	    if(confirm_el) confirm_el.hidden = this.user.email_confirmed;
+		}
 
     	var acc_link = Link(`mongo://${Cfg.server}/acc?email=`+this.user.email);
 
-		if(Cfg.acc && Cfg.acc.account_src && Cfg.acc.tree_src)
-	    	this.select('#extra').innerHTML = `
-	    		<h4>Account properties</h4>
+        var extra = '';
+
+		if(Cfg.acc.account_src)
+            extra +=`
+                <h4>Account properties</h4>
 	    		<pineal-tree 
 	    			src='${Cfg.acc.account_src}' 
 	    			item_src='${acc_link.url}'
 	    		></pineal-tree>
+	    	`;
 
+		 if(Cfg.acc.tree_src)
+	    	extra += `
 	    		<h4>Profile properties</h4>
 	    		<pineal-tree 
 	    			src='${Cfg.acc.tree_src}' 
@@ -243,17 +294,33 @@ export default class Account extends HTMLElement{
 	    		></pineal-tree>
 	    	`;
 
-		this.user.getValue().then(value => {
-			this.select('#value').innerText = value;
-		});
+	    this.select('#extra').innerHTML = extra;
 
-		this.checkName();
+        if(item.intro_video){
+    		let intr = this.select('#intro_video');
+    		if(intr) intr.setAttribute('src', item.intro_video);
+        }
+
+        if(Cfg.acc.currency)
+			this.user.getValue().then(value => {
+				this.select('#value').innerText = value;
+			});
+
+        if(Cfg.acc.profile_page)
+		    this.checkName();
+
+		this.selectAll('.only_publisher').map(el => {
+			el.hidden = this.user.type != 'publisher';
+		});
     }
 
     checkName(){
     	var name = this.user.name;
 
-	   	this.select('#account-url').href = this.user.href;
+	   	const url_el = this.select('#account-url');
+	   	if(!url_el) return;
+
+	   	url_el.href = this.user.href;
 	   	this.select('#account-url').innerText = this.user.href;
 	   	
 	   	this.select('#setname').hidden = !!(name);
@@ -280,6 +347,7 @@ export default class Account extends HTMLElement{
 
 		this.init();
 	}
+
 
 	async init(){
 		var width;
@@ -343,25 +411,43 @@ export default class Account extends HTMLElement{
 			});
 		});
 
-		this.select('#setname-save').addEventListener('click', ev => {
-			let inpName = this.select('[name=accountname]');
-			name = inpName.value;
-
-			inpName.classList[(name.length < 4)?'add':'remove']('err');
-
-			if(!inpName.classList.contains('err')){
-				this.ws.send({
-					cmd: 'updateProfile',
-					set: {name}
-				}, r => {
-					if(!r.user) return;
-					
-					this.user.name = r.user.name;
-					this.checkName();
-					//this.fill(item);
+        if(Cfg.acc.intro_video){
+			this.select('#intro_video-upload').addEventListener('click', ev => {
+				fileDialog().then(files => {
+					upload(files).then(link => {
+						this.axon.link.set('intro_video', link.url);
+						this.select('#intro_video').setAttribute('src', link.url);
+					});
 				});
-			};
-		});
+			});
+
+			this.select('#intro_video-remove').addEventListener('click', ev => {
+				this.axon.link.set('intro_video', false);
+				this.select('#intro_video').removeAttribute('src');
+			});
+        }
+
+        if(Cfg.acc.profile_page){
+			this.select('#setname-save').addEventListener('click', ev => {
+				let inpName = this.select('[name=accountname]');
+				name = inpName.value;
+
+				inpName.classList[(name.length < 4)?'add':'remove']('err');
+
+				if(!inpName.classList.contains('err')){
+					this.ws.send({
+						cmd: 'updateProfile',
+						set: {name}
+					}, r => {
+						if(!r.user) return;
+
+						this.user.name = r.user.name;
+						this.checkName();
+						//this.fill(item);
+					});
+				};
+			});
+        }
 
 		this.select('#resetPassword').addEventListener('click', ev => {
 			let tag = 'fractal-password';
@@ -377,10 +463,38 @@ export default class Account extends HTMLElement{
 			ev.preventDefault();
 			return false;
 		});
+
+		this.check_style_src();
+	}
+
+	check_style_src(){
+		this.style_src = this.getAttribute('style_src');
+		if(this.style_src)
+			this.select('#style_src').setAttribute('href', this.style_src);
+	}
+
+	static get observedAttributes(){
+	    return ['style_src'];
+	}
+
+	attributeChangedCallback(name, oldValue, newValue){
+		switch(name){
+		  case 'style_src':
+			this.check_style_src();
+		}
+	}
+
+	connectedCallback(){
 	}
 
 	select(qs){
 		return this.shadowRoot.querySelector(qs);
+	}
+
+	selectAll(qs){
+		return Array.prototype.slice.call(
+			this.shadowRoot.querySelectorAll(qs)
+		);
 	}
 	
 	constructora(user){

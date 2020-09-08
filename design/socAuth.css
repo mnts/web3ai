@@ -1,0 +1,35 @@
+
+#head-socMedia > button{
+	width: 48px;
+	height: 48px;
+	padding: 6px 5px;
+	margin: 0;
+	text-shadow: none;
+	font-size: 24px;
+	text-align: center;
+	background: transparent;
+	border-radius: 50%;
+	border: 0;
+	transition: background .4s, color .4s;
+}
+
+
+#head-socMedia > button:hover{
+	background: white;
+}
+
+#head-socMedia > button > i{
+	margin: 0;
+}
+
+button#auth-facebook{
+	color: #3b5999;
+}
+
+button#auth-instagram{
+	color: #e4405f;
+}
+
+button#auth-twitter{
+	color: #55acee;
+}

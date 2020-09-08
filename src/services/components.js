@@ -11,6 +11,7 @@ import '../components/fractal/fractal-options.js';
 import '../components/pineal/pineal-gallery.js';
 import '../components/fractal/fractal-rate.js';
 import '../components/pineal/pineal-nav.js';
+import '../components/pineal/pineal-networks.js';
 
 const JP = NPM.path.join;
 

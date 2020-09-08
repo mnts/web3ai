@@ -1,4 +1,5 @@
 import types from './types.js';
+import Link from '../data/Link.js';
 
 export default class Axon{
 	constructor(l){

@@ -94,6 +94,12 @@ class Component extends HTMLElement{
 
         prev = ev.target.scrollTop;
     }, false);
+   
+    this.select('main').dispatchEvent(new CustomEvent('scroll'));
+
+    this.dispatchEvent(new CustomEvent("defined", {
+      bubbles: false
+    }));
   }
 
   upload(files, ev){

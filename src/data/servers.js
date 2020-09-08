@@ -37,6 +37,20 @@ class Servers{
           //autoReconnect: true
         });
 
+        ws.msg = m => {
+          if(!m.cmd) return;
+          
+          var ev = new CustomEvent('ws.cmd.'+m.cmd, {
+              detail: {
+                m,
+                ws,
+                host
+              },
+          });
+
+          document.dispatchEvent(ev);
+        };
+
         ws.on.session = m => {
           this.sid = ws.sid = m.sid;
           ws.session = m;
@@ -44,6 +58,7 @@ class Servers{
           this.list[host] = ws;
           ok(ws);
           k(ws)
+          
         };
       });
     });

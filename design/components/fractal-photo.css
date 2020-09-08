@@ -92,14 +92,13 @@ main > audio +
 :host(.fill) main > img, :host(.fill) main > video,
 :host(.fill) main, :host(.fill) main{
 	width: 100%;
-  height: 100%;
+	/* height: 100%; */
 }
 
 @keyframes zoom{
   0% {opacity: 0;}
   to {opacity: 1;}
 }
-
 
 :host(.active) img, :host(.active) video{
 	position: fixed;
@@ -108,6 +107,7 @@ main > audio +
 	top: 0;
 	left: 0;
 	width: 100%;
+	height: 100%;
 	right: 0;
 	object-fit: contain;
 	z-index: 85;

@@ -33,29 +33,29 @@ selectAll('.side').map(side => {
 
 window.addEventListener('DOMContentLoaded', function(){
 	document.body.addEventListener('click', ev => {
-			let sideFound;
-			
-			if(!opened.length) return;
+		let sideFound;
 
-			var path = ev.composedPath();
+		if(!opened.length) return;
 
-			for(let i = 0; i<path.length; ++i){
-				let el = path[i];
-				if(
-					el && (el.id =='hidden-file' || (
-						el.classList &&
-						el.classList.contains('side')
-					))
-				){
-					sideFound = el;
-					break;
-				}
+		var path = ev.composedPath();
+
+		for(let i = 0; i<path.length; ++i){
+			let el = path[i];
+			if(
+				el && (el.id =='hidden-file' || (
+					el.classList &&
+					el.classList.contains('side')
+				))
+			){
+				sideFound = el;
+				break;
 			}
+		}
 
-			if(opened.length && !sideFound)
-			  opened.map(side => {
-			  	if(!side.classList.contains('locked'))
-			  		side.classList.remove('opened');
-			  });
+		if(opened.length && !sideFound)
+		  opened.map(side => {
+			if(!side.classList.contains('locked'))
+				side.classList.remove('opened');
+		  });
 	}, false);
 });

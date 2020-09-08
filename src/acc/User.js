@@ -9,6 +9,7 @@ var domain = Cfg.api.split(':')[0];
 class User_main{
 	constructor(path){
 		this.path = path;
+		this.connected = null;
 		this.load();
 	}
 
@@ -35,18 +36,43 @@ class User_main{
 					if(!r.user) return;
 					
 					$.extend(this, r.user);
+
+
 					this.url = 'mongo://'+document.location.host+'/users?owner='+r.user.email;
 					this.axon = new Axon(this.url);
 
 					this.axon.link.load(item => {
 						this.item = item;
 						
+					    if(item)
+					        this.title = item.title || item.name || item.owner || ('#'+r.user.id);
+						
 						if(item){
 							//$.extend(this, item);
 						}
+                        
+                        const ok = () => {
+							if(typeof cb =='function') cb(item);
+							k(item);
+                        };
+                        
+                    
+                        if(Cfg.acc.online_check)
+							ws.send({cmd: 'online', id: this.id}, r => {
+								this.connected = r.connected;
+								ok();
+							});
+						else ok();
+					});
 
-						if(typeof cb =='function') cb(item);
-						k(item);
+					document.addEventListener('ws.cmd.connected', ev => {
+						if(ev.detail.m.id == this.id)
+							this.connected = true;
+					});
+
+					document.addEventListener('ws.cmd.disconnected', ev => {
+						if(ev.detail.m.id == this.id)
+							this.connected = false;
 					});
 				});
 			});
@@ -90,5 +116,6 @@ var User = function(u){
 
 	return user;
 }
+
 
 export default User;

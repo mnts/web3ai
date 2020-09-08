@@ -1,0 +1,113 @@
+<html><head>
+	<meta charset="utf-8">
+	<title>fractalTab</title>
+
+	<meta name="theme-color" content="#2F3BA2" />
+
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+	
+	<link href="/design/index.css" rel="stylesheet" type="text/css">
+
+	<link href="/design.css" rel="stylesheet" type="text/css">
+	
+	<link href="/design/logo.png" rel="shortcut icon" type="image/png">
+
+	<base target="_blank">
+	
+	<script src="/tab_cfg.js"></script>
+	<script src="/src/index.js" type='module'></script>
+	<script src="/src/layout.js" type='module'></script>
+</head>
+
+<body spellcheck="false">
+	<div id="modal"></div>
+
+	<pineal-layout id='layout'>
+		<div id='navigation-side' class='side inside'></div>
+		<fractal-head id='head' logo='/design/logo.png' style='--logo-bg-color: transparent'>
+			<div slot='title'></div>
+
+			<div id='head-buttons'>
+				<div class="info">
+					<div id='site-stats'>
+						
+					</div>
+
+					<div id='account-stats'>
+						<div id='account-title'></div>
+						<div id='account-desc'></div>
+					</div>
+				</div>
+				<button id='account-icon' title='Auth'></button>
+			</div>
+		</fractal-head>
+
+		<fractal-body id="body" class="body apps">
+			<fractal-htm id="home"  class="app selected notab passion">
+			    <pineal-logo style='width: 512px; height: 512px'></pineal-logo>
+			    				
+				<ul>
+				    <li>Create your AI extension</li>
+                    <li>Define the structure of your system</li>
+                    <li>Embrace decentralised tools for free media</li>
+                    <li>See the flow of power within Ethereum network</li>
+                    <li>Serve your accounts and data within OS level</li>
+                    <li>Get your cyber business going while you sleep</li>
+				</ul>
+			</fractal-htm>
+		</fractal-body>
+
+		<pineal-chats id='chats' class='onlyAcc'></pineal-chats>
+
+		<div id='account-side' class='side right fixed'>
+		    <!--
+		    <div style='text-align: center'>
+				<div 
+					class="fb-login-button" 
+					data-onlogin='Acc.FB.getLoginStatus()'
+					data-size="medium" 
+					data-button-type="continue_with" 
+					data-layout="rounded" 
+					data-auto-logout-link="false"
+					data-use-continue-as="true" 
+					data-width=""
+				></div>
+            </div>
+            -->
+		</div>
+	</pineal-layout>
+
+	<div style='display: none'>
+		<pineal-colors id='colors' height='64' width='256'></pineal-colors>
+		
+		<div id='auth-box'>
+			<pineal-auth/>
+		</div>
+
+
+		<div id='account-box'>
+			<pineal-account/>
+		</div>
+
+		<div id='node-contextmenu'>
+			<button>Something is sooo coool</button>
+		</div>
+	</div>
+
+	<template id='account-setup-template'>
+		<div id='account-setup' class='modal'>
+			<pineal-site domain='ego.bid'/>
+		</div>
+	</template>
+
+	<div id='progress' class="pie-wrapper progress-90">
+		<div id="progress-label">00%</div>
+		<div id="progress-tasks">~0</div>
+		<div id="progress-cancel">x</div>
+		<div class="pie">
+			<div class="left-side half-circle"></div>
+			<div class="right-side half-circle"></div>
+		</div>
+	</div>
+</body>
+</html>

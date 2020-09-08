@@ -1,3 +1,5 @@
+import Link from './Link.js';
+
 export default class Link_chrome_b{
   constructor(url){
     this.url = this.link = url;
@@ -43,6 +45,12 @@ export default class Link_chrome_b{
       });
     });
   }
+
+  
+  checkOwnership(cb){
+    cb(true);
+  }
+
 
   move(index, parentId){
     return new Promise((ok, no) => {

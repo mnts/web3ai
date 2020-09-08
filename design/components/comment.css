@@ -3,22 +3,44 @@
 	width: 100%;
 	display: block;
 	margin: 0 auto;
-	box-sizing: content-box;
-	padding: 8px 0;
+	height: 100%;
+	box-sizing: border-box;
+	/* padding: 8px 0; */
+	padding: 0;
 }
+
+
 
 #comment-box{
 	/* background-color: #e6e6e6a1; */
 	padding: 5px;
 	border-radius: 24px;
 	text-align: left;
+	display: flex;
 }
 
 
 #list{
 	text-align: center;
 	min-height: 40px;
+	box-sizing: border-box;
 	padding-top: 14px;
+    scroll-behavior: smooth;
+	overflow: auto;
+}
+
+
+#list::-webkit-scrollbar {
+  width: 2px;
+  border: 0;
+  background: transparent;
+}
+
+/* Handle */
+#list::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 5px;
+  border: 0;
 }
 
 
@@ -31,8 +53,18 @@
 	display: block;
 	font-size: 14px;
 	color: grey;
-	margin: 2px 12px;
+	/* margin: 2px 12px; */
 	text-decoration: none;
+}
+
+#owner_title{
+	padding: 2px 5px;
+}
+
+
+#owner{
+	width: 64px;
+	margin-top: -20px;
 }
 
 pineal-user{
@@ -50,54 +82,63 @@ textarea{
 	padding: 5px;
 }
 
+
 #comment-text, textarea{
-	background-color: #ececec;
-	font-size: 16px;
+	background-color: #ffffff91;
+	font-size: 14px;
 	font-weight: normal;
 	border-radius: 10px;
 	color: black;
-	padding: 16px 12px;
+	padding: 10px 12px;
 	font-family: 'Comfortaa', arial;
+	white-space: pre-wrap;
 }
 
 main{
-	padding: 4px 2px;
+	padding: 2px 0px;
 	text-align: left;
+	display: flex;
 }
 
-
 button{
-	margin-top: 24px;
-	background: var(--bg-grad);
+	background: var(--bg-gra, transparent);
+	color: var(--color);
 	border: 0;
-	color: white;
 	font-size: 20px;
 	border-radius: 50%;
+	margin: 7px;
 	width: 32px;
 	height: 32px;
 }
 
-#owner-info{
+#send{
+	height: 100%;
+	text-align: center;
+}
+
+#info{
 	display: inline-block;
 	position: relative;
 	vertical-align: top;
-	width: calc(100% - 126px);
+	max-width: calc(100% - 110px);
 }
 
 
 
-#owner-info:after {
+#info:after {
+	display: none;
 	content: "";
 	position: absolute;
 	bottom: 0px;
 	left: -12px;
-	top: 24px;
+	top: 18px;
 	width: 0;
 	height: 0;
 	border-style: solid;
 	border-width: 12px 12px 12px 0;
-	border-color: transparent  #e6e6e6a1 transparent transparent;
+	border-color: transparent  #ececec transparent transparent;
 }
+
 
 #info-when{
 	font-size: 11px;

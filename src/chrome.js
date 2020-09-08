@@ -29,7 +29,6 @@ else{
 	}
 	else{ // load domain node from mongo
 		//Lib.item.children.push('fs://'+document.location.host+'/menu');
-		Lib.item.children.push(Index.main_url);
 
 		if(document.location.href.indexOf('cms') + 1)
 			Lib.item.children.push('mongo://'+document.location.host+'/tree'+'#cms');
@@ -37,6 +36,7 @@ else{
 	
 	//Lib.item.children.push('fs://localhost/');
 }
+
 
 
 Lib.defaults = {
@@ -63,8 +63,6 @@ Lib.templates = {
 
 var domain = document.location.host;
 
-console.log(Cfg.app_name);
-
 Lib.filters = {
 	stories: {
 		title: 'Stories',
@@ -73,7 +71,8 @@ Lib.filters = {
 			query: {
 				//domain
 				domain
-			}
+			},
+			sort: [['num_invites', -1],['time', -1]]
 		}
 	}
 };

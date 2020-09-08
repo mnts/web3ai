@@ -1,6 +1,9 @@
+import Link from '../../data/Link.js';
 import Node from '../../tree/Node.js';
 
+import {find2define} from '/src/services/components.js';
 const url = new URL(import.meta.url);
+
 
 export default class Tree extends HTMLElement{
 	static get is(){
@@ -67,30 +70,10 @@ export default class Tree extends HTMLElement{
 				('?domain='+location.host)
 			);
 
-		var link = Link(
-			this.attributes.src?
-				this.attributes.src.value:
-				default_url
-		);
 
 		if(this.attributes.opened){
 			this.opened_ids = this.attributes.opened.value.split(/\s+/);
 		}
-		
-		link.load(item => {
-			if(item){
-				let node = new Node(item, {link, tree: this});
-				node.$element.attr('id', 'root');
-				node.$node.addClass('hide');
-				node.$list.css({paddingLeft: 0, marginLeft: 0});
-				node.toggle();
-				$(this.root).find('.tree').append(node.element);
-			}
-			else
-				console.log('No tree');
-			
-			this.main.classList.remove('loading');
-		});
 
         this.addEventListener('fractal_update', ev => {
 			if(!this.item_link) return;
@@ -106,7 +89,7 @@ export default class Tree extends HTMLElement{
 	}
 
 	connectedCallback(){
-
+        
 	}
 	
 	static get observedAttributes(){
@@ -114,8 +97,33 @@ export default class Tree extends HTMLElement{
 	}
 
 	setSrc(url){
+		if(this.link && this.link.url == this.attributes.src.value)
+		    return;
+		
+		this.link = Link(this.attributes.src.value);
+		this.link.load(item => {
+			if(item){
+				const $tree = $(this.root).find('.tree');
+				$tree.empty();
+				let node = new Node(item, {
+					link: this.link, 
+					tree: this
+				});
+				node.$element.attr('id', 'root');
+				node.$node.addClass('hide');
+				node.$list.css({paddingLeft: 0, marginLeft: 0});
+				node.toggle();
+				$tree.append(node.element);
+			}
+			else
+				console.log('No tree');
+			
+			this.main.classList.remove('loading');
+		});
+	  /*
 	  this.link = Link(url);
 	  this.load();
+	  */
 	}
 
 	attributeChangedCallback(name, oldValue, newValue){
@@ -123,6 +131,9 @@ export default class Tree extends HTMLElement{
 		  case 'item_src':
 			this.item_link = Link(newValue);
 			this.listen_children();
+			break;
+		  case 'src':
+			this.setSrc();
 			break;
 		}
 	}

@@ -89,7 +89,6 @@
 
 :host([view='carousel']) #list > .item{
 	 height: 100%;
-	 margin-top: 2px;
 }
 
 /* Buttons */

@@ -1,5 +1,6 @@
 import LinkMain from './LinkMain.js';
 const J = NPM.urljoin;
+import Link from './Link.js';
 
 export default class Link_mem extends LinkMain{
   constructor(url){

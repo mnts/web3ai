@@ -38,9 +38,6 @@ export default class source extends Neuron{
       }
     });
 
-    $(this.app_div).find('.CodeMirror').css('margin-bottom', 50);
-
-
     this.$footer = $('<footer>').appendTo(this.container);
  
     $('<button>').text('Save').click(ev => {

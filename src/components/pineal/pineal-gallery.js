@@ -1,6 +1,8 @@
 import {DB_promise} from '/src/services/db.js';
 import {upload} from '/src/services/upload.js';
 import account from '/src/account.js';
+import Link from '../../data/Link.js';
+
 const url = new URL(import.meta.url);
 
 
@@ -101,6 +103,7 @@ class element extends HTMLElement{
   }
 
   load(src){
+  	if(src == 'toCreate') return;
 	this.link = Link(src);
 	
 	if(this.link)this.link.children(links => {

@@ -4,6 +4,8 @@ import servers from '../../data/servers.js';
 var url = new URL(import.meta.url);
 
 
+import Link from '/src/data/Link.js';
+
 class Component extends HTMLElement{
   static get is(){
     return 'fractal-select';
@@ -193,7 +195,7 @@ class Component extends HTMLElement{
   }
 
   static get observedAttributes(){
-    return ['src'];
+    return ['src', 'selected_src'];
   }
 
   get ext(){
@@ -215,6 +217,10 @@ class Component extends HTMLElement{
 
   attributeChangedCallback(name, oldValue, newValue){
     switch(name){
+      case 'selected_src':
+        this.assign(newValue);
+        break;
+        
       case 'list_src':
         this.list_link = Link(newValue);
 

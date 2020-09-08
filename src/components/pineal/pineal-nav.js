@@ -51,7 +51,7 @@ export default class Element extends HTMLElement{
 			</header>
 
 
-			<pineal-tree src='mem://self/Lib.item' opened='0 1 topSites private menu'></pineal-tree>
+			<pineal-tree opened='0 1 topSites private menu'></pineal-tree>
 
 			<footer>
 			</footer>
@@ -85,15 +85,6 @@ export default class Element extends HTMLElement{
 			this.open(ev.detail.node);
 		});
 
-		/*
-		this.root.querySelector('#changeColor').addEventListener('color-picker-selected', ev => {
-			let color = ev.detail.color;
-			chrome.storage.sync.set({color});
-			Index.setColor(color);
-		});
-		*/
-
-
 		var handler = event => {
 			if(!document.body.classList.contains('mobile')) return;
 			if(event.target.closest('#nav')) return;
@@ -104,6 +95,9 @@ export default class Element extends HTMLElement{
 
 		interact(document.getElementById('body')).on('tap', handler);
 
+		var src = this.getAttribute('src');
+		if(src)
+			this.set_src(src);
 		
 		//this.init();
 	}
@@ -152,6 +146,22 @@ export default class Element extends HTMLElement{
 			node.toggle();
 
 		node.$node.addClass('initiated active');
+	}
+
+	set_src(src){
+		this.select('pineal-tree').setAttribute('src', src)
+	}
+    
+	static get observedAttributes(){
+	    return ['src'];
+	}
+
+	attributeChangedCallback(name, oldValue, newValue){
+        this['set_'+name](newValue);
+	}
+
+	select(selector){
+	    return this.root.querySelector(selector);
 	}
 };
 

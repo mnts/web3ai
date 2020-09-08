@@ -3,6 +3,7 @@ import {fix4name} from '../../utilities/item.js';
 import servers from '../../data/servers.js';
 var url = new URL(import.meta.url);
 
+import Link from '/src/data/Link.js';
 
 class Component extends HTMLElement{
   static get is(){
@@ -45,13 +46,19 @@ class Component extends HTMLElement{
 			color: #55acee;
 		}
 
+		a#startTour{
+			font-size: 14px;
+			text-decoration: none;
+			color: #b9b9b9;
+		}
+
     </style>
 
 	<link rel="stylesheet" href="/style/stylesheet.css">
    	<link href='//${url.host}/design/tree.css' rel="stylesheet"/>
 	<link rel="stylesheet" href="/style/footer.css">
 
-	<link rel="stylesheet" href="//${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+	<link rel="stylesheet" href="https://${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 
 	<footer>
 		<div id="footer-main">
@@ -132,6 +139,14 @@ class Component extends HTMLElement{
 	}));
   }
 
+  checkUrl(){
+  	  var p = location.pathname.split('/');
+  	  if(!p[1]) return;
+
+      var a = this.select(`li[name='${p[1]}'] a`);
+      if(a) a.click();
+  }
+
 
   constructor() {
     super();
@@ -149,7 +164,14 @@ class Component extends HTMLElement{
     this.shadowRoot.innerHTML = Component.template;
     
     this.select('footer').addEventListener('click_node', ev => {
-		document.getElementById('head').open(ev.detail.node);
+    	const node = ev.detail.node;
+    	console.log(node);
+        history.replaceState({item: node.item}, node.item.title, "/"+node.item.name)
+		document.getElementById('head').open(node);
+	});
+
+	this.select('footer').addEventListener('children_loaded', ev => {
+        this.checkUrl();
 	});
 
     this.server = Cfg.server;

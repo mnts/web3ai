@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', ev => {
 	var box = select('#account-side');
 	if(!box) return;
 	
-	box.append(account);
+	box.prepend(account);
 
 	
 	const side = select('#account-side'),
@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', ev => {
 	let toggleIcon = () => {
 		var isOpened = side.classList.contains('opened');
 		icon.classList[isOpened?'add':'remove']('close');
-
+        
 		if(!auth_box && !account.user){
 			auth_box = document.createElement('pineal-auth');
-			box.append(auth_box);
+			box.prepend(auth_box);
 		}
 	}
 
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', ev => {
 		attributes: true
 	});
 
-	icon.addEventListener('click', ev => {
+	if(icon) icon.addEventListener('click', ev => {
 		if(!side.classList.contains('opened'))
 			side.classList.add('opened');
 

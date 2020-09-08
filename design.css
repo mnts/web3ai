@@ -1,25 +1,6 @@
-#layout{
-    --bg-grad: linear-gradient(#EE2211, #BB2233BB);
-    --color: #5317c7;
-    --header-height: 60px;
-    --color2: #ff522b;
-    --bg: #192a2f;
-    --shadow-color: #da0e0e99;
-    --bg-grad: linear-gradient(#152440, #09050cde);
+#layout
 }
 
-
-#nav{
-	--color: #f2d131;
-}
-
-#info-block{
-  background: linear-gradient(#bfbfbf, #737373);
-}
-
-#info-block > *{
-	color: white;
-}
 
 #menu{
 	/* overflow: hidden; */
@@ -34,6 +15,33 @@ body:not(.authenticated) fractal-publish{
 body:not(.mobile) #nav{
 	/* display: none; */
 }
+
+body{
+	--item-width: 320px;
+}
+
+.passion > div.cover{
+	padding-top: 100px;
+	text-align: center;
+}
+
+#domain{
+	display: block;
+	width: 340px;
+	border-radius: 16px;
+	margin: 5px auto;
+	text-align: center;
+	padding: 10px 14px;
+	font-size: 22px;
+	height: auto;
+}
+
+#launch{
+	font-size: 16px;
+	padding: 16px 22px;
+	height: auto;
+}
+
 /*
 body:not(.mobile) #navigation{
 	margin: 0 !important;

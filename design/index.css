@@ -8,7 +8,12 @@
 @import "fonts.css";
 @import "graph.css";
 @import "progress.css";
+@import "slide.css";
+@import "modal.css";
+@import "tip.css";
+@import "map.css";
 
 @import "components/map.css";
 
+@import "../node_modules/tippy.js/dist/tippy.css";
 @import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";

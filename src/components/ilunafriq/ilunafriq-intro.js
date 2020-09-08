@@ -1,4 +1,5 @@
 //import {styleSheets} from '//pineal.cc/src/styling.js';
+import Link from '/src/data/Link.js';
 
 class Component extends HTMLElement{
   static get is(){

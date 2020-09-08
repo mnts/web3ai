@@ -3,20 +3,17 @@ window = self;
 //self.importScripts('npm_bundle_sw.js');
 self.importScripts('/lib/npm_bundle.js');
 
-self.importScripts('/src/config.js');
+//self.importScripts('/src/Cfg.js');
 self.importScripts('/config.js');
+
+self.Cfg = Cfg_site;
+
 
 self.importScripts('/lib/ws.js');
 
 
 
 self.importScripts('/lib/zangodb.min.js');
-
-
-
-if(Cfg_site){
-  NPM.extend(Cfg, Cfg_site);
-}
 
 var cacheName = 'fractal';
 
@@ -172,7 +169,11 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   //console.log(event, event.request.url);
   //console.log(self);
-  let db = self.DB_req.result;
+  var db = (self.DB_req)?self.DB_req.result:{};
+  
+   // Otherwise continue to the network
+   let url = event.request.url;
+   var u = new URL(url);
 
   if(event.request.url.startsWith(self.location.origin + '/files')){
     let store = db.transaction('files', "readwrite").objectStore('files');
@@ -227,25 +228,25 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   else
+  if(
+    event.request.method === "POST" || 
+    u.hostname != self.location.hostname ||
+    event.request.url.startsWith(self.location.origin + '/auth')
+  ){
+    event.respondWith(fetch(event.request));
+  }
+  else
    event.respondWith(
-     // Open the cache
      caches.open(cacheName)
        .then((cache) => {
-         // Look for matching request in the cache
          return cache.match(event.request)
            .then((matched) => {
-             // If a match is found return the cached version first
-             if (matched) {
+             if(matched)
                return matched;
-             }
-             // Otherwise continue to the network
-             let url = event.request.url;
-             return fetch(url)
-               .then((response) => {
-                 // Cache the response
-                 cache.put(event.request, response.clone());
-                 // Return the original response to the page
-                 return response;
+               
+             return fetch(url).then((r) => {
+                 cache.put(event.request, r.clone());
+                 return r;
                });
            });
        })

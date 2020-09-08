@@ -16,9 +16,10 @@ class Component extends HTMLElement{
         right: 0 !important;
         padding: 0;
         width: 100%;
-        background: var(--bg-grad);
         position: absolute;
         top: 0;
+        background-color: var(--color);
+	    transition: background-color .4s;
         z-index: 65;
         height: var(--header-height);
         --user-height: calc(var(--header-height) - 8px);
@@ -55,13 +56,14 @@ class Component extends HTMLElement{
 
       #space{
       	flex-grow: 1;
+      	text-align: center;
       }
     </style>
     
     <link rel="stylesheet" href="//${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="//${url.host}/design/components/fractal-head.css" rel="preload" as="style">
   
-    <header id='main_header'>
+    <header id='main_header' part='main'>
       <div id='nav'>
         <button id='nav-toggle' title='Navigation' class='fas fa-bars'></button>
    
@@ -73,7 +75,9 @@ class Component extends HTMLElement{
       </div>
       <slot name='left'></slot>
 
-      <div id='space'></div>
+      <div id='space'>
+          <slot name='center'></slot>
+      </div>
 
       <slot></slot>
 
@@ -82,7 +86,7 @@ class Component extends HTMLElement{
       <paper-toggle-button id='toggle_spell' title='Spell check' color='red'></paper-toggle-button>
       <paper-icon-button icon="copyright"></paper-icon-button>
 
-      <div id='shadow'></div>
+      <div id='shadow' part='shadow'></div>
     </header>
     `;
   }
@@ -158,7 +162,7 @@ class Component extends HTMLElement{
 			let tag = this.getAttribute('navigation') || 'pineal-nav';
 
 			var tpl = document.createElement('template');						
-			tpl.innerHTML = `<${tag} id='navigation'></${tag}>`;
+			tpl.innerHTML = `<${tag} id='navigation' src='${Index.main_url}'></${tag}>`;
 
 			side.appendChild(tpl.content);
 
@@ -209,9 +213,8 @@ class Component extends HTMLElement{
       $('.tree .active').removeClass('active');
 
       if(node.neuron && node.neuron.open){
-
           node.neuron.open();
-
+          
           if(document.body.classList.contains('mobile'))
               document.body.classList.add("closed");
       }
@@ -251,10 +254,16 @@ class Component extends HTMLElement{
 		break;
 
 	  case 'menu_icon':
-		this.select('#nav-toggle').setAttribute('class', 'fas '+newValue);
+	      if(newValue == 'false')
+	          this.select('#nav-toggle').remove();
+	      else
+            this.select('#nav-toggle').setAttribute('class', 'fas '+newValue);
 		break;
 		
       case 'logo':
+	      if(newValue == 'false')
+	          this.select('#logo').remove();
+	          
         this.$('#logo').style.backgroundImage = `url(${newValue})`;
         break;
       case 'title':
@@ -279,7 +288,7 @@ class Component extends HTMLElement{
     }
 
     this.$nav = $("<pineal-nav>", {
-      node_src: 'mongo://localhost:4000/tree?domain=pineal.lh',
+      src: 'mem://self/Lib.item'
     //  class: 'closed'
     }).insertBefore(this);
     setTimeout(ev => toggle(), 20);

@@ -22,6 +22,7 @@ class element extends HTMLElement{
         @import "//${url.host}/design/interface.css";
         @import "//${url.host}/design/components/pineal-account.css";
       </style>
+      <link rel="stylesheet" href="//${url.host}/design/socAuth.css">
       
       <link rel="stylesheet" href="//${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 
@@ -85,7 +86,7 @@ class element extends HTMLElement{
     this.shadowRoot.innerHTML = element.template;
 
     var setup_modal;
-    this.$('#setup').addEventListener('click', ev => {
+    this.select('#setup').addEventListener('click', ev => {
       if(setup_modal == null){
         let tpl = document.getElementById('account-setup-template').content;
         setup_modal = tpl.firstElementChild;
@@ -94,7 +95,7 @@ class element extends HTMLElement{
       UI.modal(setup_modal);
     });
 
-    this.$('#logout').addEventListener('click', ev => {
+    this.select('#logout').addEventListener('click', ev => {
       this.W({
         cmd: 'logout'
       });
@@ -102,7 +103,7 @@ class element extends HTMLElement{
       document.body.dispatchEvent(new CustomEvent('logout'));	
     });
 
-    this.$('#uploadPhoto').addEventListener('click', ev => {
+    this.select('#uploadPhoto').addEventListener('click', ev => {
       fileDialog().then(file => {
         var path = this.getAttribute('src').replace(/\/$/, "");
         var img_url = path + '/img.jpg';
@@ -117,7 +118,7 @@ class element extends HTMLElement{
     });
   }
 
-  $(selector){
+  select(selector){
     return this.shadowRoot.querySelector(selector);
   }
 

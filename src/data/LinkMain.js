@@ -1,3 +1,5 @@
+import Link from './Link.js';
+
 export default class LinkMain{
   constructor(url){
     this.children_key = 'children';
@@ -50,7 +52,6 @@ export default class LinkMain{
   checkOwnership(cb){
     this.load(item => {
       let check = (account) => {
-        console.log(account);
         if(account.user)
            account.user.load(user => {
              if(item.owner){

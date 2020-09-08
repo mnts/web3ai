@@ -1,5 +1,6 @@
 import servers from '../../data/servers.js';
 import User from '../../acc/User.js';
+import account from '/src/account.js';
 
 //import {styleSheets} from '../styling.js';
 
@@ -17,8 +18,8 @@ class element extends HTMLElement{
         :host{
           display: inline-block;
           margin: 1px;
-          width: 48px;
-	      height: 48px;
+          width: var(--icon-size, 48px);
+          height: var(--icon-size, 48px);
 	      vertical-align: middle;
         }
 
@@ -50,6 +51,10 @@ class element extends HTMLElement{
 	      	width: inherit;
 			height: inherit;
         }
+
+        :host(.online) main{
+        	box-shadow: 0 0 4px 2px green;
+        }
       </style>
 
 	  <main></main>
@@ -65,8 +70,7 @@ class element extends HTMLElement{
        });
     });
   }
-
-
+  
   constructor() {
     super();
 
@@ -78,6 +82,22 @@ class element extends HTMLElement{
    // this.shadowRoot.adoptedStyleSheets = [styleSheets.fontAwesome];
     this.shadowRoot.innerHTML = element.template;
     this.main = this.select('main');
+
+    const checkOnline = (id, on) => {
+        if(this.user && id == this.user.id)
+			this.online(on);
+    };
+    
+	document.addEventListener('ws.cmd.connected', ev => checkOnline(ev.detail.m.id, true));
+	document.addEventListener('ws.cmd.disconnected', ev => checkOnline(ev.detail.m.id, false));
+
+	this.addEventListener('click', ev => {
+		if($(this).parents('.dragging').length) return;
+		if(account.user && this.user && this.user.id != account.user.id)
+    		document.querySelector('#chats').selectChat(this.user.item);
+    	else
+    	    $('#account-icon').click();
+	});
   }
 
   load(path){
@@ -101,8 +121,13 @@ class element extends HTMLElement{
 		   this.main.innerHTML = '';
 		   this.main.append(media);
 		}
+        
+        this.online(this.user.connected);
      });
+  }
 
+  online(on){
+      this.classList[on?'add':'remove']('online');
   }
 
   static get observedAttributes(){

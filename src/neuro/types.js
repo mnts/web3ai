@@ -11,7 +11,7 @@ import htm_page from './types/htm_page.js';
 import neuron from './Neuron.js';
 import polymer from './Neuron_polymer.js';
 
-var types = {text, page: text, map, neuron, gallery, catalog, folder, fldr: folder, source, graph, htm_page, polymer, story};
+var types = {text, page: text, map, neuron, gallery, catalog, folder, fldr: folder, site: folder, source, graph, htm_page, polymer, story};
 
 types.page = types.text;
 
