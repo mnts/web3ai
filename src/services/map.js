@@ -1,5 +1,5 @@
 import account from '../account.js';
-import {U} from '../acc/users.js';
+import {U} from '/src/acc/users.js';
 import servers from '../data/servers.js';
 var CustomMarker;
 

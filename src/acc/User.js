@@ -36,8 +36,7 @@ class User_main{
 					if(!r.user) return;
 					
 					$.extend(this, r.user);
-
-
+                    
 					this.url = 'mongo://'+document.location.host+'/users?owner='+r.user.email;
 					this.axon = new Axon(this.url);
 

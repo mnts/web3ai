@@ -2,6 +2,8 @@ import servers from '../../data/servers.js';
 const url = new URL(import.meta.url);
 import account from '../../account.js';
 import Link from '../../data/Link.js';
+import {U} from '/src/acc/users.js';
+
 
 class element extends HTMLElement{
   static get is(){
@@ -82,12 +84,14 @@ class element extends HTMLElement{
     });
   }
 
-  auth(user){
-    var ev = new CustomEvent('authenticated', {
-      detail: { user, account}
+  auth(item){
+    account.auth(item.email).then(user => {
+        var ev = new CustomEvent('authenticated', {
+          detail: {user, account}
+        });
+        
+		document.body.dispatchEvent(ev);
     });
-    
-    document.body.dispatchEvent(ev);
   }
 
   constructor() {

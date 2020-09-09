@@ -2,6 +2,9 @@ import Axon from '../neuro/Axon.js';
 import User from '../../src/acc/User.js';
 import Link from '../data/Link.js';
 
+import {U} from '/src/acc/users.js';
+
+
 import {upload} from '/src/services/upload.js';
 
 import {find2define} from '/src/services/components.js';
@@ -116,22 +119,24 @@ export default class Account extends HTMLElement{
 		return new Promise((ok, no) => {
 			if(this.user) return ok(this.user);
 			
-			var user = this.user = new User(email);
+			var user = this.user = U(email);
 			user.load(() => {
 				this.axon = this.user.axon;
 
 				this.axon.link.load(item => {
-					if(!item) return this.createNode();
-					this.fill();
-					
+					if(!item) return this.createNode(item => {
+						ok(this.user);
+					});
 					ok(this.user);
+					
+					this.fill();
 				});
 			});
 		});
 	}
 	
 
-	createNode(){
+	createNode(cb){
 		this.axon.link.save({
 			owner: this.user.email,
 			title: this.user.title
@@ -147,7 +152,7 @@ export default class Account extends HTMLElement{
 				this.fill(item);
 			});
 			*/
-
+            cb(item);
 			this.fill();
 		});
 	}

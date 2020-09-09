@@ -75,6 +75,30 @@ class element extends HTMLElement{
         [hidden]{
           display: none !important;
         }
+
+        .pulse-button {
+          animation: pulse 1.5s infinite;
+        }
+        .pulse-button:hover {
+          animation: none;
+        }
+
+        @-webkit-keyframes pulse {
+          0% {
+            transform: scale(.9);
+          }
+
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 20px #cc31cc;
+          }
+
+          100% {
+            transform: scale(.9);
+            box-shadow: 0 0 0 #cc31cc;
+          }
+        }
+
       </style>
 
       <style>
@@ -82,13 +106,13 @@ class element extends HTMLElement{
               display: none;
           }
       </style>
- 
+
       <link rel="stylesheet" href="//${url.host}/node_modules/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
 
       <header>
         <pineal-user></pineal-user>
         <h2></h2>
-        <button id='block' style='background-color: #ec2707; background-image: url(/icon.png)' title='Swerve'></button>
+        <button id='block' style='background-image: url(/img/block.png)' class='pulse-button' title='Swerve'></button>
         <button id='unblock' style='background: #23ab35' class='fa fa-check' title='Unblock'></button>
         <button id='close' class='fa fa-times'></button>
       </header>
@@ -132,7 +156,7 @@ class element extends HTMLElement{
   }
 
   unblock(){
-    var y = confirm('Unblock user?');
+    var y = confirm('Unswerve user?');
     if(!y) return;
     var blocked = account.user.axon.link.item.blocked || [];
     var ind = blocked.indexOf(this.user.email);

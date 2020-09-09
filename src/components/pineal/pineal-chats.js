@@ -51,6 +51,10 @@ class element extends HTMLElement{
           display: none;
         }
 
+        :host(.mobile:not(.selected_contact)) pineal-chat{
+          display: none;
+        }
+
         :host(.mobile) main{
           width: 100vw;
         }
@@ -242,5 +246,10 @@ class element extends HTMLElement{
   }
 };
 
+$(ev => {
+  $('#nav-chat').click(ev => {
+    $('#chats')[0].classList.remove('selected_contact');
+  });
+});
 
 window.customElements.define(element.is, element);

@@ -4,7 +4,7 @@ import account from '/src/account.js';
 
 //import {styleSheets} from '../styling.js';
 
-
+var components = [];
 class element extends HTMLElement{
   static get is(){
     return 'pineal-user';
@@ -21,6 +21,7 @@ class element extends HTMLElement{
           width: var(--icon-size, 48px);
           height: var(--icon-size, 48px);
 	      vertical-align: middle;
+	      position: relative;
         }
 
         main{
@@ -54,6 +55,26 @@ class element extends HTMLElement{
 
         :host(.online) main{
         	box-shadow: 0 0 4px 2px green;
+        }
+
+        :host(.blocked)::before{
+			display: block;
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url(/img/block.png);
+			z-index: 33;
+			background-size: contain;
+		    background-repeat: no-repeat;
+			background-position: center;
+			opacity: 0.8;
+		}
+
+        :host(.blocked) > main{
+		    box-shadow: 0 0 4px 3px #cc31cc;
         }
       </style>
 
@@ -98,6 +119,8 @@ class element extends HTMLElement{
     	else
     	    $('#account-icon').click();
 	});
+
+	components.push(this);
   }
 
   load(path){
@@ -123,7 +146,16 @@ class element extends HTMLElement{
 		}
         
         this.online(this.user.connected);
+        this.checkBlocked();
      });
+  }
+
+  checkBlocked(){
+  	  if(!account.user) return this.classList.remove('blocked');;
+      var blocked = account.user.axon.link.item.blocked || [];
+      this.classList[
+          (blocked.indexOf(this.user.email)+1)?'add':'remove'
+      ]('blocked');
   }
 
   online(on){
@@ -156,5 +188,18 @@ class element extends HTMLElement{
   }
 };
 
+function checkBlocked(){
+    components.forEach(comp => comp.checkBlocked());
+}
+
+document.body.addEventListener('authenticated', function(ev){
+    checkBlocked();
+    
+    var user = ev.detail.user;
+    user.axon.link.monitor(c => {
+    	if(c.blocked && account.user == user)
+    	    checkBlocked();
+    });
+});
 
 window.customElements.define(element.is, element);
