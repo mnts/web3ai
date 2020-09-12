@@ -51,6 +51,7 @@ class element extends HTMLElement{
           height: var(--footer-height, 28px);
           margin: 0;
           outline: none;
+          display: none;
         }
 
         :host(:not([state=expanded])) #search{

@@ -2,8 +2,8 @@
     position:absolute;
     cursor:pointer;
     background:#424242;
-    width: 63px;
-    height: 63px;
+    /* width: 63px; */
+    /* height: 63px; */
     /* -width/2 */
     margin-left: -32px;
     /* -height + arrow */

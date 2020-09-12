@@ -145,14 +145,17 @@ class element extends HTMLElement{
   }
 
   block(){
-    var y = confirm('Would you like to Swerve?');
-    if(!y) return;
+    //var y = confirm('Would you like to Swerve?');
+    //if(!y) return;
     var blocked = account.user.axon.link.item.blocked || [];
     if(blocked.indexOf(this.user.email)+1) return;
     blocked.push(this.user.email);
     account.user.axon.link.set('blocked', blocked);
     this.select('fractal-comments').select('footer').hidden = true;
     this.checkBlock();
+
+    var audio = new Audio('/sounds/swerve.mp3');
+    audio.play();
   }
 
   unblock(){

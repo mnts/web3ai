@@ -11,7 +11,6 @@ import {find2define} from '/src/services/components.js';
 
 var url = new URL(import.meta.url);
 
-
 const J = NPM.urljoin;
 
 export default class Account extends HTMLElement{
@@ -228,11 +227,11 @@ export default class Account extends HTMLElement{
 		};
 
 		let col = 'tree';
-		this.ws.send({
-			cmd: 'save', 
-			item: newItem, 
-			collection: col
-		}, r => {
+			this.ws.send({
+				cmd: 'save', 
+				item: newItem, 
+				collection: col
+			}, r => {
 			console.log(r);
 			if(!r || !r.item) return console.error(`
 				unable to init_profile_photos
@@ -252,7 +251,9 @@ export default class Account extends HTMLElement{
     async fill(item){
     	if(!item) item = this.user.item;
 
-
+        this.ws.send({
+			cmd: 'locate' 
+		});
 
     	this.main.hidden = false;
     	var email = item.email || this.user.email;

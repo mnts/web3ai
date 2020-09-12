@@ -2,8 +2,11 @@ import servers from './data/servers.js';
 import Account from './acc/Account.js';
 const select = q => document.querySelector(q);
 
-var account = document.createElement('fractal-account');
-account.id = 'account';
+var account = select('#account');
+if(!account){
+	account = document.createElement('fractal-account');
+    account.id = 'account';
+}
 
 var authenticated = new Promise((ok, no) => {
 	document.body.addEventListener('authenticated', function(ev){
@@ -66,7 +69,7 @@ document.addEventListener('DOMContentLoaded', ev => {
 	const side = select('#account-side'),
 		  icon = select('#account-icon');
 
-	let auth_box;
+	let auth_box = select('pineal-auth');
 
 	let toggleIcon = () => {
 		var isOpened = side.classList.contains('opened');
@@ -105,7 +108,6 @@ document.addEventListener('DOMContentLoaded', ev => {
 				var ev = new CustomEvent('authenticated', {
 				  detail: { user , account}
 				});
-				
 				
 				document.body.dispatchEvent(ev_ready);
 				document.body.dispatchEvent(ev);

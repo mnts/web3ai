@@ -4,6 +4,8 @@ const selectAll = qs => Array.prototype.slice.call(
 	document.querySelectorAll(qs)
 );
 
+const select = qs => document.querySelector(qs);
+
 let chats;
 
 var mutate = () => {
@@ -34,4 +36,14 @@ window.addEventListener('DOMContentLoaded', function(){
 	});
 
 	mutate();
+
+	var nav = select('#nav-chat');
+	nav.addEventListener('click', ev => {
+        const contacts = select('pineal-chats').select('pineal-contacts');
+        contacts.setAttribute('state', 
+            (contacts.getAttribute('state') != 'expanded')?
+                'expanded':'shrinked'
+        );
+	});
+
 });

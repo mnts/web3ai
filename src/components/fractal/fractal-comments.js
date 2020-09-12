@@ -368,7 +368,7 @@ class Component extends HTMLElement{
 
 Lng = Lang.components[Component.is] || {};
 
-var au = new Audio('/design/audio/blink.mp3');
+var au = new Audio('/sounds/msg.mp3');
 
 document.addEventListener('ws.cmd.insert', ev => {
     const d = ev.detail;

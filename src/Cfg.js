@@ -57,5 +57,3 @@ Cfg.api = Cfg.server;
 if(window.Cfg_site){
   $.extend(true, Cfg, Cfg_site);
 }
-
-export default Cfg;

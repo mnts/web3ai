@@ -3,11 +3,12 @@ window = self;
 //self.importScripts('npm_bundle_sw.js');
 self.importScripts('/lib/npm_bundle.js');
 
-//self.importScripts('/src/Cfg.js');
-self.importScripts('/config.js');
+self.importScripts('/src/Cfg.js');
+//self.importScripts('/config.js');
 
-self.Cfg = Cfg_site;
+//self.Cfg = Cfg_site;
 
+self.importScripts('/lib/ipfs.js');
 
 self.importScripts('/lib/ws.js');
 
@@ -21,7 +22,6 @@ var sync = () => {
 
 }
 
-
 var cfg_ws = {
   server: Cfg.api,
   autoReconnect: true
@@ -29,9 +29,24 @@ var cfg_ws = {
 
 let ws = self.ws = new WS(cfg_ws);
 
+var W_con = new Promise((ok, no) => {
+  self.Wcon = ok;
+});
+
+function W(q){
+  return new Promise((ok, no) => {
+    W_con.then(() => {
+      ws.send(q, ok);
+    });
+  });
+}
+
+
+
 ws.on.session = m => {
   this.sid = ws.sid = m.sid;
   ws.session = m;
+  Wcon();
 };
 
 ws.onUploadProgress = m => {
@@ -73,8 +88,15 @@ DB_req.onupgradeneeded = () => {
   }
 };
 
+const staticPaths = [
+  'lib', 'src', 'node_modules', 'node_mod', 
+  'img', 'files', 'design', 'manifest.json',
+  'init.js', 'index.js'
+];
+
 
 console.log('init service-worker');
+Ipfs.create().then(ipfs => self.ipfs = ipfs);
 
 self.sendAll = m => {
   self.clients.matchAll().then(function(clients) {
@@ -124,46 +146,24 @@ self.addEventListener('install', (event) => {
   });
 });
 
+
 self.addEventListener('activate', (event) => {
   console.log('activate step');
   
   event.waitUntil(self.clients.claim())
-
-
-
-  /*
-  let node = self.node = new IPFS({
-    EXPERIMENTAL: {
-      pubsub: true
-    },
-    repo: "ipfs/shared",
-    config: {
-      "Bootstrap": [
-        '/ip4/216.98.11.205/tcp/4003/ws/QmfJiAoAcG2SUePngtGwyiiYDuyfX7m942UsrKe6kZBRQc'
-      ]
-    }
-  });
-  */
-
-  /*
-  self.node.files.add = self.node.add;
-  self.node.files.cat = self.node.cat;
-  
-  node.on('ready', async () => {
-    createProxyServer(a => node, {
-      addListener: self.addEventListener.bind(self),
-      removeListener: self.removeEventListener.bind(self),
-      async postMessage (data) {
-        const clients = await self.clients.matchAll()
-        clients.forEach(client => client.postMessage(data))
-      }
-    });
-  });
-  
-  node.on('error', (err) => console.log('js-ipfs node errored', err))
-
-  */
 });
+
+function ipfs_cat(hash){
+  const headers = { status: 200, statusText: 'OK', headers: {} };
+  return (async () => {
+    const ca = self.ipfs.cat(hash);
+    var chunks = [];
+    for await(let chunk of ca){
+       chunks.push(chunk);
+    }
+    return new Response(Buffer.concat(chunks), headers);
+  })();
+}
 
 
 self.addEventListener('fetch', (event) => {
@@ -174,6 +174,10 @@ self.addEventListener('fetch', (event) => {
    // Otherwise continue to the network
    let url = event.request.url;
    var u = new URL(url);
+
+
+
+   console.log(event.request);
 
   if(event.request.url.startsWith(self.location.origin + '/files')){
     let store = db.transaction('files', "readwrite").objectStore('files');
@@ -223,8 +227,9 @@ self.addEventListener('fetch', (event) => {
   }
   else
   if(event.request.url.startsWith(self.location.origin + '/ipfs')){
-    const multihash = event.request.url.split('/ipfs/')[1]
-    event.respondWith(catAndRespond(multihash));
+    console.log(event);
+    const hash = event.request.url.split('/ipfs/')[1];
+    event.respondWith(ipfs_cat(hash));
     return;
   }
   else
@@ -236,21 +241,35 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(fetch(event.request));
   }
   else
+  if(
+    staticPaths.every(path => u.pathname.startsWith('/'+ path))
+  )
    event.respondWith(
-     caches.open(cacheName)
-       .then((cache) => {
-         return cache.match(event.request)
-           .then((matched) => {
-             if(matched)
-               return matched;
-               
-             return fetch(url).then((r) => {
-                 cache.put(event.request, r.clone());
-                 return r;
-               });
-           });
-       })
+     caches.open(cacheName).then((cache) => {
+       return cache.match(event.request).then((matched) => {
+         if(matched)
+           return matched;
+        
+         return fetch(url).then((r) => {
+           cache.put(event.request, r.clone());
+           return r;
+         });
+       });
+     })
   );
+  else{
+    event.respondWith((async () => {
+      let r = await W({
+        cmd: 'get',
+        domain: u.host,
+        collection: 'sites'
+      });
+
+      return (r.item && r.item.ipfs)?
+         ipfs_cat(r.item.ipfs):
+         fetch(url);
+    })());
+  }
 });
 
 self.addEventListener('message', function(event){
@@ -281,7 +300,7 @@ self.addEventListener('message', function(event){
 */
 async function catAndRespond (hash) {
   console.log('respond: ', hash);
-  const data = await self.node.cat(hash)
+  const data = await self.ipfs.cat(hash)
   const headers = { status: 200, statusText: 'OK', headers: {} }
   return new Response(data, headers)
 }

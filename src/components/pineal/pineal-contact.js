@@ -78,6 +78,11 @@ export default class Component extends LitElement{
           flex-grow: 1;
         }
 
+        pineal-user.blocked,
+        pineal-user.blocked + aside{
+          display: none;
+        }
+
         main > aside > h2,
         main > aside > h3{
           font-weight: normal;

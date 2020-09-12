@@ -1,5 +1,9 @@
 import Link from '../data/Link.js';
 
+const selectAll = qs => Array.prototype.slice.call(
+	document.querySelectorAll(qs)
+);
+
 var domain = window.location.host.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "").split('/')[0].split(':')[0];
 Index.main_url = 'mongo://'+document.location.host+'/sites'+'?domain='+domain;
 
@@ -46,3 +50,18 @@ site.children(links => {
             //document.querySelector(headTag).select('#nav-toggle').click(); 
         });
 });
+
+function reset(){
+    var classes = [
+        'close', 'opened', 'scroll_top', 'closed', 'mobile', 
+        'scroll_top64', 'scroll_top128', 'scroll_top256'
+    ];
+    
+    classes.forEach(name => {
+        selectAll('.'+name).forEach(el => el.classList.remove(name));
+    });
+
+    selectAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+}
+
+export {reset}

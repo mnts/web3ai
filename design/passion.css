@@ -85,13 +85,12 @@ h2:after{
 }
 
 .passion .cover{
-    background-image: url(/img/header.jpg);
-    height: 400px;
     background-size: 100% 100%;
     margin-top: -2px;
-    padding: 24px 8px;
+    padding: 48px 8px;
     background-attachment: fixed;
     background-position: top;
+    color: white;
     /* box-shadow: 0px -3px 12px #000000 inset; */
 }
 

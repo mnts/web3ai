@@ -17,7 +17,7 @@ if('serviceWorker' in navigator){
 	  e.preventDefault();
 	  deferredPrompt = e;
 
-	  deferredPrompt.prompt();
+	  //deferredPrompt.prompt();
 	  // Wait for the user to respond to the prompt
 	  deferredPrompt.userChoice.then((choiceResult) => {
 		if (choiceResult.outcome === 'accepted') {
@@ -38,7 +38,25 @@ window.addEventListener('DOMContentLoaded', function(){
         select('#launch').click();
 	});
 
-	select('#home').setAttribute('contenteditable', true);
+	var editMode = select('#edit-mode');
+    if(editMode)
+		editMode.addEventListener('click', function(){
+		  select('body').setAttribute('contenteditable', this.checked);
+		});
+
+	function launch(item){
+        W({
+        	cmd: 'save',
+        	item,
+        	collection: 'sites'
+        }).then(r => {
+        	if(r.error) return alert(r.error);
+        	if(
+        	    r.item && 
+        	    confirm('Continue to '+r.item.domain)
+        	) location.href = 'http://'+r.item.domain;   
+        });
+	}
 	
 	select('#launch').addEventListener('click', (ev) => {
         if(!account.user)
@@ -54,17 +72,24 @@ window.addEventListener('DOMContentLoaded', function(){
 			name: domain.split('.')[0],
 			title: jsUcfirst(domain.split('.')[0])
 		};
-        
-        W({
-        	cmd: 'save',
-        	item,
-        	collection: 'sites'
-        }).then(r => {
-        	if(r.error) return alert(r.error);
-        	if(
-        	    r.item && 
-        	    confirm('Continue to '+r.item.domain)
-        	) location.href = 'http://'+r.item.domain;   
-        });
+
+        var buf = Buffer(document.documentElement.innerHTML);
+		ipfs.add(buf).then(r => {
+			if(r.path)
+				item.ipfs = r.path;
+
+			launch(item);
+		});
+	});
+
+	select('#color').addEventListener('pick', ev => {
+		let color = ev.detail.color;
+		document.body.style.setProperty('--color', color);
+	});
+
+	select('#color').addEventListener('picked', ev => {
+		let color = ev.detail.color;
+		document.body.style.setProperty('--color', color);
+		select('meta[name=theme-color]').setAttribute('content', color);
 	});
 });

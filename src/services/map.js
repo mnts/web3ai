@@ -40,7 +40,7 @@ function setPosition(marker, coord){
 
     var dist_area = select('#distance-area');
     if(dist_area){
-		var dist = distance(coord[0], coord[1], myCoord[0], myCoord[1], 'K'),
+		var dist = distance(coord[0], coord[1], myCoord[0], myCoord[1]),
 			max = parseInt(dist_area.innerText);
         
         if(max)
@@ -226,9 +226,14 @@ window.addEventListener('DOMContentLoaded', function(){
 
 					const placeMe = coords => {
 						myCoord = [coords.latitude, coords.longitude];
-						account.user.axon.link.set('location', {
-							type: "Point",
-						    coordinates: myCoord
+						
+					    console.log('Coordinates: ', myCoord[0], myCoord[1]);
+					    W({
+					    	cmd: 'locate',
+					    	lat: myCoord[0],
+					    	lng: myCoord[1]
+					    }).then(r => {
+					    	console.log('Network: ', r.net);
 					    });
 
 						var position = new google.maps.LatLng(coords.latitude, coords.longitude);

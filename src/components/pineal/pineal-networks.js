@@ -1,5 +1,5 @@
 import servers from '../../data/servers.js';
-import Cfg from '../../Cfg.js';
+//import Cfg from '../../Cfg.js';
 
 
 const url = new URL(import.meta.url);

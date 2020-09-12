@@ -1,3 +1,11 @@
+function rgb2dec(r,g,b){
+	return (r << 16) + (g << 8) + b;;
+}
+
+function dec2hex(c){
+    return "#" + ((1 << 24) + (c & 0xff0000) + (c & 0x00ff00) + (c & 0x0000ff)).toString(16).slice(1);
+}
+
 class element extends HTMLElement{
   static get is(){
     return 'pineal-colors';
@@ -57,7 +65,6 @@ class element extends HTMLElement{
       var pos = $(this).offset(),
       x = e.pageX - pos.left,
       y = e.pageY - pos.top;
-      console.log(e.pageX, e.pageY, e, pos, x,' x ',y);
       if(x<1 || y<1 || x>this.clientWidth-1 || y>this.clientHeight)return;
 
       var pix = ctx.getImageData(x,y,1,1).data;

@@ -559,7 +559,7 @@ pineal-nav{
 }
 
 body:not(.mobile) #menu-icons > a.onlyMobile{
-	display: none;
+	/* display: none; */
 }
 
 body:not(.authenticated) .onlyAcc{

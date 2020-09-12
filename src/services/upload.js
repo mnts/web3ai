@@ -63,13 +63,12 @@ function upload(files, cb){
 			reader.readAsArrayBuffer(f);
 
 			reader.onload = ev => {
-				console.log(ev);
-				if(Cfg.ipfs.on && window.ipfs){
+				if(false && Cfg.ipfs.on && window.ipfs){
 					let buf = Buffer(ev.target.result);
 					ipfs.add(buf).then(r => {
-						if(r[0]){
-							let hash = r[0].hash;
-							var link = Link(`ipfs://${hash}`);
+						if(r && r.path){
+							let hash = r.path;
+							var link = Link(`ipfs://${r.path}`);
 							link.item = item;
 
 							if(cb) cb(link);
@@ -159,7 +158,9 @@ document.addEventListener('DOMContentLoaded', ev => {
 		if(ev.type == 'paste')
 			files = (ev.clipboardData || ev.originalEvent.clipboardData).items;
 		
-		body.upload(files, ev);
+		upload(files).then(link => {
+			console.log(ev.target, link);
+		});
 		
 		/*
 		if(ev.dataTransfer.files.length)
