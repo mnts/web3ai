@@ -65,12 +65,13 @@ class element extends HTMLElement{
 			left: 0;
 			right: 0;
 			bottom: 0;
-			background-image: url(/img/block.png);
+			  background: white url(/img/block.png);
+			  border-radius: 50%;
 			z-index: 33;
 			background-size: contain;
 		    background-repeat: no-repeat;
 			background-position: center;
-			opacity: 0.8;
+			opacity: 1;
 		}
 
         :host(.blocked) > main{

@@ -48,6 +48,8 @@ class element extends HTMLElement{
         header > h2{
           flex-grow: 1;
           color: white;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
         
         #close, #block, #unblock{

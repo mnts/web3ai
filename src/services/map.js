@@ -35,12 +35,12 @@ function initScripts(cb){
 }
 
 function setPosition(marker, coord){
-	var position = new google.maps.LatLng(coord[0], coord[1]);
+	var position = new google.maps.LatLng(coord[1], coord[0]);
 	marker.setPosition(position);
 
     var dist_area = select('#distance-area');
     if(dist_area){
-		var dist = distance(coord[0], coord[1], myCoord[0], myCoord[1]),
+		var dist = distance(coord[1], coord[0], myCoord[0], myCoord[1]),
 			max = parseInt(dist_area.innerText);
         
         if(max)
@@ -64,8 +64,8 @@ const locate = m => {
     		user.marker.div.classList.add('user');
 			user.marker.dragEnd = () => {
 				let coordinates = [
-					user.marker.latlng.lat(), 
-					user.marker.latlng.lng()
+					user.marker.latlng.lng(),
+					user.marker.latlng.lat()
 				];
                 
 				user.axon.link.set('location', {
@@ -202,8 +202,8 @@ window.addEventListener('DOMContentLoaded', function(){
 				ne = gmap.getBounds().getNorthEast();
 
 			filter([
-				[sw.lat(), sw.lng()],
-				[ne.lat(), ne.lng()]
+				[sw.lng(), sw.lat()],
+				[ne.lng(), ne.lat()]
 			]);
 		}
         

@@ -176,9 +176,6 @@ self.addEventListener('fetch', (event) => {
    var u = new URL(url);
 
 
-
-   console.log(event.request);
-
   if(event.request.url.startsWith(self.location.origin + '/files')){
     let store = db.transaction('files', "readwrite").objectStore('files');
     
@@ -241,8 +238,25 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(fetch(event.request));
   }
   else
+  if(u.pathname == '/')
+    event.respondWith((async () => {
+      console.log('req');
+      let r = await W({
+        cmd: 'get',
+        filter: {
+          domain: u.host
+        },
+        collection: 'sites'
+      });
+
+      return (r.item && r.item.ipfs)?
+         ipfs_cat(r.item.ipfs):
+         fetch(url).then(r => {
+           return r;
+         });
+    })());
   if(
-    staticPaths.every(path => u.pathname.startsWith('/'+ path))
+    true//staticPaths.some(path => u.pathname.startsWith('/'+ path))
   )
    event.respondWith(
      caches.open(cacheName).then((cache) => {
@@ -258,17 +272,7 @@ self.addEventListener('fetch', (event) => {
      })
   );
   else{
-    event.respondWith((async () => {
-      let r = await W({
-        cmd: 'get',
-        domain: u.host,
-        collection: 'sites'
-      });
-
-      return (r.item && r.item.ipfs)?
-         ipfs_cat(r.item.ipfs):
-         fetch(url);
-    })());
+    console.log(u);
   }
 });
 
