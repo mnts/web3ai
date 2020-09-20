@@ -3,7 +3,6 @@
 * Cordinate your investments within decentralised collective development environment.
 * Manage your servers and data on them
 * Add permissions for other users to do so
-* Serve your user from your server
 * Vote on decentralised API prefferences
 * Develop only those parts you feel you like
 * Track reputation of those you work with
@@ -13,9 +12,9 @@ UI/UX - pineal.cc
 1. System
 WWW app & site, node module, API/OS, ethereum
 2. Protocol
-dat, mongo, eth, ipfs, http's, ftp, ssh
+ipld, mongo, eth, ipfs, http's, ftp, ssh
 3. Distribution
-orbit msg'n, domains > sockets, personal blockchain's, ethereum, RTC
+textile, domains > sockets, personal blockchain's, ethereum, RTC
 4. Controllers
 link, acc, rect/redux states, events
 5. Site
