@@ -1,4 +1,4 @@
-# pineal.cc
+# web3ai
 * Collectively invest in ideas with time, money, code, connections
 * Cordinate your investments within decentralised collective development environment.
 * Manage your servers and data on them
@@ -8,7 +8,7 @@
 * Track reputation of those you work with
 * Manage and test data flow within
 
-UI/UX - pineal.cc
+UI/UX - web3ai
 1. System
 WWW app & site, node module, API/OS, ethereum
 2. Protocol
