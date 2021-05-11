@@ -39,7 +39,7 @@
     "jsoneditor": "^5.28.2",
     "lit-element": "^2.2.1",
     "lit-html": "^0.14.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "md5": "^2.2.1",
     "paper-range-slider": "^3.0.0",
     "path-browserify": "^1.0.0",
